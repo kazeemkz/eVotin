@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - eVoting System</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <img src="~/Images/voting.png" />
+                   @* <p class="site-title">@Html.ActionLink("Virtual e-Voting System", "Index", "Home")</p>*@
+                </div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                    <nav>
+                        <ul id="menu">
+                         @*   @if(User.Identity.IsAuthenticated)
+                            {
+                            <li>@Html.ActionLink("Instructions", "Index", "Home")</li>
+                           <li>@Html.ActionLink("Vote!", "Vote", "Post")</li>
+                             if(User.IsInRole("SuperAdmin"))
+                            {
+                            <li>@Html.ActionLink("Password", "GivePassword", "Post")</li>
+                            <li>@Html.ActionLink("Post", "Index", "Post")</li>
+                             <li>@Html.ActionLink("Candidate", "Index", "Participant")</li>
+                             <li>@Html.ActionLink("Result", "Result", "Post")</li>
+                             }
+                            }
+                            <li>@Html.ActionLink("Reset", "Reset", "Post")</li>*@
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <h2>&copy; @DateTime.Now.Year - Virtual<em>Kalone</em></h2>
+                </div>
+            </div>
+        </footer>
+
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title Virtual e-Voting System</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+    <style>
+        fieldset {
+            border: 1px solid #000;
+            padding: 0 1.4em 1.4em 1.4em;
+            margin: 0 0 1.5em 0;
+        }
+
+        legend {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        fieldset legend {
+            display: inline;
+        }
+
+        hr {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <img src="~/Images/voting.png" />
+                @* <p class="site-title">@Html.ActionLink("Virtual e-Voting System", "Index", "Home")</p>*@
+            </div>
+            <div class="float-right">
+                <section id="login">
+                    @Html.Partial("_LoginPartial")
+                </section>
+                <nav>
+                    <ul id="menu">
+                        @if (User.Identity.IsAuthenticated && !(User.IsInRole("Admin")))
+                        {
+                               
+                            <li>@Html.ActionLink("Instructions", "Index", "Home")</li>
+                            
+                            if(!(User.IsInRole("InterAdmin")))
+                            {
+                            <li>@Html.ActionLink("Vote!", "Vote", "Post")</li>
+                           
+                            }
+                            if (User.IsInRole("SuperAdmin"))
+                            {
+                            <li>@Html.ActionLink("Voters", "Index", "Voter")</li>
+                            <li>@Html.ActionLink("Password", "GivePassword", "Post")</li>
+                            <li>@Html.ActionLink("Post", "Index", "Post")</li>
+                            <li>@Html.ActionLink("Candidate", "Index", "Participant")</li>
+                            <li>@Html.ActionLink("Result", "Result", "Post")</li>
+                            }
+
+                        }
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Password", "GivePassword", "Post")</li>  
+                            
+                        }
+                        
+                         @if (User.Identity.IsAuthenticated && User.IsInRole("InterAdmin"))
+                        {
+                            <li>@Html.ActionLink("Result", "Result", "Post")</li> 
+                            
+                        }
+                             
+@*   <li>@Html.ActionLink("Reset", "Reset", "Post")</li>*@
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <h2>&copy; @DateTime.Now.Year - VirtualKalone</h2>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

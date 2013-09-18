@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Model.Post>
+
+@{
+    ViewBag.Title = "Result";
+    eVoting.DAL.UnitOfWork work = new eVoting.DAL.UnitOfWork();
+}
+
+<h2>ELECTION RESULT</h2>
+<br />
+@*<fieldset>
+    <legend>Post</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PostName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PostName)
+    </div>
+</fieldset>*@
+
+@foreach (var post in Model)
+{
+    List<Model.Participant> theParticipants = work.ParticipantRepository.Get(a => a.PostID == post.PostID).ToList();
+    <fieldset>
+        <legend>Position -<b>@post.PostName</b></legend>
+        @foreach (var man in theParticipants)
+        {
+         <img src="@Url.Action("GetImage", "Participant", new { id = man.ParticipantID })"  width="70" height="70" /> <text>@man.LastName @man.FirstName @man.MiddleName  <b>Scored </b>- <b>@man.Vote</b></text>
+                
+
+
+            <br />
+            <hr />
+        }
+
+
+    </fieldset>
+    <br />
+    <br />
+}
+
+<h4><b>  @ViewBag.NumberVoted Voted out of   @ViewBag.TotalVoter  Registered Voters</b></h4>
+<p>
+    @*  @Html.ActionLink("Edit", "Edit", new { id=Model.PostID }) |
+    @Html.ActionLink("Back to List", "Index")*@
+</p>

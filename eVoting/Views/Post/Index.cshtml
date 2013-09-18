@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Model.Post>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h4>LIST OF POSTS</h4>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            <b>Post Name</b>
+          @*  @Html.DisplayNameFor(model => model.PostName)*@
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PostID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PostID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PostID })
+        </td>
+    </tr>
+}
+
+</table>

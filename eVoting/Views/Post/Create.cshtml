@@ -1,0 +1,35 @@
+﻿@model Model.Post
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h4>CREATE NEW POST</h4>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Post</legend>
+
+        <div class="editor-label">
+          <b>Post Name</b>
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PostName)
+            @Html.ValidationMessageFor(model => model.PostName)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

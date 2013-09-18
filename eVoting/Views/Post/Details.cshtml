@@ -1,0 +1,35 @@
+﻿@model Model.Post
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h4>POST DETAILS</h4>
+
+<fieldset>
+    <legend>Post</legend>
+
+    <div class="display-label">
+        <b>Post Name</b>
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PostName)
+    </div>
+    <b>Candidates Registered for Post </b>
+    <br />
+
+    <table>
+
+        @foreach (var candidate in ViewBag.Participant)
+        {
+            <tr>
+                <td>@candidate.LastName   @candidate.FirstName  @candidate.MiddleName</td>
+            </tr>
+        }
+
+    </table>
+</fieldset>
+<p>
+    @* @Html.ActionLink("Edit", "Edit", new { id=Model.PostID }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>

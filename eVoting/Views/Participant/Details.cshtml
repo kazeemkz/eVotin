@@ -1,0 +1,57 @@
+﻿@model Model.Participant
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h4>CANDIDATE DETAILS</h4>
+
+<fieldset>
+    <legend>Participant</legend>
+
+    <p>
+        <img src="@Url.Action("GetImage", "Participant", new { id = Model.ParticipantID })"  width="150" height="150" />
+    </p>
+
+    <div class="display-label">
+         
+    </div>
+    <div class="display-field">
+      <b>@Html.DisplayNameFor(model => model.FirstName) :</b>  @Html.DisplayFor(model => model.FirstName)
+    </div>
+
+    <div class="display-label">
+       
+    </div>
+    <div class="display-field">
+     <b>  @Html.DisplayNameFor(model => model.MiddleName):</b>   @Html.DisplayFor(model => model.MiddleName)
+    </div>
+
+    <div class="display-label">
+     
+    </div>
+    <div class="display-field">
+     <b>    @Html.DisplayNameFor(model => model.LastName):</b>   @Html.DisplayFor(model => model.LastName)
+    </div>
+     <div class="display-field">
+     <b>    Position Going For:</b>   @Html.DisplayFor(model => model.Post.PostName)
+    </div>
+      @Html.ActionLink("Upload Another Picture Now!", "Create", "Photo", new { id = Model.ParticipantID }, null)
+   @* <div class="display-label">
+         @Html.DisplayNameFor(model => model.Vote)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Vote)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PostID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PostID)
+    </div>*@
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ParticipantID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

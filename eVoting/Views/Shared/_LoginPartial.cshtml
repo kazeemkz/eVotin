@@ -1,0 +1,20 @@
+﻿@if (Request.IsAuthenticated) {
+
+   eVoting.DAL.UnitOfWork work = new eVoting.DAL.UnitOfWork();
+  string theUser = User.Identity.Name;
+  Model.Voter thePerson = work.VoterRepository.Get(a => a.IdentityNumber == theUser).First();
+    <text>
+     
+    <h4>  Hello, @thePerson.FirstName  @thePerson.LastName of <em>@thePerson.Department</em>      Dept.</h4> @* @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!*@
+     
+        @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+            @Html.AntiForgeryToken()
+            <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+        }
+    </text>
+} else {
+    <ul>
+    @* <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
