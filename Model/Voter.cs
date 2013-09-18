@@ -9,6 +9,7 @@ namespace Model
 {
    public class Voter
     {
+       
        public int VoterID { get; set; }
        [Required]
        public string IdentityNumber { get; set; }
