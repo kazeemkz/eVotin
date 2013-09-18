@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace eVoting.DAL
 {
-  public  class evContext : DbContext
+    public class evContext : System.Data.Entity.DbContext
     {
 
       public evContext()
