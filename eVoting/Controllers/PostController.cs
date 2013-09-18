@@ -78,6 +78,7 @@ namespace eVoting.Controllers
 
         public ActionResult Edit(int id)
         {
+            int k = 0;
             Post thePost = work.PostRepository.GetByID(id);
 
             return View(thePost);
