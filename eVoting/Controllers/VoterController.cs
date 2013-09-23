@@ -10,10 +10,12 @@ using System.Web.Security;
 using WebMatrix.WebData;
 using PagedList;
 using System.Data.SqlClient;
+using eVoting.Filters;
 
 namespace eVoting.Controllers
 {
     [Authorize]
+    [InitializeSimpleMembership]
     public class VoterController : Controller
     {
         UnitOfWork work = new UnitOfWork();

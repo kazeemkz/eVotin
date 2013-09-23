@@ -1,4 +1,5 @@
 ﻿using eVoting.DAL;
+using eVoting.Filters;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace eVoting.Controllers
 {
     //[ConcurrencyCheck]   
     [Authorize]
+    [InitializeSimpleMembership]
     public class PostController : Controller
     {
         UnitOfWork work = new UnitOfWork();

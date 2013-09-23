@@ -6,10 +6,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using eVoting.Filters;
 
 namespace eVoting.Controllers
 {
     [Authorize]
+    [InitializeSimpleMembership]
     public class ParticipantController : Controller
     {
         //
