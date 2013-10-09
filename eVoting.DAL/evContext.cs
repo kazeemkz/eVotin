@@ -9,11 +9,17 @@ using System.Threading.Tasks;
 
 namespace eVoting.DAL
 {
-    public class evContext : System.Data.Entity.DbContext
+  public  class evContext : DbContext
     {
 
       public evContext()
-          : base("evotingDatabase") { }
+          : base("evotingDatabase")
+      {
+          this.Configuration.LazyLoadingEnabled = false;
+          this.Configuration.ProxyCreationEnabled = false;
+
+          Database.SetInitializer(new MigrateDatabaseToLatestVersion<evContext, eVConfiguration>());
+      }
 
        public DbSet<Post> Posts { get; set; }
        public DbSet<Voter> Voters { get; set; }

@@ -4,17 +4,17 @@
     ViewBag.Title = "Index";
 }
 
-<h4>CREATE A VOTER</h4>
+<h4>VIEW VOTERS</h4>
 
 <fieldset>
 
     <legend>Search Box</legend>
 
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Index2", "Voter"))
     {
         <table>
             <tr>
-                <td>First Name:</td>
+                <td>Name:</td>
 
                 <td>@Html.TextBox("FirstName") </td>
 
@@ -32,9 +32,9 @@
             </tr>
 
             <tr>
-               <td>Voted?:</td>
-                <td>@Html.DropDownList("Voted", new SelectList((System.Collections.IEnumerable)ViewBag.Item, "Value", "Text" ))</td>
-            
+                <td>Voted?:</td>
+                <td>@Html.DropDownList("Voted", new SelectList((System.Collections.IEnumerable)ViewBag.Item, "Value", "Text"))</td>
+
             </tr>
 
         </table>
@@ -43,29 +43,44 @@
     }
 </fieldset>
 
-<p>
+@*<p>
     @Html.ActionLink("Create New", "Create")
-</p>
+</p>*@
 <fieldset>
-    <legend> <b>@ViewBag.Count Legible Voter(s) Found</b></legend>
+    <legend><b>@ViewBag.Count Legible Voter(s) Found</b></legend>
     <table>
         <tr>
             <th>
-                <b>ID</b>
+                <b>Staff ID</b>
             </th>
             <th></th>
-             <th></th>
+            <th></th>
             <th>
-                <b>F. Name</b>
+                <b>Names</b>
+            </th>
+            <th></th>
+            <th></th>
+              <th>
+                <b>Dept.</b>
             </th>
              <th></th>
-             <th></th>
+            <th></th>
             <th>
-                <b>L. Name</b>
+                <b>Time Voted</b>
             </th>
-             <th></th>
-             <th></th>
-            
+            <th></th>
+            <th></th>
+            <th>
+                <b>Voted?</b>
+            </th>
+            <th></th>
+            <th></th>
+            <th>
+                <b>Log-In Trails After Voting</b>
+            </th>
+            <th></th>
+            <th></th>
+
             @* <th>
             @Html.DisplayNameFor(model => model.Voted)
         </th>*@
@@ -79,24 +94,49 @@
                     @Html.DisplayFor(modelItem => item.IdentityNumber)
                 </td>
                 <td></td>
-                  <td></td>
+                <td></td>
                 <td>
                     @Html.DisplayFor(modelItem => item.FirstName)
                 </td>
-                  <td></td>
-                  <td></td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
+                 <td></td>
+                <td></td>
+                 <td>
+                    @Html.DisplayFor(modelItem => item.Department)
                 </td>
-                  <td></td>
-                  <td></td>
+                 <td></td>
+                <td></td>
+                <td>
+                    @if(item.Voted == false)
+                    {
+                        <text>Never Voted</text>
+                    }
+                    else
+                    {
+                        string theDate = string.Format("{0: dd-MMMM-yyyy hh:mm:ss tt}", item.VotedTime );
+                          <text>@theDate</text>
+                     
+                    }
+                  
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Voted)
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoggedInAttemptsAfterVoting)
+                </td>
+                <td></td>
+                <td></td>
                 @*  <td>
             @Html.DisplayFor(modelItem => item.Voted)
         </td>*@
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.VoterID }) |
-           @* @Html.ActionLink("Details", "Details", new { id=item.VoterID }) |*@
-                    @Html.ActionLink("Delete", "Delete", new { id = item.VoterID })
+                   @* @Html.ActionLink("Edit", "Edit", new { id = item.VoterID }) |
+         
+                    @Html.ActionLink("Delete", "Delete", new { id = item.VoterID })*@
                 </td>
             </tr>
         }

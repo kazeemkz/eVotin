@@ -1,5 +1,4 @@
 ﻿using eVoting.DAL;
-using eVoting.Filters;
 using eVoting.Models;
 using Model;
 using System;
@@ -11,7 +10,6 @@ using System.Web.Mvc;
 
 namespace eVoting.Controllers
 {
-     [InitializeSimpleMembership]
     public class PhotoController : Controller
     {
 

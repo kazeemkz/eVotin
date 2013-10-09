@@ -1,5 +1,4 @@
 ﻿using eVoting.DAL;
-using eVoting.Filters;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -15,7 +14,6 @@ namespace eVoting.Controllers
 {
     //[ConcurrencyCheck]   
     [Authorize]
-    [InitializeSimpleMembership]
     public class PostController : Controller
     {
         UnitOfWork work = new UnitOfWork();
@@ -80,7 +78,6 @@ namespace eVoting.Controllers
 
         public ActionResult Edit(int id)
         {
-            int k = 0;
             Post thePost = work.PostRepository.GetByID(id);
 
             return View(thePost);
@@ -88,8 +85,11 @@ namespace eVoting.Controllers
 
         public ActionResult Vote()
         {
-
+           // evContext ev = new evContext();
+          ///  ev.Posts.Include(as=).
             List<Post> thePosts = work.PostRepository.Get().ToList();
+
+           // List<Participant> theParticipants = work.ParticipantRepository.Get(a => a.PostID == 2).ToList();
             //foreach (var post in thePosts)
             //{
             //    List<Participant> theParticipants = work.ParticipantRepository.Get(a => a.PostID == post.PostID).ToList();

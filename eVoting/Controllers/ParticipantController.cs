@@ -6,12 +6,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
-using eVoting.Filters;
 
 namespace eVoting.Controllers
 {
     [Authorize]
-    [InitializeSimpleMembership]
     public class ParticipantController : Controller
     {
         //
@@ -69,6 +67,9 @@ namespace eVoting.Controllers
         public ActionResult Details(int id)
         {
             Participant theParticipant = work.ParticipantRepository.GetByID(id);
+
+            Post thePost = work.PostRepository.GetByID(theParticipant.PostID);
+            ViewBag.PostName = thePost.PostName;
 
             return View(theParticipant);
         }

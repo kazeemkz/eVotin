@@ -16,7 +16,7 @@ using eVoting.DAL;
 namespace eVoting.Controllers
 {
     [Authorize]
-   [InitializeSimpleMembership]
+    // [InitializeSimpleMembership]
     public class AccountController : Controller
     {
         UnitOfWork work = new UnitOfWork();
@@ -24,8 +24,10 @@ namespace eVoting.Controllers
         // GET: /Account/Login
 
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl, int id =0)
+        public ActionResult Login(string returnUrl, int id = 0)
         {
+           // UnitOfWork work = new UnitOfWork();
+          //  work.ElectorateRepository.Get();
             if (id != 0)
             {
                 ViewData["Success"] = "Success";
@@ -43,40 +45,43 @@ namespace eVoting.Controllers
         public ActionResult Login(LoginModel model, string returnUrl)
         {
 
-              string theUserName =   model.UserName;
+            string theUserName = model.UserName;
 
-              if (!(theUserName.StartsWith("ka")))
-              {
+            if (!(theUserName.StartsWith("ka")))
+            {
                 //  Voter theVoter1 = work.VoterRepository.Get(a => a.IdentityNumber == theUserName).First();
-                 // string theLoggedInUserPassword = theVoter1.Password;
-                 // if(theLoggedInUserPassword == model.Password)
-                  //{
-                  if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
-                  {
+                // string theLoggedInUserPassword = theVoter1.Password;
+                // if(theLoggedInUserPassword == model.Password)
+                //{
+                if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+                {
 
-                      Voter theVoter = work.VoterRepository.Get(a => a.IdentityNumber == theUserName).First();
-                      if (theVoter.Voted == true)
-                      {
-                          WebSecurity.Logout();
-                          // If we got this far, something failed, redisplay form
-                          ModelState.AddModelError("", "You have Voted Earlier!.");
-                          return View(model);
-                      }
-                      else
-                      {
-                          return RedirectToLocal(returnUrl);
-                      }
-                 }
+                    Voter theVoter = work.VoterRepository.Get(a => a.IdentityNumber == theUserName).First();
+                    if (theVoter.Voted == true)
+                    {
+                        theVoter.LoggedInAttemptsAfterVoting = theVoter.LoggedInAttemptsAfterVoting + 1;
+                        work.VoterRepository.Update(theVoter);
+                        work.Save();
+                        WebSecurity.Logout();
+                        // If we got this far, something failed, redisplay form
+                        ModelState.AddModelError("", "You have Voted Earlier!.");
+                        return View(model);
+                    }
+                    else
+                    {
+                        return RedirectToLocal(returnUrl);
+                    }
+                }
 
-                  // If we got this far, something failed, redisplay form
-                  ModelState.AddModelError("", "The user name or password provided is incorrect.");
-                  return View(model);
+                // If we got this far, something failed, redisplay form
+                ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                return View(model);
 
-              }
-              if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
-              {
-                  return RedirectToLocal(returnUrl);
-              }
+            }
+            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            {
+                return RedirectToLocal(returnUrl);
+            }
 
             // If we got this far, something failed, redisplay form
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
@@ -117,8 +122,8 @@ namespace eVoting.Controllers
                 // Attempt to register the user
                 try
                 {
-                  //  MembershipCreateStatus createStatus;
-                   // Membership.CreateUser(model.UserName, model.Password, email:null, passwordQuestion: null, passwordAnswer: null, isApproved: true, providerUserKey: null, status: out createStatus);
+                    //  MembershipCreateStatus createStatus;
+                    // Membership.CreateUser(model.UserName, model.Password, email:null, passwordQuestion: null, passwordAnswer: null, isApproved: true, providerUserKey: null, status: out createStatus);
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
                     return RedirectToAction("Index", "Home");

@@ -34,7 +34,7 @@
      <b>    @Html.DisplayNameFor(model => model.LastName):</b>   @Html.DisplayFor(model => model.LastName)
     </div>
      <div class="display-field">
-     <b>    Position Going For:</b>   @Html.DisplayFor(model => model.Post.PostName)
+     <b>    Position Going For:</b> @ViewBag.PostName   @*@Html.DisplayFor(model => model.Post.PostName)*@
     </div>
       @Html.ActionLink("Upload Another Picture Now!", "Create", "Photo", new { id = Model.ParticipantID }, null)
    @* <div class="display-label">

@@ -26,7 +26,8 @@
 
             <div>
                 <img src="@Url.Action("GetImage", "Participant", new { id = man.ParticipantID })"  width="80" height="80" />
-                <input type="radio" name=@Html.Raw(man.Post.PostName) value="@Html.Raw(man.ParticipantID)"/><b>@Html.Raw(man.LastName + "  ")@Html.Raw(man.FirstName + "  ")@Html.Raw(man.MiddleName + "  ")</b>
+              @* <input type="radio" name="@Html.Raw(man.Post.PostName)" value="@Html.Raw(man.ParticipantID)"/><b>@Html.Raw(man.LastName + "  ")@Html.Raw(man.FirstName + "  ")@Html.Raw(man.MiddleName + "  ")</b>*@
+                 <input type="radio" name="@Html.Raw(post.PostName)" value="@Html.Raw(man.ParticipantID)"/><b>@Html.Raw(man.LastName + "  ")@Html.Raw(man.FirstName + "  ")@Html.Raw(man.MiddleName + "  ")</b>
                 <hr />
             </div>
                

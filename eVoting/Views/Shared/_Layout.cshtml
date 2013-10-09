@@ -57,6 +57,7 @@
                             if (User.IsInRole("SuperAdmin"))
                             {
                             <li>@Html.ActionLink("Voters", "Index", "Voter")</li>
+                             <li>@Html.ActionLink("Voters Record", "Index2", "Voter")</li>
                             <li>@Html.ActionLink("Password", "GivePassword", "Post")</li>
                             <li>@Html.ActionLink("Post", "Index", "Post")</li>
                             <li>@Html.ActionLink("Candidate", "Index", "Participant")</li>
@@ -72,6 +73,7 @@
                         
                          @if (User.Identity.IsAuthenticated && User.IsInRole("InterAdmin"))
                         {
+                              <li>@Html.ActionLink("Voters Record", "Index2", "Voter")</li>
                             <li>@Html.ActionLink("Result", "Result", "Post")</li> 
                             
                         }
@@ -91,7 +93,7 @@
     <footer>
         <div class="content-wrapper">
             <div class="float-left">
-                <h2>&copy; @DateTime.Now.Year - VirtualKalone</h2>
+                <h3>&copy; @DateTime.Now.Year - Virtual<em>Kalone</em> and IceWorks</h3>
             </div>
         </div>
     </footer>

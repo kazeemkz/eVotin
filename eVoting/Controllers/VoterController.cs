@@ -10,19 +10,17 @@ using System.Web.Security;
 using WebMatrix.WebData;
 using PagedList;
 using System.Data.SqlClient;
-using eVoting.Filters;
 
 namespace eVoting.Controllers
 {
     [Authorize]
-    [InitializeSimpleMembership]
     public class VoterController : Controller
     {
         UnitOfWork work = new UnitOfWork();
         //
         // GET: /Voter/
 
-        public ActionResult Index(string FirstName, string LastName, string ID, int? page, string Voted)
+        public ActionResult Index(string FirstName, string dept, string ID, int? page, string Voted)
         {
             List<SelectListItem> theItem = new List<SelectListItem>();
             theItem.Add(new SelectListItem() { Text = "...Choose", Value = "" });
@@ -31,8 +29,8 @@ namespace eVoting.Controllers
             theItem.Add(new SelectListItem() { Text = "True", Value = "True" });
             //foreach (var post in thePost)
             //{
-                //theItem.Add(new SelectListItem() { Text = post.PostName, Value = Convert.ToString(post.PostID) });
-         //   }
+            //theItem.Add(new SelectListItem() { Text = post.PostName, Value = Convert.ToString(post.PostID) });
+            //   }
 
             ViewBag.Item = theItem;
 
@@ -43,9 +41,9 @@ namespace eVoting.Controllers
                 voters = voters.Where(a => a.FirstName.ToLower().Contains(FirstName.ToLower()));
             }
 
-            if (!(string.IsNullOrEmpty(LastName)))
+            if (!(string.IsNullOrEmpty(dept)))
             {
-                voters = voters.Where(a => a.LastName.ToLower().Contains(LastName.ToLower()));
+                voters = voters.Where(a => a.Department.ToLower().Contains(dept.ToLower()));
             }
 
             if (!(string.IsNullOrEmpty(ID)))
@@ -60,6 +58,9 @@ namespace eVoting.Controllers
             }
 
             voters = voters.Where(a => a.LastName != "Oyebode1234567");
+            //  voters = voters.Where(a => a.LastName != "Oyebode1234567");
+            voters = voters.Where(a => a.IdentityNumber != "akinola");
+            voters = voters.Where(a => a.IdentityNumber != "password");
 
 
             int pageSize = 100;
@@ -67,6 +68,58 @@ namespace eVoting.Controllers
             ViewBag.Count = voters.Count();
 
 
+
+            return View(voters.ToPagedList(pageNumber, pageSize));
+            //List<Voter> theVoterList = new List<Voter>();
+            //theVoterList = work.VoterRepository.Get().ToList();
+            //return View(theVoterList);
+        }
+
+        [Authorize(Roles = "SuperAdmin,InterAdmin")]
+        public ActionResult Index2(string FirstName, string dept, string ID, int? page, string Voted, string Department)
+        {
+            List<SelectListItem> theItem = new List<SelectListItem>();
+            theItem.Add(new SelectListItem() { Text = "...Choose", Value = "" });
+            theItem.Add(new SelectListItem() { Text = "False", Value = "False" });
+            theItem.Add(new SelectListItem() { Text = "True", Value = "True" });
+            ViewBag.Item = theItem;
+
+            var voters = from v in work.VoterRepository.Get() select v;
+
+            if (!(string.IsNullOrEmpty(FirstName)))
+            {
+                voters = voters.Where(a => a.FirstName.ToLower().Contains(FirstName.ToLower()));
+            }
+
+            if (!(string.IsNullOrEmpty(dept)))
+            {
+                voters = voters.Where(a => a.Department.ToLower().Contains(dept.ToLower()));
+            }
+
+            if (!(string.IsNullOrEmpty(ID)))
+            {
+                voters = voters.Where(a => a.IdentityNumber == ID);
+            }
+
+            if (!(string.IsNullOrEmpty(Department)))
+            {
+                voters = voters.Where(a => a.Department == Department);
+            }
+
+            if (!(string.IsNullOrEmpty(Voted)))
+            {
+                bool theVote = Convert.ToBoolean(Voted);
+                voters = voters.Where(a => a.Voted == theVote);
+            }
+
+            voters = voters.Where(a => a.LastName != "Oyebode1234567");
+            voters = voters.Where(a => a.IdentityNumber != "akinola");
+            voters = voters.Where(a => a.IdentityNumber != "password");
+
+
+            int pageSize = 600;
+            int pageNumber = (page ?? 1);
+            ViewBag.Count = voters.Count();
 
             return View(voters.ToPagedList(pageNumber, pageSize));
             //List<Voter> theVoterList = new List<Voter>();
@@ -92,16 +145,16 @@ namespace eVoting.Controllers
                 string theMatric = sr.ReadLine().Trim();
                 string[] theBrokenData = theMatric.Split('\t');
 
-               // theBrokenData[6];
+                // theBrokenData[6];
 
                 Voter theVoter = new Voter();
                 //theVoter.IdentityNumber = theMatric;
                 theVoter.IdentityNumber = theBrokenData[4].TrimEnd().TrimStart();
-             theVoter.Department =   theBrokenData[1].TrimEnd().TrimStart();
+                theVoter.Department = theBrokenData[1].TrimEnd().TrimStart();
                 theVoter.Password = randomPassword;
                 theVoter.VotedTime = DateTime.Now;
                 theVoter.FirstName = theBrokenData[3].TrimEnd().TrimStart(); ;
-               // theVoter.LastName = theBrokenData[5].TrimEnd().TrimStart(); ;
+                // theVoter.LastName = theBrokenData[5].TrimEnd().TrimStart(); ;
                 theVoter.Voted = false;
                 work.VoterRepository.Insert(theVoter);
                 work.Save();
@@ -139,6 +192,9 @@ namespace eVoting.Controllers
         public ActionResult Create(Voter model)
         {
             model.VotedTime = DateTime.Now;
+            model.LoggedInAttemptsAfterVoting = 0;
+           // model.Voted = false;
+          //  model.
             model.Voted = false;
             try
             {
@@ -168,21 +224,42 @@ namespace eVoting.Controllers
 
             Voter theVoter = work.VoterRepository.GetByID(id);
             return View(theVoter);
+
         }
 
         //
         // POST: /Voter/Edit/5
 
         [HttpPost]
-        public ActionResult Edit(Voter theVoter)
+        public ActionResult Edit(Voter theVoter, string newPassword)
         {
             try
             {
                 if (TryUpdateModel(theVoter))
                 {
+                    if (string.IsNullOrEmpty(newPassword))
+                    {
+                        work.VoterRepository.Update(theVoter);
+                        work.Save();
+                    }
+                    else
+                    {
+                        if (newPassword.Length < 6)
+                        {
+                            ModelState.AddModelError("", "Passwrod Must have a minimum of 6 Characters");
 
-                    work.VoterRepository.Update(theVoter);
-                    work.Save();
+                            return View();
+                        }
+                        else
+                        {
+                            WebSecurity.ChangePassword(theVoter.IdentityNumber, theVoter.Password, newPassword);
+                            theVoter.Password = newPassword;
+                            work.VoterRepository.Update(theVoter);
+                            work.Save();
+                            return RedirectToAction("Index");
+                        }
+                    }
+
 
                 }
                 // TODO: Add update logic here
@@ -215,17 +292,17 @@ namespace eVoting.Controllers
             try
             {
 
-            Voter theRealVoter =    work.VoterRepository.GetByID(theVoter.VoterID);
-               // Membership.GetUser
-           // Membership.DeleteUser(theRealVoter.IdentityNumber, true);
+                Voter theRealVoter = work.VoterRepository.GetByID(theVoter.VoterID);
+                // Membership.GetUser
+                // Membership.DeleteUser(theRealVoter.IdentityNumber, true);
 
 
-            ((SimpleMembershipProvider)Membership.Provider).DeleteAccount(theRealVoter.IdentityNumber);
+                ((SimpleMembershipProvider)Membership.Provider).DeleteAccount(theRealVoter.IdentityNumber);
 
-            ((SimpleMembershipProvider)Membership.Provider).DeleteUser(theRealVoter.IdentityNumber,true);
+                ((SimpleMembershipProvider)Membership.Provider).DeleteUser(theRealVoter.IdentityNumber, true);
 
-            work.VoterRepository.Delete(theRealVoter);
-             //  
+                work.VoterRepository.Delete(theRealVoter);
+                //  
                 work.Save();
                 // TODO: Add delete logic here
 

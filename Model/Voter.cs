@@ -9,7 +9,6 @@ namespace Model
 {
    public class Voter
     {
-       
        public int VoterID { get; set; }
        [Required]
        public string IdentityNumber { get; set; }
@@ -24,6 +23,9 @@ namespace Model
     //   public string VoterPassword { get; set; }
        public bool Voted { get; set; }
 
-       public int kd { get; set; }
+       [Display(Name = "Logged In Attempts After Voting")]
+       public int LoggedInAttemptsAfterVoting { get; set; }
+
+     //  int kd { get; set; }
     }
 }

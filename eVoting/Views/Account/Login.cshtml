@@ -5,7 +5,6 @@
 }
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 <link href="~/Content/bootstrap-responsive.min.css" rel="stylesheet" />
-
 <hgroup class="title">
     <h1>@ViewBag.Title</h1>
 </hgroup>
@@ -19,7 +18,7 @@
     </div>
 }
 <section id="loginForm">
-    <h4>Enter your User Identity and Password to Log-in </h4>
+    <h4>Enter your Staff Identity and Password to Log-in </h4>
     @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
     {
 @*  @Html.AntiForgeryToken() *@
@@ -30,12 +29,12 @@
             <ol>
                 <li>
                     @* @Html.LabelFor(m => m.UserName)*@
-                    @Html.Label("User Identity")
+                  <b>  @Html.Label("Staff Identity")</b>
                     @Html.TextBoxFor(m => m.UserName)
                     @Html.ValidationMessageFor(m => m.UserName)
                 </li>
                 <li>
-                    @Html.LabelFor(m => m.Password)
+                  <b>  @Html.LabelFor(m => m.Password)</b>
                     @Html.PasswordFor(m => m.Password)
                     @Html.ValidationMessageFor(m => m.Password)
                 </li>
@@ -58,8 +57,26 @@
         <h2>Virtual e-Voting, Better by Far!</h2>
 
     </div>
-    <h3><b>Are you tired of using the paper voting system in your organisation, and wish to switch over to electronic voting? <em>We can help, Please Call Kazeem on 08166196673 </em></b></h3>
-    @* @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })*@
+    <h3>We strongly suggest the following:</h3>
+    <ol class="round">
+        <li class="one">
+            <h5>Getting Started</h5>
+            Log-in with your Staff Identity and Password.
+        </li>
+
+       @* <li class="two">
+            <h5>Voting</h5>
+            Once you are logged-in, click the Voting tab at the rightmost corner of the page, this will reveal the candidates.<br />
+            Select your candidate(s) and hit the submit button.
+        </li>*@
+
+        <li class="two">
+            <h5>In Problems</h5>
+            In Problems, please see any Electorate for further intruction(s).
+        </li>
+    </ol>
+    @*<h3><b>Are you tired of using the paper voting system in your organisation, and wish to switch over to electronic voting? <em>We can help, Please Call Kazeem on 08166196673 </em></b></h3>
+    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })*@
 </section>
 
 
