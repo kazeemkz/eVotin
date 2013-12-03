@@ -75,25 +75,31 @@ namespace eVoting.Controllers
                     else
                     {
                         return RedirectToAction("Index", "Home");// ("Login");
-                       // return View();
-                      // return RedirectToLocal(returnUrl);
+                        // return View();
+                        // return RedirectToLocal(returnUrl);
                     }
                 }
+                else
+                {
 
-                // If we got this far, something failed, redisplay form
-                ModelState.AddModelError("", "The user name or password provided is incorrect.");
-                return View(model);
+                    // If we got this far, something failed, redisplay form
+                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                    return View(model);
+                }
 
             }
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-               return RedirectToAction("Index", "Home");// ("Login");
-               // return RedirectToLocal(returnUrl);
+                return RedirectToAction("Index", "Home");// ("Login");
+                // return RedirectToLocal(returnUrl);
             }
+            else
+            {
 
-            // If we got this far, something failed, redisplay form
-            ModelState.AddModelError("", "The user name or password provided is incorrect.");
-            return View(model);
+                // If we got this far, something failed, redisplay form
+                ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                return View(model);
+            }
         }
 
         //
