@@ -33,7 +33,7 @@ namespace eVoting
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
-            LazyInitializer.EnsureInitialized(ref _initializer, ref _isInitialized, ref _initializerLock);
+          //  LazyInitializer.EnsureInitialized(ref _initializer, ref _isInitialized, ref _initializerLock);
             var migrator = new DbMigrator(new eVoting.DAL.eVConfiguration());
             migrator.Update();  
 
@@ -43,8 +43,13 @@ namespace eVoting
         {
             public SimpleMembershipInitializer()
             {
-                //using (var context = new UsersContext())
-                //    context.UserProfiles.Find(1);
+                using (var context = new UsersContext())
+                {
+                    context.UserProfiles.Find(1);
+                    //UnitOfWork work = new UnitOfWork();
+                   // work.ParticipantRepository.Get();
+                }
+
                // WebSecurity.InitializeDatabaseConnection();
                  //WebSecurity.InitializeDatabaseConnection("evotingDatabase", "UserProfile", "UserId", "UserName", autoCreateTables: true);
                 if (!WebSecurity.Initialized)

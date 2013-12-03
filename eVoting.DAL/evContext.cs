@@ -17,7 +17,8 @@ namespace eVoting.DAL
       {
           this.Configuration.LazyLoadingEnabled = false;
           this.Configuration.ProxyCreationEnabled = false;
-
+          //Database.SetInitializer(new DropCreateDatabaseAlways<evContext>());
+          
           Database.SetInitializer(new MigrateDatabaseToLatestVersion<evContext, eVConfiguration>());
       }
 
