@@ -36,9 +36,9 @@
             if (!Roles.RoleExists("InterAdmin"))
                 Roles.CreateRole("InterAdmin");
 
-            if (!WebSecurity.UserExists("akinola"))
+            if (!WebSecurity.UserExists("chair"))
                 WebSecurity.CreateUserAndAccount(
-                    "akinola",
+                    "chair",
                     "P@ssw0rd");
 
             if (!WebSecurity.UserExists("kazeem"))
