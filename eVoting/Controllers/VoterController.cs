@@ -134,7 +134,8 @@ namespace eVoting.Controllers
             // string result = new string(Enumerable.Repeat(chars,6).Select(s=>s[random.Next(s.Length)]).ToArray());
 
 
-            FileStream fs = new FileStream("C:\\Users\\kazeem\\Desktop\\School Projects\\doctorsreal.txt", FileMode.Open, FileAccess.Read);
+            FileStream fs = new FileStream(System.Web.HttpContext.Current.Server.MapPath("~/App_Data/doctorsreal"), FileMode.Open, FileAccess.Read);
+           // FileStream fs = new FileStream("C:\\Users\\kazeem\\Desktop\\School Projects\\doctorsreal.txt", FileMode.Open, FileAccess.Read);
             StreamReader sr = new StreamReader(fs);
             // Math.
             //  string theLast = null;

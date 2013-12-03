@@ -1,0 +1,10 @@
+1	ANAESTHESIA	Dr.	Adebayo Kehinde Oluwaseun	11873
+2	ANAESTHESIA	Dr.	Adejumo Olufemi Oladele	12872
+3	ANAESTHESIA	Dr.	Adejumoh Zainab Modupeola	10295
+4	ANAESTHESIA	Dr.	Aderinto David Adedapo	10972
+5	ANAESTHESIA	Dr.	Afolabi Babatunde Victor	10101
+6	ANAESTHESIA	Dr.	Agboola Ayodeji Gbenga	11732
+7	ANAESTHESIA	Dr.	Aikomo Oladayo Olusola	10259
+8	ANAESTHESIA	Dr.	Ajao Oludare Michael	10206
+9	ANAESTHESIA	Dr.	Akinwale Mukiala Oyegbade	09726
+10	ANAESTHESIA	Dr.	Anjorin Olasunkanmi Gideon	10270
