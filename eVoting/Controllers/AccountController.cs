@@ -37,7 +37,7 @@ namespace eVoting.Controllers
                 ViewData["Success"] = "2";
             }
             //ViewBag.ReturnUrl = returnUrl;
-            return View();
+            return View("Login");
         }
 
         //
