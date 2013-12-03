@@ -28,11 +28,15 @@ namespace eVoting.Controllers
         {
            // UnitOfWork work = new UnitOfWork();
           //  work.ElectorateRepository.Get();
-            if (id != 0)
+            if (id == 1)
             {
-                ViewData["Success"] = "Success";
+                ViewData["Success"] = "1";
             }
-            ViewBag.ReturnUrl = returnUrl;
+            if (id == 2)
+            {
+                ViewData["Success"] = "2";
+            }
+            //ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
@@ -42,7 +46,8 @@ namespace eVoting.Controllers
         [HttpPost]
         [AllowAnonymous]
         //[ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel model, string returnUrl)
+       public ActionResult Login(LoginModel model, string returnUrl)
+           //  public ActionResult Login(LoginModel model)
         {
 
             string theUserName = model.UserName;
@@ -69,7 +74,9 @@ namespace eVoting.Controllers
                     }
                     else
                     {
-                        return RedirectToLocal(returnUrl);
+                        return RedirectToAction("Index", "Home");// ("Login");
+                       // return View();
+                      // return RedirectToLocal(returnUrl);
                     }
                 }
 
@@ -80,7 +87,8 @@ namespace eVoting.Controllers
             }
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-                return RedirectToLocal(returnUrl);
+               return RedirectToAction("Index", "Home");// ("Login");
+               // return RedirectToLocal(returnUrl);
             }
 
             // If we got this far, something failed, redisplay form
@@ -96,8 +104,8 @@ namespace eVoting.Controllers
         public ActionResult LogOff()
         {
             WebSecurity.Logout();
-
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login");
+          //  return RedirectToAction("Index", "Home");
         }
 
         //

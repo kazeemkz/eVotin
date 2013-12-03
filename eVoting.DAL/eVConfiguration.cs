@@ -23,7 +23,9 @@
         protected override void Seed(evContext context)
         {
 
-          //  WebSecurity.InitializeDatabaseConnection("evotingDatabase", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+            if (!WebSecurity.Initialized)
+                WebSecurity.InitializeDatabaseConnection("evotingDatabase", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+           // WebSecurity.InitializeDatabaseConnection("evotingDatabase", "UserProfile", "UserId", "UserName", autoCreateTables: true);
 
             if (!Roles.RoleExists("SuperAdmin"))
                 Roles.CreateRole("SuperAdmin");
@@ -52,18 +54,18 @@
             if (!Roles.GetRolesForUser("kazeem").Contains("SuperAdmin"))
                 Roles.AddUsersToRoles(new[] { "kazeem" }, new[] { "SuperAdmin" });
 
-            if (!Roles.GetRolesForUser("akinola").Contains("InterAdmin"))
-                Roles.AddUsersToRoles(new[] { "akinola" }, new[] { "InterAdmin" });
+            if (!Roles.GetRolesForUser("chair").Contains("InterAdmin"))
+                Roles.AddUsersToRoles(new[] { "chair" }, new[] { "InterAdmin" });
 
             if (!Roles.GetRolesForUser("password").Contains("Admin"))
                 Roles.AddUsersToRoles(new[] { "password" }, new[] { "Admin" });
 
             UnitOfWork work = new UnitOfWork();
 
-            List<Voter> akin = work.VoterRepository.Get(a => a.IdentityNumber == "akinola").ToList();
+            List<Voter> akin = work.VoterRepository.Get(a => a.IdentityNumber == "chair").ToList();
             if (akin.Count() == 0)
             {
-                Voter theVoter = new Voter() { Department = "", FirstName = "akinola", IdentityNumber = "akinola", Voted = false, VotedTime = DateTime.Now, LoggedInAttemptsAfterVoting = 0, LastName = "", Password = "P@ssw0rd" };
+                Voter theVoter = new Voter() { Department = "", FirstName = "chair", IdentityNumber = "chair", Voted = false, VotedTime = DateTime.Now, LoggedInAttemptsAfterVoting = 0, LastName = "", Password = "P@ssw0rd" };
                 work.VoterRepository.Insert(theVoter);
                 work.Save();
             }

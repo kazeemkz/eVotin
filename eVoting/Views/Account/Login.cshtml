@@ -9,12 +9,22 @@
     <h1>@ViewBag.Title</h1>
 </hgroup>
 
-@if (ViewData["Success"] != null)
+@if (ViewData["Success"] =="1")
 {
     <div id="successMessage">
         <h2>CONGRATULATIONS!!!</h2>
         <br />
         <h2>THANK YOU FOR VOTING!</h2>
+    </div>
+}
+
+@if (ViewData["Success"] == "2")
+{
+    <div id="successMessage1">
+        <h2>!!!!!!!SORRY!!!!!!!</h2>
+        <br />
+        <h2> VOTING TIME IS OVER AND</h2>
+          <h2>YOUR VOTE HAS NOT BEEN COUNTED!</h2>
     </div>
 }
 <section id="loginForm">
@@ -97,11 +107,26 @@
 
             }).css("background-color", "grey").css("foreground-color", "grey"); // border: 1px solid #787878;
 
+            $("#successMessage1").dialog({
+                show: { effect: 'bounce', duration: 350, /* SPECIF ARGUMENT */ times: 10 },
+                modal: true,
+                height: 300,
+                width: 300,
+                closeOnEscape: false,
+
+            }).css("background-color", "grey").css("foreground-color", "grey"); // border: 1px solid #787878;
+
             AutoCloseDialogBox(5000);
 
             function AutoCloseDialogBox(sec) {
 
                 setTimeout(function () { $("#successMessage").dialog("close"); }, sec);
+
+            };
+
+            function AutoCloseDialogBox(sec) {
+
+                setTimeout(function () { $("#successMessage1").dialog("close"); }, sec);
 
             };
 

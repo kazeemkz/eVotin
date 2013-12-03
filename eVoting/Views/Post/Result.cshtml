@@ -5,7 +5,10 @@
     eVoting.DAL.UnitOfWork work = new eVoting.DAL.UnitOfWork();
 }
 
-<h2>ELECTION RESULT</h2>
+@{
+string dat = string.Format("{0:dd-MM-yyyy   hh:mmtt}", DateTime.Now);
+}
+<h2>ELECTION RESULTS     @* <text>@dat</text>*@ </h2>
 <br />
 @*<fieldset>
     <legend>Post</legend>
@@ -23,14 +26,36 @@
     List<Model.Participant> theParticipants = work.ParticipantRepository.Get(a => a.PostID == post.PostID).ToList();
     <fieldset>
         <legend>Position -<b>@post.PostName</b></legend>
-        @foreach (var man in theParticipants)
+
+        @if (theParticipants.Count > 1)
         {
-         <img src="@Url.Action("GetImage", "Participant", new { id = man.ParticipantID })"  width="70" height="70" /> <text>@man.LastName @man.FirstName @man.MiddleName  <b>Scored </b>- <b>@man.Vote</b></text>
+            foreach (var man in theParticipants)
+            {
+            <img src="@Url.Action("GetImage", "Participant", new { id = man.ParticipantID })"  width="70" height="70" /> <text>@man.LastName @man.FirstName @man.MiddleName  <b>Scored </b>- <b>@man.Vote</b></text>
                 
 
 
             <br />
             <hr />
+            }
+        }
+        @if (theParticipants.Count == 1)
+        {
+        
+            <div>
+                <img src="@Url.Action("GetImage", "Participant", new { id = theParticipants[0].ParticipantID })"  width="70" height="70" />
+                <br />
+                <b>@theParticipants[0].LastName @theParticipants[0].FirstName @theParticipants[0].MiddleName </b>
+              <br />
+                 <text> <b>YES VOTE(S) - </b> <b>@theParticipants[0].Yes</b></text>
+                 <br />
+                <text> <b>NO VOTE(S) - </b> <b>@theParticipants[0].No</b></text>
+                @* <input type="radio" name="@Html.Raw(man.Post.PostName)" value="@Html.Raw(man.ParticipantID)"/><b>@Html.Raw(man.LastName + "  ")@Html.Raw(man.FirstName + "  ")@Html.Raw(man.MiddleName + "  ")</b>*@
+
+              @*  <input type="radio" name="@Html.Raw(post.PostName)" value="@Html.Raw(theParticipants[0].ParticipantID + ":" + "YES")"/><b>YES</b>
+                <input type="radio" name="@Html.Raw(post.PostName)" value="@Html.Raw(theParticipants[0].ParticipantID + ":" + "NO")"/><b>NO</b>*@
+                <hr />
+            </div>
         }
 
 
@@ -39,7 +64,7 @@
     <br />
 }
 
-<h4><b>  @ViewBag.NumberVoted Voted out of   @ViewBag.TotalVoter  Registered Voters</b></h4>
+<h4><b>@ViewBag.NumberVoted Voted out of   @ViewBag.TotalVoter  Registered Voters</b></h4>
 <p>
     @*  @Html.ActionLink("Edit", "Edit", new { id=Model.PostID }) |
     @Html.ActionLink("Back to List", "Index")*@

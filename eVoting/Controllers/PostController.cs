@@ -85,11 +85,11 @@ namespace eVoting.Controllers
 
         public ActionResult Vote()
         {
-           // evContext ev = new evContext();
-          ///  ev.Posts.Include(as=).
+            // evContext ev = new evContext();
+            ///  ev.Posts.Include(as=).
             List<Post> thePosts = work.PostRepository.Get().ToList();
 
-           // List<Participant> theParticipants = work.ParticipantRepository.Get(a => a.PostID == 2).ToList();
+            // List<Participant> theParticipants = work.ParticipantRepository.Get(a => a.PostID == 2).ToList();
             //foreach (var post in thePosts)
             //{
             //    List<Participant> theParticipants = work.ParticipantRepository.Get(a => a.PostID == post.PostID).ToList();
@@ -101,154 +101,299 @@ namespace eVoting.Controllers
 
             return View("Vote", thePosts);
         }
-
+        [Authorize]
         public ActionResult Voted(string PRESIDENT, string VICE_PRESIDENT, string GENERAL_SECRETARY,
-            string ASSISTANT_GENERAL_SECRETARY, string PUBLIC_RELATION_OFFICER, string FINANCIAL_SECRETARY, string TREASURER, string DIRECTOR_OF_SPORT, string DIRECTOR_OF_SOCIAL, string WELFARE_OFFICER, string LIBRARIAN)
+            string ASSISTANT_GENERAL_SECRETARY, string FINANCIAL_SECRETARY, string TREASURER, string PUBLIC_RELATIONS_OFFICER, string theKey)
         {
 
-            var context = new evContext();
-           // using (var context = new evContext())
-           // {
-
-              // context.
-
-            //president
-            int pre = 0;
-            if (!(string.IsNullOrEmpty(PRESIDENT)))
+            long theCounter = Convert.ToInt64(theKey);
+            if (theCounter > 0)
             {
-                pre = Convert.ToInt32(PRESIDENT);
-               // Participant thePar = work.ParticipantRepository.GetByID(pre);
-              Participant thePar =  context.Participants.Find(pre);
-                thePar.Vote = thePar.Vote + 1;
-              //  context.Participants.sa
-               // work.ParticipantRepository.Update(thePar);
-               // work.Save();
-            }
+                //   var future = new Date("Dec 3 2013 21:15:00 GMT+0200");
+                // var now = new Date();
+                // var difference = Math.floor((future.getTime() - now.getTime()) / 1000);
+                //@Html.Raw(theParticipants[0].ParticipantID + ":" + "YES")
+                //PRESIDENT
+                // VICE_PRESIDENT
+                //GENERAL_SECRETARY
+                //ASSISTANT_GENERAL_SECRETARY
+                //FINANCIAL_SECRETARY
+                //TREASURER
+                //PUBLIC_RELATIONS_OFFICER
+                var context = new evContext();
+                // using (var context = new evContext())
+                // {
+
+                // context.
+
+                //president
+                int pre = 0;
+                if (!(string.IsNullOrEmpty(PRESIDENT)))
+                {
+                    string[] c = PRESIDENT.Split(':');
+                    if (c.Count() == 1)
+                    {
+                        pre = Convert.ToInt32(PRESIDENT);
+                        // Participant thePar = work.ParticipantRepository.GetByID(pre);
+                        Participant thePar = context.Participants.Find(pre);
+                        thePar.Vote = thePar.Vote + 1;
+                    }
+                    if (c.Count() == 2)
+                    {
+                        //@Html.Raw(theParticipants[0].ParticipantID + ":" + "YES")
+                        pre = Convert.ToInt32(c[0]);
+                        // Participant thePar = work.ParticipantRepository.GetByID(pre);
+                        Participant thePar = context.Participants.Find(pre);
+                        if (c[1] == "YES")
+                        {
+                            thePar.Yes = thePar.Yes + 1;
+                        }
+                        if (c[1] == "NO")
+                        {
+                            thePar.No = thePar.No + 1;
+                        }
+
+                    }
+                    //  context.Participants.sa
+                    // work.ParticipantRepository.Update(thePar);
+                    // work.Save();
+                }
 
 
-            //vp
-            int vp = 0;
-            if (!(string.IsNullOrEmpty(VICE_PRESIDENT)))
-            {
-                vp = Convert.ToInt32(VICE_PRESIDENT);
-                Participant vpPar = context.Participants.Find(vp);
-                vpPar.Vote = vpPar.Vote + 1;
-             //   work.ParticipantRepository.Update(vpPar);
-               // work.Save();
-            }
+                //vp
+                int vp = 0;
+                if (!(string.IsNullOrEmpty(VICE_PRESIDENT)))
+                {
+                    string[] c = VICE_PRESIDENT.Split(':');
+                    if (c.Count() == 1)
+                    {
+                        vp = Convert.ToInt32(VICE_PRESIDENT);
+                        Participant vpPar = context.Participants.Find(vp);
+                        vpPar.Vote = vpPar.Vote + 1;
+                    }
+                    if (c.Count() == 2)
+                    {
+                        vp = Convert.ToInt32(c[0]);
+                        Participant vpPar = context.Participants.Find(vp);
+                        if (c[1] == "YES")
+                        {
+                            vpPar.Yes = vpPar.Yes + 1;
+                        }
+                        if (c[1] == "NO")
+                        {
+                            vpPar.No = vpPar.No + 1;
+                        }
+                    }
+                    //   work.ParticipantRepository.Update(vpPar);
+                    // work.Save();
+                }
 
-            //gs
-            int gn = 0;
-            if (!(string.IsNullOrEmpty(GENERAL_SECRETARY)))
-            {
-                gn = Convert.ToInt32(GENERAL_SECRETARY);
-                Participant vpPar = context.Participants.Find(gn);
-                vpPar.Vote = vpPar.Vote + 1;
-              //  work.ParticipantRepository.Update(vpPar);
-              //  work.Save();
+                //gs
+                int gn = 0;
+                if (!(string.IsNullOrEmpty(GENERAL_SECRETARY)))
+                {
+                    string[] c = GENERAL_SECRETARY.Split(':');
+                    if (c.Count() == 1)
+                    {
+                        gn = Convert.ToInt32(GENERAL_SECRETARY);
+                        Participant vpPar = context.Participants.Find(gn);
+                        vpPar.Vote = vpPar.Vote + 1;
+                    }
+                    if (c.Count() == 2)
+                    {
+                        gn = Convert.ToInt32(c[0]);
+                        Participant vpPar = context.Participants.Find(gn);
+                        if (c[1] == "YES")
+                        {
+                            vpPar.Yes = vpPar.Yes + 1;
+                        }
+                        if (c[1] == "NO")
+                        {
+                            vpPar.No = vpPar.No + 1;
+                        }
+                    }
+                    //  work.ParticipantRepository.Update(vpPar);
+                    //  work.Save();
 
-            }
-
-
-            //ags
-            int ags = 0;
-            if (!(string.IsNullOrEmpty(ASSISTANT_GENERAL_SECRETARY)))
-            {
-                ags = Convert.ToInt32(ASSISTANT_GENERAL_SECRETARY);
-                Participant Par = context.Participants.Find(ags);
-                Par.Vote = Par.Vote + 1;
-              //  work.ParticipantRepository.Update(Par);
-              //  work.Save();
-
-            }
-
-            //pro
-            int pro = 0;
-            if (!(string.IsNullOrEmpty(PUBLIC_RELATION_OFFICER)))
-            {
-                pro = Convert.ToInt32(PUBLIC_RELATION_OFFICER);
-                Participant Par = context.Participants.Find(pro);
-                Par.Vote = Par.Vote + 1;
-               // work.ParticipantRepository.Update(Par);
-              //  work.Save();
-
-            }
-
-
-            //fs
-            int fs = 0;
-            if (!(string.IsNullOrEmpty(FINANCIAL_SECRETARY)))
-            {
-                fs = Convert.ToInt32(FINANCIAL_SECRETARY);
-                Participant Par = context.Participants.Find(fs);
-                Par.Vote = Par.Vote + 1;
-               // work.ParticipantRepository.Update(Par);
-              //  work.Save();
-
-            }
+                }
 
 
-            //tr
-            int tr = 0;
-            if (!(string.IsNullOrEmpty(TREASURER)))
-            {
-                tr = Convert.ToInt32(TREASURER);
-                Participant Par = context.Participants.Find(tr);
-                Par.Vote = Par.Vote + 1;
-              //  work.ParticipantRepository.Update(Par);
-              //  work.Save();
+                //ags
+                int ags = 0;
+                if (!(string.IsNullOrEmpty(ASSISTANT_GENERAL_SECRETARY)))
+                {
+                    string[] c = ASSISTANT_GENERAL_SECRETARY.Split(':');
+                    if (c.Count() == 1)
+                    {
+                        ags = Convert.ToInt32(ASSISTANT_GENERAL_SECRETARY);
+                        Participant Par = context.Participants.Find(ags);
+                        Par.Vote = Par.Vote + 1;
+                    }
+                    if (c.Count() == 2)
+                    {
+                        ags = Convert.ToInt32(c[0]);
+                        Participant Par = context.Participants.Find(ags);
+                        if (c[1] == "YES")
+                        {
+                            Par.Yes = Par.Yes + 1;
+                        }
+                        if (c[1] == "NO")
+                        {
+                            Par.No = Par.No + 1;
+                        }
+                    }
+                    //  work.ParticipantRepository.Update(Par);
+                    //  work.Save();
 
-            }
+                }
 
-            //ds
-            int ds = 0;
-            if (!(string.IsNullOrEmpty(DIRECTOR_OF_SPORT)))
-            {
-                ds = Convert.ToInt32(DIRECTOR_OF_SPORT);
-                Participant Par = context.Participants.Find(ds);
-                Par.Vote = Par.Vote + 1;
-               // work.ParticipantRepository.Update(Par);
-                //work.Save();
+                //pro
+                int pro = 0;
+                if (!(string.IsNullOrEmpty(PUBLIC_RELATIONS_OFFICER)))
+                {
+                    string[] c = PUBLIC_RELATIONS_OFFICER.Split(':');
+                    if (c.Count() == 1)
+                    {
+                        pro = Convert.ToInt32(PUBLIC_RELATIONS_OFFICER);
+                        Participant Par = context.Participants.Find(pro);
+                        Par.Vote = Par.Vote + 1;
+                    }
+                    if (c.Count() == 2)
+                    {
+                        pro = Convert.ToInt32(c[0]);
+                        Participant Par = context.Participants.Find(pro);
+                        if (c[1] == "YES")
+                        {
+                            Par.Yes = Par.Yes + 1;
+                        }
+                        if (c[1] == "NO")
+                        {
+                            Par.No = Par.No + 1;
+                        }
+                    }
+                    // work.ParticipantRepository.Update(Par);
+                    //  work.Save();
 
-            }
+                }
 
-            //dos
-            int dos = 0;
-            if (!(string.IsNullOrEmpty(DIRECTOR_OF_SOCIAL)))
-            {
-                dos = Convert.ToInt32(DIRECTOR_OF_SOCIAL);
-                Participant Par = context.Participants.Find(dos);
-                Par.Vote = Par.Vote + 1;
-               // work.ParticipantRepository.Update(Par);
-              //  work.Save();
 
-            }
+                //fs
+                int fs = 0;
+                if (!(string.IsNullOrEmpty(FINANCIAL_SECRETARY)))
+                {
+                    string[] c = FINANCIAL_SECRETARY.Split(':');
+                    if (c.Count() == 1)
+                    {
+                        fs = Convert.ToInt32(FINANCIAL_SECRETARY);
+                        Participant Par = context.Participants.Find(fs);
+                        Par.Vote = Par.Vote + 1;
+                    }
+                    if (c.Count() == 2)
+                    {
+                        fs = Convert.ToInt32(c[0]);
+                        Participant Par = context.Participants.Find(fs);
+                        if (c[1] == "YES")
+                        {
+                            Par.Yes = Par.Yes + 1;
+                        }
+                        if (c[1] == "NO")
+                        {
+                            Par.No = Par.No + 1;
+                        }
+                    }
+                    // work.ParticipantRepository.Update(Par);
+                    //  work.Save();
 
-            //dos
-            int wo = 0;
-            if (!(string.IsNullOrEmpty(WELFARE_OFFICER)))
-            {
-                wo = Convert.ToInt32(WELFARE_OFFICER);
-                Participant Par = context.Participants.Find(wo);
-                Par.Vote = Par.Vote + 1;
-               // work.ParticipantRepository.Update(Par);
-             //   work.Save();
+                }
 
-            }
 
-            //l
-            int l = 0;
-            if (!(string.IsNullOrEmpty(LIBRARIAN)))
-            {
-                l = Convert.ToInt32(LIBRARIAN);
-                Participant Par = context.Participants.Find(l);
-                Par.Vote = Par.Vote + 1;
-               // work.ParticipantRepository.Update(Par);
-              //  work.Save();
+                //tr
+                int tr = 0;
+                if (!(string.IsNullOrEmpty(TREASURER)))
+                {
+                    string[] c = TREASURER.Split(':');
+                    if (c.Count() == 1)
+                    {
+                        tr = Convert.ToInt32(TREASURER);
+                        Participant Par = context.Participants.Find(tr);
+                        Par.Vote = Par.Vote + 1;
+                    }
+                    if (c.Count() == 2)
+                    {
+                        tr = Convert.ToInt32(c[0]);
+                        Participant Par = context.Participants.Find(tr);
+                        if (c[1] == "YES")
+                        {
+                            Par.Yes = Par.Yes + 1;
+                        }
+                        if (c[1] == "NO")
+                        {
+                            Par.No = Par.No + 1;
+                        }
+                    }
+                    //  work.ParticipantRepository.Update(Par);
+                    //  work.Save();
 
-            }
+                }
 
-           
+
+
+
+
+
+
+
+
+
+                //ds
+                //int ds = 0;
+                //if (!(string.IsNullOrEmpty(DIRECTOR_OF_SPORT)))
+                //{
+                //    ds = Convert.ToInt32(DIRECTOR_OF_SPORT);
+                //    Participant Par = context.Participants.Find(ds);
+                //    Par.Vote = Par.Vote + 1;
+                //   // work.ParticipantRepository.Update(Par);
+                //    //work.Save();
+
+                //}
+
+                //dos
+                //int pro = 0;
+                //if (!(string.IsNullOrEmpty(PUBLIC_RELATIONS_OFFICER)))
+                //{
+                //    pro = Convert.ToInt32(PUBLIC_RELATIONS_OFFICER);
+                //    Participant Par = context.Participants.Find(pro);
+                //    Par.Vote = Par.Vote + 1;
+                //   // work.ParticipantRepository.Update(Par);
+                //  //  work.Save();
+
+                //}
+
+                //dos
+                //int wo = 0;
+                //if (!(string.IsNullOrEmpty(WELFARE_OFFICER)))
+                //{
+                //    wo = Convert.ToInt32(WELFARE_OFFICER);
+                //    Participant Par = context.Participants.Find(wo);
+                //    Par.Vote = Par.Vote + 1;
+                //   // work.ParticipantRepository.Update(Par);
+                // //   work.Save();
+
+                //}
+
+                ////l
+                //int l = 0;
+                //if (!(string.IsNullOrEmpty(LIBRARIAN)))
+                //{
+                //    l = Convert.ToInt32(LIBRARIAN);
+                //    Participant Par = context.Participants.Find(l);
+                //    Par.Vote = Par.Vote + 1;
+                //   // work.ParticipantRepository.Update(Par);
+                //  //  work.Save();
+
+                //}
+
+
 
 
                 bool saveFailed;
@@ -266,172 +411,338 @@ namespace eVoting.Controllers
                         saveFailed = true;
 
                         // Update the values of the entity that failed to save from the store
-                      //  ex.Entries.Single().Reload();
+                        //  ex.Entries.Single().Reload();
                         //ex.Data.
-                         context = new evContext();
+                        context = new evContext();
+                        //president
+                        pre = 0;
+                        if (!(string.IsNullOrEmpty(PRESIDENT)))
+                        {
+
+
+                            string[] c = PRESIDENT.Split(':');
+                            if (c.Count() == 1)
+                            {
+                                pre = Convert.ToInt32(PRESIDENT);
+                                // Participant thePar = work.ParticipantRepository.GetByID(pre);
+                                Participant thePar = context.Participants.Find(pre);
+                                thePar.Vote = thePar.Vote + 1;
+                            }
+                            if (c.Count() == 2)
+                            {
+                                //@Html.Raw(theParticipants[0].ParticipantID + ":" + "YES")
+                                pre = Convert.ToInt32(c[0]);
+                                // Participant thePar = work.ParticipantRepository.GetByID(pre);
+                                Participant thePar = context.Participants.Find(pre);
+                                if (c[1] == "YES")
+                                {
+                                    thePar.Yes = thePar.Yes + 1;
+                                }
+                                if (c[1] == "NO")
+                                {
+                                    thePar.No = thePar.No + 1;
+                                }
+
+                            }
 
 
 
 
 
-                         //president
-                         pre = 0;
-                         if (!(string.IsNullOrEmpty(PRESIDENT)))
-                         {
-                             pre = Convert.ToInt32(PRESIDENT);
-                             // Participant thePar = work.ParticipantRepository.GetByID(pre);
-                             Participant thePar = context.Participants.Find(pre);
-                             thePar.Vote = thePar.Vote + 1;
-                             //  context.Participants.sa
-                             // work.ParticipantRepository.Update(thePar);
-                             // work.Save();
-                         }
+
+                            //pre = Convert.ToInt32(PRESIDENT);
+                            //// Participant thePar = work.ParticipantRepository.GetByID(pre);
+                            //Participant thePar = context.Participants.Find(pre);
+                            //thePar.Vote = thePar.Vote + 1;
+                            ////  context.Participants.sa
+                            //// work.ParticipantRepository.Update(thePar);
+                            //// work.Save();
+                        }
 
 
-                         //vp
-                         vp = 0;
-                         if (!(string.IsNullOrEmpty(VICE_PRESIDENT)))
-                         {
-                             vp = Convert.ToInt32(VICE_PRESIDENT);
-                             Participant vpPar = context.Participants.Find(vp);
-                             vpPar.Vote = vpPar.Vote + 1;
-                             //   work.ParticipantRepository.Update(vpPar);
-                             // work.Save();
-                         }
+                        //vp
+                        vp = 0;
+                        if (!(string.IsNullOrEmpty(VICE_PRESIDENT)))
+                        {
 
-                         //gs
-                         gn = 0;
-                         if (!(string.IsNullOrEmpty(GENERAL_SECRETARY)))
-                         {
-                             gn = Convert.ToInt32(GENERAL_SECRETARY);
-                             Participant vpPar = context.Participants.Find(gn);
-                             vpPar.Vote = vpPar.Vote + 1;
-                             //  work.ParticipantRepository.Update(vpPar);
-                             //  work.Save();
-
-                         }
-
-
-                         //ags
-                         ags = 0;
-                         if (!(string.IsNullOrEmpty(ASSISTANT_GENERAL_SECRETARY)))
-                         {
-                             ags = Convert.ToInt32(ASSISTANT_GENERAL_SECRETARY);
-                             Participant Par = context.Participants.Find(ags);
-                             Par.Vote = Par.Vote + 1;
-                             //  work.ParticipantRepository.Update(Par);
-                             //  work.Save();
-
-                         }
-
-                         //pro
-                         pro = 0;
-                         if (!(string.IsNullOrEmpty(PUBLIC_RELATION_OFFICER)))
-                         {
-                             pro = Convert.ToInt32(PUBLIC_RELATION_OFFICER);
-                             Participant Par = context.Participants.Find(pro);
-                             Par.Vote = Par.Vote + 1;
-                             // work.ParticipantRepository.Update(Par);
-                             //  work.Save();
-
-                         }
+                            string[] c = VICE_PRESIDENT.Split(':');
+                            if (c.Count() == 1)
+                            {
+                                vp = Convert.ToInt32(VICE_PRESIDENT);
+                                Participant vpPar = context.Participants.Find(vp);
+                                vpPar.Vote = vpPar.Vote + 1;
+                            }
+                            if (c.Count() == 2)
+                            {
+                                vp = Convert.ToInt32(c[0]);
+                                Participant vpPar = context.Participants.Find(vp);
+                                if (c[1] == "YES")
+                                {
+                                    vpPar.Yes = vpPar.Yes + 1;
+                                }
+                                if (c[1] == "NO")
+                                {
+                                    vpPar.No = vpPar.No + 1;
+                                }
+                            }
 
 
-                         //fs
-                         fs = 0;
-                         if (!(string.IsNullOrEmpty(FINANCIAL_SECRETARY)))
-                         {
-                             fs = Convert.ToInt32(FINANCIAL_SECRETARY);
-                             Participant Par = context.Participants.Find(fs);
-                             Par.Vote = Par.Vote + 1;
-                             // work.ParticipantRepository.Update(Par);
-                             //  work.Save();
-
-                         }
 
 
-                         //tr
-                         tr = 0;
-                         if (!(string.IsNullOrEmpty(TREASURER)))
-                         {
-                             tr = Convert.ToInt32(TREASURER);
-                             Participant Par = context.Participants.Find(tr);
-                             Par.Vote = Par.Vote + 1;
-                             //  work.ParticipantRepository.Update(Par);
-                             //  work.Save();
 
-                         }
 
-                         //ds
-                         ds = 0;
-                         if (!(string.IsNullOrEmpty(DIRECTOR_OF_SPORT)))
-                         {
-                             ds = Convert.ToInt32(DIRECTOR_OF_SPORT);
-                             Participant Par = context.Participants.Find(ds);
-                             Par.Vote = Par.Vote + 1;
-                             // work.ParticipantRepository.Update(Par);
-                             //work.Save();
 
-                         }
 
-                         //dos
-                         dos = 0;
-                         if (!(string.IsNullOrEmpty(DIRECTOR_OF_SOCIAL)))
-                         {
-                             dos = Convert.ToInt32(DIRECTOR_OF_SOCIAL);
-                             Participant Par = context.Participants.Find(dos);
-                             Par.Vote = Par.Vote + 1;
-                             // work.ParticipantRepository.Update(Par);
-                             //  work.Save();
 
-                         }
 
-                         //dos
-                         wo = 0;
-                         if (!(string.IsNullOrEmpty(WELFARE_OFFICER)))
-                         {
-                             wo = Convert.ToInt32(WELFARE_OFFICER);
-                             Participant Par = context.Participants.Find(wo);
-                             Par.Vote = Par.Vote + 1;
-                             // work.ParticipantRepository.Update(Par);
-                             //   work.Save();
 
-                         }
+                            //vp = Convert.ToInt32(VICE_PRESIDENT);
+                            //Participant vpPar = context.Participants.Find(vp);
+                            //vpPar.Vote = vpPar.Vote + 1;
+                            ////   work.ParticipantRepository.Update(vpPar);
+                            //// work.Save();
+                        }
 
-                         //l
-                         l = 0;
-                         if (!(string.IsNullOrEmpty(LIBRARIAN)))
-                         {
-                             l = Convert.ToInt32(LIBRARIAN);
-                             Participant Par = context.Participants.Find(l);
-                             Par.Vote = Par.Vote + 1;
-                             // work.ParticipantRepository.Update(Par);
-                             //  work.Save();
+                        //gs
+                        gn = 0;
+                        if (!(string.IsNullOrEmpty(GENERAL_SECRETARY)))
+                        {
+                            string[] c = GENERAL_SECRETARY.Split(':');
+                            if (c.Count() == 1)
+                            {
+                                gn = Convert.ToInt32(GENERAL_SECRETARY);
+                                Participant vpPar = context.Participants.Find(gn);
+                                vpPar.Vote = vpPar.Vote + 1;
+                            }
+                            if (c.Count() == 2)
+                            {
+                                gn = Convert.ToInt32(c[0]);
+                                Participant vpPar = context.Participants.Find(gn);
+                                if (c[1] == "YES")
+                                {
+                                    vpPar.Yes = vpPar.Yes + 1;
+                                }
+                                if (c[1] == "NO")
+                                {
+                                    vpPar.No = vpPar.No + 1;
+                                }
+                            }
+                            //gn = Convert.ToInt32(GENERAL_SECRETARY);
+                            //Participant vpPar = context.Participants.Find(gn);
+                            //vpPar.Vote = vpPar.Vote + 1;
+                            ////  work.ParticipantRepository.Update(vpPar);
+                            ////  work.Save();
 
-                         }
+                        }
+
+
+                        //ags
+                        ags = 0;
+                        if (!(string.IsNullOrEmpty(ASSISTANT_GENERAL_SECRETARY)))
+                        {
+                            string[] c = ASSISTANT_GENERAL_SECRETARY.Split(':');
+                            if (c.Count() == 1)
+                            {
+                                ags = Convert.ToInt32(ASSISTANT_GENERAL_SECRETARY);
+                                Participant Par = context.Participants.Find(ags);
+                                Par.Vote = Par.Vote + 1;
+                            }
+                            if (c.Count() == 2)
+                            {
+                                ags = Convert.ToInt32(c[0]);
+                                Participant Par = context.Participants.Find(ags);
+                                if (c[1] == "YES")
+                                {
+                                    Par.Yes = Par.Yes + 1;
+                                }
+                                if (c[1] == "NO")
+                                {
+                                    Par.No = Par.No + 1;
+                                }
+                            }
+                            //ags = Convert.ToInt32(ASSISTANT_GENERAL_SECRETARY);
+                            //Participant Par = context.Participants.Find(ags);
+                            //Par.Vote = Par.Vote + 1;
+                            ////  work.ParticipantRepository.Update(Par);
+                            ////  work.Save();
+
+                        }
+
+                        //pro
+                        pro = 0;
+                        if (!(string.IsNullOrEmpty(PUBLIC_RELATIONS_OFFICER)))
+                        {
+                            string[] c = PUBLIC_RELATIONS_OFFICER.Split(':');
+                            if (c.Count() == 1)
+                            {
+                                pro = Convert.ToInt32(PUBLIC_RELATIONS_OFFICER);
+                                Participant Par = context.Participants.Find(pro);
+                                Par.Vote = Par.Vote + 1;
+                            }
+                            if (c.Count() == 2)
+                            {
+                                pro = Convert.ToInt32(c[0]);
+                                Participant Par = context.Participants.Find(pro);
+                                if (c[1] == "YES")
+                                {
+                                    Par.Yes = Par.Yes + 1;
+                                }
+                                if (c[1] == "NO")
+                                {
+                                    Par.No = Par.No + 1;
+                                }
+                            }
+                            //pro = Convert.ToInt32(PUBLIC_RELATION_OFFICER);
+                            //Participant Par = context.Participants.Find(pro);
+                            //Par.Vote = Par.Vote + 1;
+                            //// work.ParticipantRepository.Update(Par);
+                            ////  work.Save();
+
+                        }
+
+
+                        //fs
+                        fs = 0;
+                        if (!(string.IsNullOrEmpty(FINANCIAL_SECRETARY)))
+                        {
+                            string[] c = FINANCIAL_SECRETARY.Split(':');
+                            if (c.Count() == 1)
+                            {
+                                fs = Convert.ToInt32(FINANCIAL_SECRETARY);
+                                Participant Par = context.Participants.Find(fs);
+                                Par.Vote = Par.Vote + 1;
+                            }
+                            if (c.Count() == 2)
+                            {
+                                fs = Convert.ToInt32(c[0]);
+                                Participant Par = context.Participants.Find(fs);
+                                if (c[1] == "YES")
+                                {
+                                    Par.Yes = Par.Yes + 1;
+                                }
+                                if (c[1] == "NO")
+                                {
+                                    Par.No = Par.No + 1;
+                                }
+                            }
+                            //fs = Convert.ToInt32(FINANCIAL_SECRETARY);
+                            //Participant Par = context.Participants.Find(fs);
+                            //Par.Vote = Par.Vote + 1;
+                            //// work.ParticipantRepository.Update(Par);
+                            ////  work.Save();
+
+                        }
+
+
+                        //tr
+                        tr = 0;
+                        if (!(string.IsNullOrEmpty(TREASURER)))
+                        {
+                            string[] c = TREASURER.Split(':');
+                            if (c.Count() == 1)
+                            {
+                                tr = Convert.ToInt32(TREASURER);
+                                Participant Par = context.Participants.Find(tr);
+                                Par.Vote = Par.Vote + 1;
+                            }
+                            if (c.Count() == 2)
+                            {
+                                tr = Convert.ToInt32(c[0]);
+                                Participant Par = context.Participants.Find(tr);
+                                if (c[1] == "YES")
+                                {
+                                    Par.Yes = Par.Yes + 1;
+                                }
+                                if (c[1] == "NO")
+                                {
+                                    Par.No = Par.No + 1;
+                                }
+                            }
+                            //tr = Convert.ToInt32(TREASURER);
+                            //Participant Par = context.Participants.Find(tr);
+                            //Par.Vote = Par.Vote + 1;
+                            ////  work.ParticipantRepository.Update(Par);
+                            ////  work.Save();
+
+                        }
+
+                        //ds
+                        //pro = 0;
+                        //if (!(string.IsNullOrEmpty(PUBLIC_RELATIONS_OFFICER)))
+                        //{
+                        //    pro = Convert.ToInt32(PUBLIC_RELATIONS_OFFICER);
+                        //    Participant Par = context.Participants.Find(pro);
+                        //    Par.Vote = Par.Vote + 1;
+                        //    // work.ParticipantRepository.Update(Par);
+                        //    //work.Save();
+
+                        //}
+
+                        //dos
+                        //dos = 0;
+                        //if (!(string.IsNullOrEmpty(DIRECTOR_OF_SOCIAL)))
+                        //{
+                        //    dos = Convert.ToInt32(DIRECTOR_OF_SOCIAL);
+                        //    Participant Par = context.Participants.Find(dos);
+                        //    Par.Vote = Par.Vote + 1;
+                        //    // work.ParticipantRepository.Update(Par);
+                        //    //  work.Save();
+
+                        //}
+
+                        ////dos
+                        //wo = 0;
+                        //if (!(string.IsNullOrEmpty(WELFARE_OFFICER)))
+                        //{
+                        //    wo = Convert.ToInt32(WELFARE_OFFICER);
+                        //    Participant Par = context.Participants.Find(wo);
+                        //    Par.Vote = Par.Vote + 1;
+                        //    // work.ParticipantRepository.Update(Par);
+                        //    //   work.Save();
+
+                        //}
+
+                        ////l
+                        //l = 0;
+                        //if (!(string.IsNullOrEmpty(LIBRARIAN)))
+                        //{
+                        //    l = Convert.ToInt32(LIBRARIAN);
+                        //    Participant Par = context.Participants.Find(l);
+                        //    Par.Vote = Par.Vote + 1;
+                        //    // work.ParticipantRepository.Update(Par);
+                        //    //  work.Save();
+
+                        //}
 
                     }
 
                 } while (saveFailed);
-           // }
+                // }
 
 
-            string theUserName = User.Identity.Name;
+                string theUserName = User.Identity.Name;
 
-            if (!(theUserName.EndsWith("eem")))
-            {
-                Voter theVoter = work.VoterRepository.Get(a => a.IdentityNumber == theUserName).First();
+                if (!(theUserName.EndsWith("eem")))
+                {
+                    Voter theVoter = work.VoterRepository.Get(a => a.IdentityNumber == theUserName).First();
 
-                theVoter.VotedTime = DateTime.Now;
-                theVoter.Voted = true;
-                work.VoterRepository.Update(theVoter);
-                work.Save();
+                    theVoter.VotedTime = DateTime.Now;
+                    theVoter.Voted = true;
+                    work.VoterRepository.Update(theVoter);
+                    work.Save();
+                }
+                //,string ,string ,string ,string )
+                //  MvcMembership.log
+                WebSecurity.Logout();///Account/Login
+                return RedirectToAction("Login", "Account", new { id = 1 });
+                // return View();
+
             }
-            //,string ,string ,string ,string )
-            //  MvcMembership.log
-            WebSecurity.Logout();///Account/Login
-            return RedirectToAction("Login", "Account", new {id =1 });
-            // return View();
+            else
+            {
+                WebSecurity.Logout();///Account/Login
+                return RedirectToAction("Login", "Account", new { id = 2 });
+            }
         }
 
         public ActionResult Result()
@@ -439,13 +750,13 @@ namespace eVoting.Controllers
             List<Post> theposts = work.PostRepository.Get().ToList();
 
             List<Voter> voters = work.VoterRepository.Get(a => a.Voted == true).ToList();
-           // List<Voter> totalVoters = work.VoterRepository.Get(a => a.LastName != "Oyebode1234567").ToList();
+            // List<Voter> totalVoters = work.VoterRepository.Get(a => a.LastName != "Oyebode1234567").ToList();
 
             List<Voter> totalVoters = work.VoterRepository.Get().ToList();
 
             ViewBag.NumberVoted = voters.Count();
             ViewBag.TotalVoter = totalVoters.Count() - 3;
-           
+
             return View("Result", theposts);
         }
 
@@ -454,8 +765,8 @@ namespace eVoting.Controllers
         {
             Roles.AddUserToRole("kayode", "Admin");
             //MvcMembership.ad
-         //   WebSecurity.CreateUserAndAccount("kayode", "kayode1");
-          //  WebSecurity.CreateUserAndAccount("kayode", "kayode1");
+            //   WebSecurity.CreateUserAndAccount("kayode", "kayode1");
+            //  WebSecurity.CreateUserAndAccount("kayode", "kayode1");
 
             return View();
         }
@@ -472,21 +783,21 @@ namespace eVoting.Controllers
                 if (theVote.Count() > 0)
                 {
 
-                 // // DateTime d = new DateTime(
-                 //string dateString =  Convert.ToString(theVote[0].VotedTime);
+                    // // DateTime d = new DateTime(
+                    //string dateString =  Convert.ToString(theVote[0].VotedTime);
 
-                 //string[] theSplitedDate =   dateString.Split('/');
-                 //  DateTime thenewDateFromDatabase = new DateTime(2013,Convert.ToInt16(theSplitedDate[0]),Convert.ToInt16(theSplitedDate[1]));
-                 // // DateTime date1 = new DateTime(2009, 8, 1, 0, 0, 0);
-                 //  DateTime date2 = new DateTime(2013, 5, 1);
-                 //  int result = DateTime.Compare(thenewDateFromDatabase, date2);
-                 //  // int 
-                 //  if (result < 0)
-                 //      ViewBag.DateTime = String.Format("{0:ddd, MMM d, yyyy}", theVote[0].VotedTime);  //"Never voted";
-                 //  else if (result == 0)
-                 //      ViewBag.DateTime = "Never voted";
-                 //  else
-                 //      ViewBag.DateTime = String.Format("{0:ddd, MMM d, yyyy h:mm:ss tt}", theVote[0].VotedTime); 
+                    //string[] theSplitedDate =   dateString.Split('/');
+                    //  DateTime thenewDateFromDatabase = new DateTime(2013,Convert.ToInt16(theSplitedDate[0]),Convert.ToInt16(theSplitedDate[1]));
+                    // // DateTime date1 = new DateTime(2009, 8, 1, 0, 0, 0);
+                    //  DateTime date2 = new DateTime(2013, 5, 1);
+                    //  int result = DateTime.Compare(thenewDateFromDatabase, date2);
+                    //  // int 
+                    //  if (result < 0)
+                    //      ViewBag.DateTime = String.Format("{0:ddd, MMM d, yyyy}", theVote[0].VotedTime);  //"Never voted";
+                    //  else if (result == 0)
+                    //      ViewBag.DateTime = "Never voted";
+                    //  else
+                    //      ViewBag.DateTime = String.Format("{0:ddd, MMM d, yyyy h:mm:ss tt}", theVote[0].VotedTime); 
                     return View("PasswordCheck", theVote);
                 }
                 else
@@ -501,11 +812,11 @@ namespace eVoting.Controllers
                 return View("PasswordCheck", voter);
             }
 
-          
 
 
 
-           
+
+
         }
 
 

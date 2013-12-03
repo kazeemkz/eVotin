@@ -45,7 +45,8 @@ namespace eVoting
             {
                 //using (var context = new UsersContext())
                 //    context.UserProfiles.Find(1);
-
+               // WebSecurity.InitializeDatabaseConnection();
+                 //WebSecurity.InitializeDatabaseConnection("evotingDatabase", "UserProfile", "UserId", "UserName", autoCreateTables: true);
                 if (!WebSecurity.Initialized)
                     WebSecurity.InitializeDatabaseConnection("evotingDatabase", "UserProfile", "UserId", "UserName", autoCreateTables: true);
             }

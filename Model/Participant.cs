@@ -21,6 +21,12 @@ namespace Model
         [ConcurrencyCheck]    
         public int Vote { get; set; }
 
+        [ConcurrencyCheck]
+        public int Yes { get; set; }
+
+        [ConcurrencyCheck]
+        public int No { get; set; }
+
         public int PostID { get; set; }
         public virtual Post Post { get; set; }
 

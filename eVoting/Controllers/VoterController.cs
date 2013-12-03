@@ -113,7 +113,7 @@ namespace eVoting.Controllers
             }
 
             voters = voters.Where(a => a.LastName != "Oyebode1234567");
-            voters = voters.Where(a => a.IdentityNumber != "akinola");
+            voters = voters.Where(a => a.IdentityNumber != "chair");
             voters = voters.Where(a => a.IdentityNumber != "password");
 
 
@@ -129,7 +129,7 @@ namespace eVoting.Controllers
 
         public void Populate()
         {
-            var chars = "1eyryidjmncb4a9w8x5r93hb3mqa4j3n3nwm31kvj6c2j9kcm1n3n4bs6a8e91jcvk3n5m7rka9a5x7z8mn3k3n4nman3kwn7k8k3n2a93mabfbsk347sbal3hdkcks128jk";
+            var chars = "xckheayrydzjcmgncb4au9w8xu5ur93hmb3mqa4j3n3nwm3ktvj6c2vj9kckdnv3n4bsv6a8ev9xjcvk3n5m7rka9a5xz7hz8zrmn3kz3n4nzmavn3kwn7k8kvc3n2a9s3muabtfbusk347sbua3hdkcks28jk";
             var random = new Random();
             // string result = new string(Enumerable.Repeat(chars,6).Select(s=>s[random.Next(s.Length)]).ToArray());
 

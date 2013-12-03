@@ -5,11 +5,15 @@
     <title>@ViewBag.Title Virtual e-Voting System</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
+
     @Styles.Render("~/Content/css")
+    <link href="~/Content/timeTo.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
+    @* <script src="~/Scripts/jquery-1.9.1.min.js"></script>*@
+   @* <script src="~/Scripts/jquery.timeTo.js"></script>*@
     <link href="~/Content/bootstrap-responsive.css" rel="stylesheet" />
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
-
+    @*  @Html.Hidden("theKey")*@
     <style>
         fieldset {
             border: 1px solid #000;
@@ -36,6 +40,11 @@
         <div class="content-wrapper">
             <div class="float-left">
                 <img src="~/Images/voting.png" />
+
+                <h3>Voting Time Left :<span id="days"></span>
+                <span id="hours"></span>
+                <span id="minutes"></span>
+                <span id="seconds"></span></h3>
                 @* <p class="site-title">@Html.ActionLink("Virtual e-Voting System", "Index", "Home")</p>*@
             </div>
             <div class="float-right">
@@ -49,15 +58,15 @@
                                
                             <li>@Html.ActionLink("Instructions", "Index", "Home")</li>
                             
-                            if(!(User.IsInRole("InterAdmin")))
+                            if (!(User.IsInRole("InterAdmin")))
                             {
-                            <li>@Html.ActionLink("Vote!", "Vote", "Post")</li>
+                            <li>@Html.ActionLink("Vote!", "Vote", "Post",null, new{id="vote"})</li>
                            
                             }
                             if (User.IsInRole("SuperAdmin"))
                             {
                             <li>@Html.ActionLink("Voters", "Index", "Voter")</li>
-                             <li>@Html.ActionLink("Voters Record", "Index2", "Voter")</li>
+                            <li>@Html.ActionLink("Voters Record", "Index2", "Voter")</li>
                             <li>@Html.ActionLink("Password", "GivePassword", "Post")</li>
                             <li>@Html.ActionLink("Post", "Index", "Post")</li>
                             <li>@Html.ActionLink("Candidate", "Index", "Participant")</li>
@@ -70,10 +79,10 @@
                             <li>@Html.ActionLink("Password", "GivePassword", "Post")</li>  
                             
                         }
-                        
-                         @if (User.Identity.IsAuthenticated && User.IsInRole("InterAdmin"))
+
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("InterAdmin"))
                         {
-                              <li>@Html.ActionLink("Voters Record", "Index2", "Voter")</li>
+                            <li>@Html.ActionLink("Voters Record", "Index2", "Voter")</li>
                             <li>@Html.ActionLink("Result", "Result", "Post")</li> 
                             
                         }
@@ -101,5 +110,62 @@
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("scripts", required: false)
 
+
+
+    @*<link href="~/Content/timeTo.css" rel="stylesheet" />*@
+
+    @* <script src="~/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/Scripts/jquery.timeTo.js"></script>*@
+
+    @*<script src="~/Scripts/jquery.timeTo.js"></script>
+    <a href="~/Scripts/timeTo.jquery.json">~/Scripts/timeTo.jquery.json</a>*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+           // alert("HI");
+            setInterval(function () {
+                var future = new Date("Dec 13 2013 17:00:00 GMT+0100");
+                var now = new Date();
+                var difference = Math.floor((future.getTime() - now.getTime()) / 1000);
+              //  $('#theKey').val(difference);
+               // alert($('#theKey').val());
+                if (difference <= 0) {
+                  //  $('#theKey').val(difference);
+                   // alert($('#theKey').val());
+                    $('#vote').click(function () {
+                     // alert('You clicked the link.');
+                        return false;
+                        
+                    });
+
+                }
+              // alert(difference);
+
+                var seconds = fixIntegers(difference % 60);
+                difference = Math.floor(difference / 60);
+
+                var minutes = fixIntegers(difference % 60);
+                difference = Math.floor(difference / 60);
+
+                var hours = fixIntegers(difference % 24);
+                difference = Math.floor(difference / 24);
+
+                var days = difference;
+
+                $("#seconds").text(seconds + "s");
+                $("#minutes").text(minutes + "m");
+                $("#hours").text(hours + "hrs,");
+                $("#days").text(days + "days,");
+            }, 1000);
+
+            function fixIntegers(integer) {
+                if (integer < 0)
+                    integer = 0;
+                if (integer < 10)
+                    return "0" + integer;
+                return "" + integer;
+            }
+        });
+    </script>
 </body>
 </html>
+
