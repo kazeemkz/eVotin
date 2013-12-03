@@ -733,14 +733,16 @@ namespace eVoting.Controllers
                 }
                 //,string ,string ,string ,string )
                 //  MvcMembership.log
-                WebSecurity.Logout();///Account/Login
+                FormsAuthentication.SignOut();
+             //   WebSecurity.Logout();///Account/Login
                 return RedirectToAction("Login", "Account", new { id = 1 });
                 // return View();
 
             }
             else
             {
-                WebSecurity.Logout();///Account/Login
+                FormsAuthentication.SignOut();
+               // WebSecurity.Logout();///Account/Login
                 return RedirectToAction("Login", "Account", new { id = 2 });
             }
         }

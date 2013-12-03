@@ -159,7 +159,7 @@ namespace eVoting.Controllers
                 work.VoterRepository.Insert(theVoter);
                 work.Save();
 
-                WebSecurity.CreateUserAndAccount(theVoter.IdentityNumber, randomPassword);
+                Membership.CreateUser(theVoter.IdentityNumber, randomPassword);
                 //  theLast  =theMatric;
             }
             sr.Close();
@@ -205,7 +205,7 @@ namespace eVoting.Controllers
                 work.VoterRepository.Insert(model);
                 work.Save();
 
-                WebSecurity.CreateUserAndAccount(model.IdentityNumber, model.Password);
+                Membership.CreateUser(model.IdentityNumber, model.Password);
                 // TODO: Add insert logic here
 
                 return RedirectToAction("Index");
@@ -252,10 +252,10 @@ namespace eVoting.Controllers
                         }
                         else
                         {
-                            WebSecurity.ChangePassword(theVoter.IdentityNumber, theVoter.Password, newPassword);
-                            theVoter.Password = newPassword;
-                            work.VoterRepository.Update(theVoter);
-                            work.Save();
+                            //Provider .ChangePassword(theVoter.IdentityNumber, theVoter.Password, newPassword);
+                            //theVoter.Password = newPassword;
+                            //work.VoterRepository.Update(theVoter);
+                            //work.Save();
                             return RedirectToAction("Index");
                         }
                     }
@@ -296,10 +296,11 @@ namespace eVoting.Controllers
                 // Membership.GetUser
                 // Membership.DeleteUser(theRealVoter.IdentityNumber, true);
 
+                Membership.DeleteUser(theRealVoter.IdentityNumber,true);
 
-                ((SimpleMembershipProvider)Membership.Provider).DeleteAccount(theRealVoter.IdentityNumber);
+                //((MembershipProvider)Membership.Provider).DeleteUser(theRealVoter.IdentityNumber);
 
-                ((SimpleMembershipProvider)Membership.Provider).DeleteUser(theRealVoter.IdentityNumber, true);
+               // ((SimpleMembershipProvider)Membership.Provider).DeleteUser(theRealVoter.IdentityNumber, true);
 
                 work.VoterRepository.Delete(theRealVoter);
                 //  

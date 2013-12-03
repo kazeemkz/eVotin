@@ -40,6 +40,11 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.0\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -61,10 +66,6 @@
     <Compile Include="evContext.cs" />
     <Compile Include="GenericRepository.cs" />
     <Compile Include="IGenericRepository.cs" />
-    <Compile Include="Migrations\201312031143308_System.Data.SqlClient.cs" />
-    <Compile Include="Migrations\201312031143308_System.Data.SqlClient.Designer.cs">
-      <DependentUpon>201312031143308_System.Data.SqlClient.cs</DependentUpon>
-    </Compile>
     <Compile Include="ParticipantRepository.cs" />
     <Compile Include="PhotoRepository.cs" />
     <Compile Include="PostRepository.cs" />
@@ -82,11 +83,8 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201312031143308_System.Data.SqlClient.resx">
-      <DependentUpon>201312031143308_System.Data.SqlClient.cs</DependentUpon>
-    </EmbeddedResource>
+    <Folder Include="Migrations\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
