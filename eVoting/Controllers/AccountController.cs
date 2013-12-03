@@ -49,7 +49,7 @@ namespace eVoting.Controllers
        public ActionResult Login(LoginModel model, string returnUrl)
            //  public ActionResult Login(LoginModel model)
         {
-            work.ParticipantRepository.Get();
+         //   work.ParticipantRepository.Get();
             string theUserName = model.UserName;
 
             if (!(theUserName.StartsWith("ka")))
