@@ -77,7 +77,7 @@
                 work.VoterRepository.Insert(theVoter);
                 work.Save();
             }
-            List<Voter> kazee = work.VoterRepository.Get(a => a.IdentityNumber == "password").ToList();
+            List<Voter> kazee = work.VoterRepository.Get(a => a.IdentityNumber == "kazeem").ToList();
             if (kazee.Count() == 0)
             {
                 Voter theVoter = new Voter() { Department = "", FirstName = "kazeem", IdentityNumber = "kazeem", Voted = false, VotedTime = DateTime.Now, LoggedInAttemptsAfterVoting = 0, LastName = "Oyebode1234567", Password = "P@ssw0rd" };
