@@ -1,4 +1,6 @@
 ﻿using eVoting.DAL;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 using Model;
 using System;
 using System.Collections.Generic;
@@ -734,7 +736,7 @@ namespace eVoting.Controllers
                 //,string ,string ,string ,string )
                 //  MvcMembership.log
                 FormsAuthentication.SignOut();
-             //   WebSecurity.Logout();///Account/Login
+                //   WebSecurity.Logout();///Account/Login
                 return RedirectToAction("Login", "Account", new { id = 1 });
                 // return View();
 
@@ -742,7 +744,7 @@ namespace eVoting.Controllers
             else
             {
                 FormsAuthentication.SignOut();
-               // WebSecurity.Logout();///Account/Login
+                // WebSecurity.Logout();///Account/Login
                 return RedirectToAction("Login", "Account", new { id = 2 });
             }
         }
@@ -878,6 +880,96 @@ namespace eVoting.Controllers
             {
                 return View();
             }
+        }
+
+        [Authorize(Roles = "SuperAdmin,InterAdmin,Admin")]
+        public FileStreamResult PrintPassword()
+        {
+            // Set up the document and the MS to write it to and create the PDF writer instance
+            MemoryStream ms = new MemoryStream();
+            Document document = new Document(PageSize.A4.Rotate());
+            PdfWriter writer = PdfWriter.GetInstance(document, ms);
+
+            // Open the PDF document
+            document.Open();
+
+            PdfPTable table1 = new PdfPTable(1);
+
+            // oStringWriter.Write("This is the content");
+            //  Response.ContentType = "text/plain";
+          //  Response.ContentType = "application/pdf";
+          
+           
+
+          //  MemoryStream ms = new MemoryStream();
+          //  Document document = new Document(PageSize.A4.Rotate());
+
+            // Open the PDF document
+           // document.Open();
+         
+
+           // PdfWriter writer = PdfWriter.GetInstance(document, ms);
+
+
+
+            // Set up fonts used in the document
+            Font font_heading_1 = FontFactory.GetFont(FontFactory.TIMES_ROMAN, 21, Font.BOLD);
+            Font font_body = FontFactory.GetFont(FontFactory.TIMES_ROMAN, 20);
+
+
+            List<Voter> theVoters = work.VoterRepository.Get(a => a.IdentityNumber != "chair" && a.IdentityNumber != "kazeem" && a.IdentityNumber != "password").OrderBy(a => a.IdentityNumber).ToList();
+
+            foreach (Voter v in theVoters)
+            {
+                PdfPTable table2 = new PdfPTable(1);
+                string staffID = "STAFF ID:- " + v.IdentityNumber  +"    NAME :-" +v.FirstName;
+                string staffPassword = "PASSWORD: " + v.Password;
+                Paragraph paragraph = new Paragraph(staffID, font_body);
+                Paragraph paragraph1 = new Paragraph(staffPassword, font_body);
+                table2.AddCell(paragraph);
+                table2.AddCell(paragraph1);
+
+                table1.AddCell(table2);
+               // table1.AddCell("");
+            }
+            document.Add(table1);
+            // Create the heading paragraph with the headig font
+            // Paragraph paragraph;
+            // paragraph = new Paragraph("Hello world!", font_heading_1);
+          //  itextDoc.Add(table1);
+           // Document thedoc = itextDoc;// print.PrinttheResultPrimary(studentName, Term, studentLevel, ref oStringWriter1, ref document);
+            // Add a horizontal line below the headig text and add it to the paragraph
+            iTextSharp.text.pdf.draw.VerticalPositionMark seperator = new iTextSharp.text.pdf.draw.LineSeparator();
+            seperator.Offset = -6f;
+            // paragraph.Add(seperator);
+
+            // Add paragraph to document
+            // document.Add(paragraph);
+
+
+            // Close the PDF document
+            document.Close();
+
+            // Hat tip to David for his code on stackoverflow for this bit
+            // http://stackoverflow.com/questions/779430/asp-net-mvc-how-to-get-view-to-generate-pdf
+            byte[] file = ms.ToArray();
+            MemoryStream output = new MemoryStream();
+            output.Write(file, 0, file.Length);
+            output.Position = 0;
+            HttpContext.Response.AddHeader("content-disposition", "attachment; filename=form.pdf");
+
+
+
+
+            // Close the PDF document
+           // document.Close();
+
+
+
+
+
+
+            return File(output, "application/pdf");
         }
 
         //
