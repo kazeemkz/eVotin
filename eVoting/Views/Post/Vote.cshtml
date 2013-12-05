@@ -1,4 +1,4 @@
-﻿@*@model Model.Post*@
+﻿
 @model IEnumerable<Model.Post>
 
 @{
@@ -47,9 +47,12 @@
             <br />
             <b>Candidate is UNOPPOSED, Vote YES to support or NO to reject Candidate</b>
             <br />
+              <br />
             @* <input type="radio" name="@Html.Raw(man.Post.PostName)" value="@Html.Raw(man.ParticipantID)"/><b>@Html.Raw(man.LastName + "  ")@Html.Raw(man.FirstName + "  ")@Html.Raw(man.MiddleName + "  ")</b>*@
             <input type="radio" name="@Html.Raw(post.PostName)" value="@Html.Raw(theParticipants[0].ParticipantID + ":" + "YES")"/><b>YES</b>
-              <br />
+            
+             <br />
+             <br />
             <input type="radio" name="@Html.Raw(post.PostName)" value="@Html.Raw(theParticipants[0].ParticipantID + ":" + "NO")"/><b>NO</b>
             <hr />
         </div>

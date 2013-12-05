@@ -191,7 +191,8 @@ namespace eVoting.Controllers
         {
             try
             {
-                Participant theParticipant = work.ParticipantRepository.GetByID(model.ParticipantID);
+                int theID = model.ParticipantID;
+                Participant theParticipant = work.ParticipantRepository.GetByID(theID);
 
                 work.ParticipantRepository.Delete(theParticipant);
                 work.Save();

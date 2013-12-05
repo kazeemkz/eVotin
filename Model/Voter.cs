@@ -17,6 +17,7 @@ namespace Model
       // [Display(Name = "Last Name")]
        public string LastName { get; set; }
         [Required]
+       [StringLength(50, MinimumLength = 6)]
        public string Password { get; set; }
         public string Department { get; set; }
        public DateTime VotedTime { get; set; }
