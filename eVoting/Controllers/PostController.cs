@@ -893,7 +893,7 @@ namespace eVoting.Controllers
             // Open the PDF document
             document.Open();
 
-            PdfPTable table1 = new PdfPTable(1);
+            PdfPTable table1 = new PdfPTable(2);
 
             // oStringWriter.Write("This is the content");
             //  Response.ContentType = "text/plain";
@@ -914,7 +914,8 @@ namespace eVoting.Controllers
 
             // Set up fonts used in the document
             Font font_heading_1 = FontFactory.GetFont(FontFactory.TIMES_ROMAN, 21, Font.BOLD);
-            Font font_body = FontFactory.GetFont(FontFactory.TIMES_ROMAN, 20);
+            Font font_body = FontFactory.GetFont(FontFactory.TIMES_ROMAN, 15);
+            Font font_body2 = FontFactory.GetFont(FontFactory.TIMES_ROMAN, 16);
 
 
             List<Voter> theVoters = work.VoterRepository.Get(a => a.IdentityNumber != "chair" && a.IdentityNumber != "kazeem" && a.IdentityNumber != "password").OrderBy(a => a.IdentityNumber).ToList();
@@ -922,10 +923,10 @@ namespace eVoting.Controllers
             foreach (Voter v in theVoters)
             {
                 PdfPTable table2 = new PdfPTable(1);
-                string staffID = "STAFF ID:- " + v.IdentityNumber  +"    NAME :-" +v.FirstName;
-                string staffPassword = "PASSWORD: " + v.Password;
+                string staffID =      v.FirstName;
+                string staffPassword = "STAFF-ID:- " + v.IdentityNumber  + " PASSWORD: " + v.Password;
                 Paragraph paragraph = new Paragraph(staffID, font_body);
-                Paragraph paragraph1 = new Paragraph(staffPassword, font_body);
+                Paragraph paragraph1 = new Paragraph(staffPassword, font_body2);
                 table2.AddCell(paragraph);
                 table2.AddCell(paragraph1);
 
