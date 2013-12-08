@@ -1,10 +1,472 @@
 1	ANAESTHESIA	Dr.	Adebayo Kehinde Oluwaseun	11873
 2	ANAESTHESIA	Dr.	Adejumo Olufemi Oladele	12872
 3	ANAESTHESIA	Dr.	Adejumoh Zainab Modupeola	10295
-4	ANAESTHESIA	Dr.	Aderinto David Adedapo	10972
-5	ANAESTHESIA	Dr.	Afolabi Babatunde Victor	10101
-6	ANAESTHESIA	Dr.	Agboola Ayodeji Gbenga	11732
-7	ANAESTHESIA	Dr.	Aikomo Oladayo Olusola	10259
-8	ANAESTHESIA	Dr.	Ajao Oludare Michael	10206
-9	ANAESTHESIA	Dr.	Akinwale Mukiala Oyegbade	09726
-10	ANAESTHESIA	Dr.	Anjorin Olasunkanmi Gideon	10270
+4	ANAESTHESIA	Dr.	Afolabi Babatunde Victor	10101
+5	ANAESTHESIA	Dr.	Agboola Ayodeji Gbenga	11732
+6	ANAESTHESIA	Dr.	Aikomo Oladayo Olusola	10259
+7	ANAESTHESIA	Dr.	Ajao Oludare Michael	10206
+8	ANAESTHESIA	Dr.	Akinwale Mukiala Oyegbade	09726
+9	ANAESTHESIA	Dr.	Anjorin Olasunkanmi Gideon	10270
+10	ANAESTHESIA	Dr.	Arikawe Oluwakayode Peter	10273
+11	ANAESTHESIA	Dr.	Fashina Olayinka Olushola	14013
+12	ANAESTHESIA	Dr.	Iken Oluwatomi Funmi	12775
+13	ANAESTHESIA	Dr.	Ilesanmi Adedoyin Adunni	12764
+14	ANAESTHESIA	Dr.	Koleosho-Ademua Olanike	14010
+15	ANAESTHESIA	Dr.	Modupe Oluwafemi Oluwagbenga	11315
+16	ANAESTHESIA	Dr.	Ngadi Odinaka Benedict	11285
+17	ANAESTHESIA	Dr.	Odebunmi Kehinde Oluwakemi	07559
+18	ANAESTHESIA	Dr.	Ojediran Sarah Olubukola	14011
+19	ANAESTHESIA	Dr.	Okanlawon Tejumade Funmilayo	14021
+20	ANAESTHESIA	Dr.	Olabunmuyi OLayide Olubunmi	11871
+21	ANAESTHESIA	Dr.	Olatunji Adebayo Adeyinka	16572
+22	ANAESTHESIA	Dr.	Olonisakin Rotimi peter	09157
+23	ANAESTHESIA	Dr.	Oloyede Yetunde Mary	07999
+24	ANAESTHESIA	Dr.	Olulana Joseph Oluseyi	11423
+25	ANAESTHESIA	Dr.	Omoyeni Eunice Nkechi	11229
+26	ANAESTHESIA	Dr.	Orji Mathias Ogbonnia	13840
+27	ANAESTHESIA	Dr.	Otegbeye Ajibola Uthman	14023
+28	ANAESTHESIA	Dr.	Rukewe Ambros	10965
+29	ANAESTHESIA	Dr.	Salami Omotayo Felicia	14537
+30	ANAESTHESIA	Dr.	Salawudeen Saliat Bolajoko	12239
+31	ANAESTHESIA	Dr.	Sonaike Monisola Temidayo	11009
+32	ANAESTHESIA	Dr.	Soyinka Omolara Abimbola	13160
+33	ANAESTHESIA	Dr. 	Olulode Olufemi Samuel	17923
+34	ANAESTHESIA	Dr. 	Uleke L Luck	10843
+35	ANAESTHESIA	Dr.	Phillips Shete Kunle	17925
+36	CHEMICAL PATHOLOGY	Dr.	Ayoade Gabriel Olufisayo	16267
+37	CHEMICAL PATHOLOGY	Dr.	Dada Victoria Olubunmi	13353
+38	CHEMICAL PATHOLOGY	Dr.	Eluyera Oluwatobi Ololade	14391
+39	CHEMICAL PATHOLOGY	Dr.	Emedoh Andrew Emeka	16268
+40	CHEMICAL PATHOLOGY	Dr.	Esan Oluwayemisi Olaitan	13483
+41	CHEMICAL PATHOLOGY	Dr.	Ogundeji Olajumoke Ajele	11425
+43	CLINICAL PHARMACOLOGY	Dr.	Aderoyeje Gabriel Temitope	16200
+44	CLINICAL PHARMACOLOGY	Dr.	Anjorin Oluwafunmbi Enitan	16271
+45	CLINICAL PHARMACOLOGY	Dr.	Ibironke Folasade Oyefunmike	07560
+46	PREVENTIVE DENTISTRY	Dr.	Adediran Olusegn Johnson	11893
+47	PREVENTIVE DENTISTRY	Dr.	Adeyemo Yewande Isabella	11373
+48	PREVENTIVE DENTISTRY	Dr.	Akinyamoju Clara Arianta	08218
+49	PREVENTIVE DENTISTRY	Dr.	Alade Omolola Titilayo	13352
+50	PREVENTIVE DENTISTRY	Dr.	Ambeke Annabel	10851
+51	PREVENTIVE DENTISTRY	Dr.	Anifowose Olayinka Oluwafunmilola	12792
+52	PREVENTIVE DENTISTRY	Dr.	Ayebameru Olusola Ezekiel	06668
+53	PREVENTIVE DENTISTRY	Dr.	Daniels Grace Faith	12673
+54	PREVENTIVE DENTISTRY	Dr.	Dedeke Aderonke Adewumi	12693
+55	PREVENTIVE DENTISTRY	Dr.	Ikeobi Adaobi Esther	10203
+56	PREVENTIVE DENTISTRY	Dr.	Ikusika Oluwafeyisayo Francis 	11697
+57	PREVENTIVE DENTISTRY	Dr.	Jaiyeoba Oladayo Olukayode	12719
+58	PREVENTIVE DENTISTRY	Dr.	Kosoko Joseph Oluwafemi	13358
+59	PREVENTIVE DENTISTRY	Dr.	Lawal Omotoyosi Abidemi	13477
+60	PREVENTIVE DENTISTRY	Dr.	Nasiru Wosilat Olukemi	10062
+61	PREVENTIVE DENTISTRY	Dr.	Nkwocha Fechi Grace	11365
+62	PREVENTIVE DENTISTRY	Dr.	Oladapo Olubukola Arinola	14143
+63	PREVENTIVE DENTISTRY	Dr.	Olajide Mofoluwaso Abimbola	12179
+64	PREVENTIVE DENTISTRY	Dr.	Olaniran Folaranmi Oluwaseun	12795
+65	PREVENTIVE DENTISTRY	Dr.	Omole Fadekemi Adetutu	11899
+66	PREVENTIVE DENTISTRY	Dr.	Oyetade Modupe Temitope	12730
+67	PREVENTIVE DENTISTRY	Dr.	Olije Tijani	13479
+68	PREVENTIVE DENTISTRY	Dr. 	Abe Elizabeth Oluwatoyin	12855
+69	PREVENTIVE DENTISTRY	Dr. 	Oni Olubunmi Oluseun	17895
+70	PREVENTIVE DENTISTRY	Dr.	Odofin Adesola Ademola	12111
+71	PREVENTIVE DENTISTRY	Dr.	Idiga Ejiro	17889
+72	GENERAL OUTPATIENT	Dr.	Adebusoye Lawrence Adekunle	11509
+73	GENERAL OUTPATIENT	Dr.	Adetunji Adedotun Adeyinka	11369
+74	GENERAL OUTPATIENT	Dr.	Adetunji Olugbenga Ayodeji	13480
+75	GENERAL OUTPATIENT	Dr.	Adigun Kehinde	08396
+76	GENERAL OUTPATIENT	Dr.	Ajayi Samuel Ayodele	10170
+77	GENERAL OUTPATIENT	Dr.	Akinola Titilade Felicia	11411
+78	GENERAL OUTPATIENT	Dr.	Badru Olufunmilayo	13800
+79	GENERAL OUTPATIENT	Dr.	Daramola Olufunmilola Olutosi	08436
+80	GENERAL OUTPATIENT	Dr.	Fasasi Idris Abiodun	11321
+81	GENERAL OUTPATIENT	Dr.	Fayehun Ayorinde Fasina	12736
+82	GENERAL OUTPATIENT	Dr.	Ikhidero-Daniel Olufunmilayo	11201
+83	GENERAL OUTPATIENT	Dr.	Ilori T.H	12159
+84	GENERAL OUTPATIENT	Dr.	Irabor Achiaka Emmanuel	05902
+85	GENERAL OUTPATIENT	Dr.	Jite Ikechi Emmanuel	09916
+86	GENERAL OUTPATIENT	Dr.	Kumuyi Oreoluwa Yewande	11503
+87	GENERAL OUTPATIENT	Dr.	Kuti Kehinde Omobolanle	11566
+88	GENERAL OUTPATIENT	Dr.	Labaeka Elzabeth Oluwatomi	16083
+89	GENERAL OUTPATIENT	Dr.	Ladipo Modupe Martha-Ali	00828
+90	GENERAL OUTPATIENT	Dr.	Martins Segun Oladimeji	15943
+91	GENERAL OUTPATIENT	Dr.	Mosuro Olushola Aishat	07995
+92	GENERAL OUTPATIENT	Dr.	Mukoru Isioma Lawretta	15588
+93	GENERAL OUTPATIENT	Dr.	Muyibi Sufiyan Abu	13222
+94	GENERAL OUTPATIENT	Dr.	Ogunbode Adetola Morenikeji	06968
+95	GENERAL OUTPATIENT	Dr.	Ogunrinde Babajide John	10282
+96	GENERAL OUTPATIENT	Dr.	Olalemi Oluwatoyin Elizabeth	10112
+97	GENERAL OUTPATIENT	Dr.	Olawoyin Waleade Awero	14109
+98	GENERAL OUTPATIENT	Dr.	Olawuyi M.O	09952
+99	GENERAL OUTPATIENT	Dr.	Olowookere Olufemi Oluwole	11407
+100	GENERAL OUTPATIENT	Dr.	Omikunle Temitope Olufunmilola	14474
+101	GENERAL OUTPATIENT	Dr.	Oyewole Abimola Tolulope	11507
+102	GENERAL OUTPATIENT	Dr.	Salam Tawakalit Olubukola	11582
+103	GENERAL OUTPATIENT	Dr. 	Wlliams Adedayo Adelani	13620
+104	GENERAL OUTPATIENT	Dr.	Sanwo Morenikeji Olatunbosun	11489
+105	HAEMATOLOGY	Dr.	Alagbe Adekunle Emmanuel	16270
+106	HAEMATOLOGY	Dr.	Aworanti Oladapo Wale	16258
+107	HAEMATOLOGY	Dr.	Busari Olusogo Ebenezer	13302
+108	HAEMATOLOGY	Dr.	Fowodu F.O	11680
+109	HAEMATOLOGY	Dr.	Ogundeji Sunday Peter	10583
+110	HAEMATOLOGY	Dr. 	Adeoye Olateni Asake	17927
+111	PRIVATE SUITE 	Dr.	Aluko Opeyemi Adebimpe	13159
+112	PRIVATE SUITE 	Dr.	Fapojuwo Emmanuel Mayowa	10410
+113	PRIVATE SUITE 	Dr.	Omololu-Aso Oluwaseun	11364
+114	NEURO SURGERY	Dr.	Abiola Babatunde Akanni	13058
+115	NEURO SURGERY	Dr.	Okunlola Abiodun Idowu	13355
+116	NEURO SURGERY	Dr.	Orhorhoro Omuwie Igberhi	09930
+117	NEURO SURGERY	Dr.	Oyemolade Toyin Ayofe	13385
+118	NEURO SURGERY	Dr.	Ukachukwu Alva-Emeka Kelechi	12067
+119	NEURO SURGERY	Dr. 	Adebayo Adegboyega Abiodun	12097
+120	MEDICAL MICROBIOLOGY	Dr.	Ajani Tinuade Adesola	11583
+121	MEDICAL MICROBIOLOGY	Dr.	Anaedobe Chinenye Glory	13305
+122	MEDICAL MICROBIOLOGY	Dr.	Olugbeminiyi Afolakemi Modupe	11772
+123	MEDICAL MICROBIOLOGY	Dr.	Tayo Babatunde	13306
+124	MEDICAL MICROBIOLOGY	Dr.	Tuta Kemi Elizabeth	11244
+125	MEDICAL MICROBIOLOGY	Dr. 	Obafemi Olufemi Samuel	17951
+126	MEDICAL MICROBIOLOGY	Dr. 	Jude Chiedu Nwaokenye	17916
+127	MEDICINE	Dr.	Adewoye Ifeoluwa Adenike	11904
+128	MEDICINE	Dr.	AKande Kolawole Oluseyi	12070
+129	MEDICINE	Dr.	Akande Temilola Olufunmi	08136
+130	MEDICINE	Dr.	Akueme Ngozi Teresa	16202
+131	MEDICINE	Dr.	Awofisoye Oyindamola Ibukun	11440
+132	MEDICINE	Dr.	Dedeke Ibunkuoluwa Ayoade	13216
+133	MEDICINE	Dr.	Farombi Temitope Hanna	11966
+134	MEDICINE	Dr.	Ipadeola Arinola	08165
+135	MEDICINE	Dr. 	Iseko Iseko Iyoko	13768
+136	MEDICINE	Dr.	Jinadu Yusuf Olanrewaju	10364
+137	MEDICINE	Dr.	Nwosu Mirabel Nkechi	13380
+138	MEDICINE	Dr.	Ogeleye Oluwole Olugbenga	10833
+139	MEDICINE	Dr.	Ogunjimi Luqman Opeoluwa	15576
+140	MEDICINE	Dr.	Ogunlade Olubunmi Aded	08499
+141	MEDICINE	Dr.	Oke Temitope Olufemi	14362
+142	MEDICINE	Dr.	Olajide  Olabode Temitope	11209
+143	MEDICINE	Dr.	Onosanya Akinola Stephen	15700
+144	MEDICINE	Dr.	Oni Opeyemi Olalekan	13374
+145	MEDICINE	Dr.	Osundina Morenike Adedoyin	11589
+146	MEDICINE	Dr. 	Onasanya S.A	15799
+147	MEDICINE	Dr.	Owolade Samson Sunday	13360
+148	MEDICINE	Dr.	Oyebowale Olaniyi Mabayomije	11695
+149	MEDICINE	Dr.	Towoju Olugbenga Ajibola	10281
+150	MEDICINE	Dr.	Yaria Joseph Ogenetega	12822
+151	OBSTETRICS & GYNAECOLOGY	Dr.	Abdusalam Rukayat Adeola	11993
+152	OBSTETRICS & GYNAECOLOGY	Dr.	Adeniyi Adewale Ayodeji	11210
+153	OBSTETRICS & GYNAECOLOGY	Dr.	Akinajo Opeyemi Rebecca	11438
+154	OBSTETRICS & GYNAECOLOGY	Dr.	Akinola Ibrahim Temitope	10149
+155	OBSTETRICS & GYNAECOLOGY	Dr.	Akinola Temitope Ayomide	10549
+156	OBSTETRICS & GYNAECOLOGY	Dr. 	Akinwunmi Babatunde O	11038
+157	OBSTETRICS & GYNAECOLOGY	Dr.	Akinpelu Olusola Mathew	11701
+158	OBSTETRICS & GYNAECOLOGY	Dr.	Akinyotu Oriyomi Omotoyosi	15645
+159	OBSTETRICS & GYNAECOLOGY	Dr.	Alalade Olutayo Adeyemi	13954
+160	OBSTETRICS & GYNAECOLOGY	Dr.	Aremu Oladipo Oladapo	11768
+161	OBSTETRICS & GYNAECOLOGY	Dr.	Awotunde Olademeji Awofisayo	14009
+162	OBSTETRICS & GYNAECOLOGY	Dr.	Bamgboye Ebenezer Adebola	12215
+163	OBSTETRICS & GYNAECOLOGY	Dr.	Bello Oluwasomidoyin Oluke	10817
+164	OBSTETRICS & GYNAECOLOGY	Dr.	Enabor Obehioye Onomen	11388
+165	OBSTETRICS & GYNAECOLOGY	Dr.	Fadipe Olatunji Akinwande	12716
+166	OBSTETRICS & GYNAECOLOGY	Dr.	Kuku Olumide Olaniyi	13311
+167	OBSTETRICS & GYNAECOLOGY	Dr.	Lawal Adewale Hakeem	16198
+168	OBSTETRICS & GYNAECOLOGY	Dr.	Lawal Olatunji Okikiola	13301
+169	OBSTETRICS & GYNAECOLOGY	Dr.	Odubamowo Kehinde Hussein	10977
+170	OBSTETRICS & GYNAECOLOGY	Dr.	Odukogbe Olumide Samuel	11277
+171	OBSTETRICS & GYNAECOLOGY	Dr.	Oketona Olajide Timothy	11739
+172	OBSTETRICS & GYNAECOLOGY	Dr.	Olanipekun Ayodeji Sunday	10844
+174	OBSTETRICS & GYNAECOLOGY	Dr.	Olayide Richard Olalekan	12708
+175	OBSTETRICS & GYNAECOLOGY	Dr.	Olowokere Emmanuel Idowu	11902
+176	OBSTETRICS & GYNAECOLOGY	Dr.	Oni Olaolu Olayinka	12044
+177	OBSTETRICS & GYNAECOLOGY	Dr.	Onwudiegwu Chiemelie Oluwafunmi	10357
+178	OBSTETRICS & GYNAECOLOGY	Dr.	Oranye Banjamin Chukwuka	14110
+179	OBSTETRICS & GYNAECOLOGY	Dr.	Oyerinde Sunday Oladimeji	13961
+180	OBSTETRICS & GYNAECOLOGY	Dr.	Saanu Olugbenga Oluseun	11486
+182	OBSTETRICS & GYNAECOLOGY	Dr.	Tsele Taiwo Adenike	13310
+183	OBSTETRICS & GYNAECOLOGY	Dr.	Unwaha Emmanuel Adeiza	13481
+184	OBSTETRICS & GYNAECOLOGY	Dr. 	Adeniyi Adewale Ayodeji	09923
+185	OPHTHALMOLOGY	Dr.	Aina Akinsola Sunday	13300
+186	OPHTHALMOLOGY	Dr.	Ajetunmobi Sabaina Bosede	10570
+187	OPHTHALMOLOGY	Dr.	Ikyaa Sewuse Yange	12256
+188	OPHTHALMOLOGY	Dr.	Iganga Ogbonaya Nnabuike	12698
+189	OPHTHALMOLOGY	Dr.	Ijaduola Modupe Adedotun	15830
+190	OPHTHALMOLOGY	Dr.	Majekodunmi Oluwole Iyiola	14538
+191	OPHTHALMOLOGY	Dr.	Ogundipe Ayobade Oluwole	12729
+192	OPHTHALMOLOGY	Dr.	Okwudishu  Izuka Augustine	12729
+193	OPHTHALMOLOGY	Dr.	Olaniyan Segun Isaac	13359
+194	OPHTHALMOLOGY	Dr.	Olugundudu Olatunde Olumide	16586
+195	OPHTHALMOLOGY	Dr.	Oluwaseyi Oluwafunbi Toluwalope	16586
+196	OPHTHALMOLOGY	Dr.	Oyawale Adebanjo Oluwasogo	10565
+197	OPHTHALMOLOGY	Dr.	Sarimiye Tarela Frederick	11728
+198	OPHTHALMOLOGY	Dr.	Seidu Mukiala Alaba	13363
+199	OPHTHALMOLOGY	Dr.	Ugalahi Mary Ogbenyi	11770
+200	OPHTHALMOLOGY	Dr. 	Adewole Adeyemi Timothy	16569
+201	OPHTHALMOLOGY	Dr. 	Olayiwola Olorunyomi Toyin	17891
+202	OPHTHALMOLOGY	Dr. 	Ogun Olufunmilola Abimbola	07019
+203	ENT	Dr.	Ijitola Julius Olowo	10439
+204	ENT	Dr.	Jatto Mercy Ewamazino	14500
+205	ENT	Dr.	Odeh Ikechukwu Odeh	15798
+206	ENT	Dr.	Ogunkeyede Segun Ayodeji	12095
+207	ENT	Dr. 	Nwankwo U Jacinta	13357
+209	PAEDIATRICS	Dr.	Akindolire Abimbola Ellen	12725
+210	PAEDIATRICS	Dr.	Alao Michael Abel	11769
+211	PAEDIATRICS	Dr.	Ashubui Oluwakemi Funmilola	10536
+212	PAEDIATRICS	Dr.	Atoba Temitope Ayannihun	16264
+213	PAEDIATRICS	Dr.	Babatunde Oluwabusayo Deborah	13377
+214	PAEDIATRICS	Dr.	Balogun Tolani Adenike	07042
+215	PAEDIATRICS	Dr.	Famosaya Abimbola Adebola	13362
+216	PAEDIATRICS	Dr.	Fasuna Kehinde Funke	10011
+217	PAEDIATRICS	Dr.	Jacob nkedirim Ernesi	11740
+218	PAEDIATRICS	Dr.	Labaeka Adeyemi Adeyinka	13217
+219	PAEDIATRICS	Dr.	Mbajekwe Reuben Onyebuchi	13356
+220	PAEDIATRICS	Dr.	Olopade Olasunmbo Omobolaji	12218
+221	PAEDIATRICS	Dr.	Olorundare Elizbeth Ifeoluwa	11404
+222	PAEDIATRICS	Dr.	Owa Adewale Bayode	10382
+223	PAEDIATRICS	Dr.	Owa Olufunke Tolulope	10383
+224	PAEDIATRICS	Dr.	Tedimola Olushola Oyeleye	09788
+225	PAEDIATRICS	Dr. 	Akinrinoye Olugbenga Oyewumi	10277
+226	PAEDIATRICS	Dr.	Ibeh Joy Ngozi	16201
+228	PATHOLOGY	Dr.	Adetona Adesoji Ebenezer	13799
+229	PATHOLOGY	Dr.	Ajani Mustapha Akanji	10573
+230	PATHOLOGY	Dr.	Aramide Kolawole Olanrewaju	10864
+231	PATHOLOGY	Dr.	Ebili Henry Okuchukwu	12160
+232	PATHOLOGY	Dr.	Egboduku Emmanuel	13307
+233	PATHOLOGY	Dr.	Eze Uwom Okereke	08146
+234	PATHOLOGY	Dr.	Nweke Michael Chukwugoziem	16564
+235	COMMUNITY MEDICINE	Dr.	Adelodun Abolaji Abdulgani	16567
+236	COMMUNITY MEDICINE	Dr.	Adeolu Josephine Oluyemisi	14151
+237	COMMUNITY MEDICINE	Dr.	Ahmed Saheed Bolaji	10099
+238	COMMUNITY MEDICINE	Dr.	Awowoyin Olubukola Joyce	14134
+239	COMMUNITY MEDICINE	Dr.	Balogun Busola Oluwayomi	13013
+240	COMMUNITY MEDICINE	Dr.	Bamgboye Eniola Adetola	11037
+241	COMMUNITY MEDICINE	Dr.	Dania Oluyinka Motunrayo	09945
+242	COMMUNITY MEDICINE	Dr.	Esan Babatunde	14022
+243	COMMUNITY MEDICINE	Dr.	Ilesanmi Olayinka Stephen	13039
+244	COMMUNITY MEDICINE	Dr.	Jinadu  Arisekola Ademola	11267
+245	COMMUNITY MEDICINE	Dr.	Kaji-Hausa Ibidolapo Taiwo	12675
+246	COMMUNITY MEDICINE	Dr.	Obiagwu Adaora Elizabeth	11721
+247	COMMUNITY MEDICINE	Dr.	Ogunbode Oladipo Olanrewaju	09983
+248	COMMUNITY MEDICINE	Dr.	Ojifinni Oludoyinmola Omobola	08894
+249	COMMUNITY MEDICINE	Dr.	Olabisi J.O	11268
+250	COMMUNITY MEDICINE	Dr.	Olabisi Oluwatosin Aramide	11822
+251	COMMUNITY MEDICINE	Dr.	Olajide Lois Oluwatoyin	10268
+252	COMMUNITY MEDICINE	Dr.	Olaleye Olalemi Olaniyi	10174
+253	COMMUNITY MEDICINE	Dr.	Olukoya Oluwadahunsi Olutola	16570
+254	COMMUNITY MEDICINE	Dr.	Omobowale Olubukola Christiana	07584
+255	COMMUNITY MEDICINE	Dr.	Onoh Ikenna Dunyochukwu	16269
+256	COMMUNITY MEDICINE	Dr.	Osifo Joy Atinirehonmon	15646
+257	COMMUNITY MEDICINE	Dr.	Salawu Mobolaji Modinat	10368
+258	COMMUNITY MEDICINE	Dr.	 Sigbeku Oluwakemi Anne	09936
+259	COMMUNITY MEDICINE	Dr.	Soyannwo Tolulope	10837
+260	COMMUNITY MEDICINE	Dr.	Yaria Sarah Eseognene	10230
+261	COMMUNITY MEDICINE	Dr.	A.A Adejimi	10635
+262	COMMUNITY MEDICINE	Dr. 	Ariyo Modupe Omolewa	16563
+263	PSYCHIATRY	Dr.	Adeitan Oluwaseun Abiodun	11860
+264	PSYCHIATRY	Dr.	Akinnuoye Akinwumi Ayodele	12161
+265	PSYCHIATRY	Dr.	Ayinde Olatunde Olayinka	10291
+266	PSYCHIATRY	Dr.	Azegbeobor Joachim Oseigbe	13770
+267	PSYCHIATRY	Dr.	Elugbadebo Olufisayo Oluyinka	11481
+268	PSYCHIATRY	Dr.	Majekodunmi Mofoluwake Esther	11387
+269	PSYCHIATRY	Dr.	Majekodunmi Adejonwo Olufunmilayo	15711
+270	PSYCHIATRY	Dr.	Odunleye Mayokun Aduramo	10834
+271	PSYCHIATRY	Dr.	Ojediran Babawale	10130
+272	PSYCHIATRY	Dr.	Oladele Oluremi Oladipo	13383
+273	RADIOLOGY	Dr.	Afolabi Oluniyi Samson	11643
+274	RADIOLOGY	Dr.	Akinwunmi Omotola Mutiat	12712
+275	RADIOLOGY	Dr.	Anor Franklin	13478
+276	RADIOLOGY	Dr.	Aremu Isiaka Olatoye	10388
+277	RADIOLOGY	Dr.	Bayewu Grace Oluyemisi	15608
+278	RADIOLOGY	Dr.	Ehimiyen Jemima Ineibi	11664
+279	RADIOLOGY	Dr.	Idowu Elizabeth Ayooluwa	11591
+280	RADIOLOGY	Dr.	Mata Terver	12720
+281	RADIOLOGY	Dr.	Odafe-Oyibotha Olubunmi Olubisi	10105
+282	RADIOLOGY	Dr.	Odo Chidi Joseph	16263
+283	RADIOLOGY	Dr.	Okafor Ekwutosi Anthony	12048
+284	RADIOLOGY	Dr.	Okeke Nnamdi Onyeka	16562
+285	RADIOLOGY	Dr.	Olabinri Eunice Oluremi	13939
+286	RADIOLOGY	Dr.	Olatunji Richard Busayo	11443
+287	RADIOLOGY	Dr.	Olowolafe Tolulope Adebowale	16565
+288	RADIOLOGY	Dr.	Osobu Babatunde Ebenezer	12710
+289	RADIOLOGY	Dr.	Osofundiya Oludamilola Ololade	13960
+290	RADIOLOGY	Dr.	Soneye Mayowa Abimbola	16560
+291	RADIOLOGY	Dr.	Soyemi Temitope Oluwatosin	11682
+292	RADIOLOGY	Dr.	Ude Anthony Chukwunonso	16568
+293	RADIOLOGY	Dr.	Ukachukwu Ifeanyi Henry	13299
+294	RADIOLOGY	Dr.	Sojimi Abimbola Oyebola	17948
+295	RADIOLOGY	Dr. 	Ajayi Elijah Ayomibo	17947
+296	RADIOLOGY	Dr.	Ukaigwe Chinwendu Emerald	13926
+297	RADIOLOGY	Dr. 	Adelodun Omotayo	10637
+298	RADIOTHERAPY	Dr.	Adewale Sekinah Abiola	13218
+299	RADIOTHERAPY	Dr.	Eriba Lucy Omosefe	11727
+300	RADIOTHERAPY	Dr.	Olabumuyi Adeniyi Adedayo	12251
+301	RADIOTHERAPY	Dr.	Sarimiye Foluke Oladele	12932
+302	COLLEGE OF MEDICINE STAFF	Dr.	Akin Ojagbemi	10338
+303	COLLEGE OF MEDICINE STAFF	Dr.	Joy Ifesanya	C3131
+304	COLLEGE OF MEDICINE STAFF	Dr.	Akinyemi	C3120
+305	COLLEGE OF MEDICINE STAFF	Dr.	Osuh Mary	10169
+306	COLLEGE OF MEDICINE STAFF	Dr. 	Adepoju A.A	C3133
+307	COLLEGE OF MEDICINE STAFF	Dr.	Onimode Y.A	C3042
+308	COLLEGE OF MEDICINE STAFF	Dr. 	Makajuola Olufunmi B	C3166
+309	COLLEGE OF MEDICINE STAFF	Dr. 	Olusanya O.O	C3165
+310	COLLEGE OF MEDICINE STAFF	Dr. 	Adebayo Ayodeji M	C3062
+311	COLLEGE OF MEDICINE STAFF	Dr. 	Akinyemi Oluwaseun	C3120
+312	COLLEGE OF MEDICINE STAFF	Dr. 	Obembe Taiwo Akinyode	C3045
+313	STAFF CLINIC	Dr.	Adelowo Omolara	04695
+314	STAFF CLINIC	Dr.	Adetunji Olubukola Omolola	09935
+315	STAFF CLINIC	Dr.	Ajao Adedayo Oluwatomilola	11421
+316	STAFF CLINIC	Dr.	Bassey Sodiki Ibikuno	11936
+317	STAFF CLINIC	Dr.	Gbenro Nichola Olufemi	10102
+318	STAFF CLINIC	Dr.	Ishola Rolayo Modupeola	16084
+319	STAFF CLINIC	Dr.	Layiwola Folasade Oladoyin	14193
+320	STAFF CLINIC	Dr.	Lewechi-Uke Omolara Chioma Tayo	12904
+321	STAFF CLINIC	Dr.	Ogundoyin Oluwole Agboola	13909
+322	STAFF CLINIC	Dr.	Olaniyan Fatai Akindele	04591
+323	STAFF CLINIC	Dr.	Oyebami Adewale Oluwaseun	14100
+324	STAFF CLINIC	Dr.	Shittu Tolulope Olabisi	14300
+325	STAFF CLINIC	Dr.	Sobowale-Lafinhan Yewande Fadeke	16085
+326	STAFF CLINIC	Dr.	Soyinka Taiwo Omolola	08147
+327	SURGERY	Dr.	Adebayo Sikiru Adekola	14039
+328	SURGERY	Dr.	Aderibigbe Rotimi Opeyemi	10223
+329	SURGERY	Dr.	Adesina Alaba Moses	10195
+330	SURGERY	Dr.	Ajao Akinlabi Emmanuel	10530
+331	SURGERY	Dr.	Amos Adeniyi Olugbenga	10355
+332	SURGERY	Dr.	Fakoya Jacob Adegbolahan	07068
+333	SURGERY	Dr.	Iyun Ayodele Olukayode	08839
+334	SURGERY	Dr.	Kumolalo Felix Olanrewaju	12096
+335	SURGERY	Dr.	Ladipo-Ajayi Oluwaseun	11990
+336	SURGERY	Dr.	Ogunrewo Tolulope Olukunle	13482
+337	SURGERY	Dr.	Omoyeni Richard Adelana	10329
+338	SURGERY	Dr.	Takure Augustine Oghenemy	13965
+339	OFFICE OF CMD	Dr.	Otegbayo Jesse Abiodun	05747
+340	CONSULTANT	Dr.	Abdulmalik Jubril Omuya	16167
+341	CONSULTANT	Dr.	Abdus-Salam Abass Adesina	11053
+342	CONSULTANT	Dr.	Abiodun-Solanke  Funmilayo	11060
+343	CONSULTANT	Dr.	Adebiyi Akindele Olupelumi	11432
+344	CONSULTANT	Dr.	Adediran Kofoworola I	13006
+345	CONSULTANT	Dr.	Adeleye Jokotade O	05753
+346	CONSULTANT	Dr.	Ademola Adeyinka Francis	07124
+347	CONSULTANT	Dr.	Adenipekun Adeniyi	06265
+348	CONSULTANT	Dr.	Adeoye Abiodun Moshood	16471
+349	CONSULTANT	Dr.	Adesina O.A	10000
+350	CONSULTANT	Dr.	Adeyemo Adebolajo	08844
+351	CONSULTANT	Dr.	Adigun Atinuola	08374
+352	CONSULTANT	Dr.	Agunloye Atinuke Monsurat	06411
+353	CONSULTANT	Dr.	Ajayi Deborah	09990
+354	CONSULTANT	Dr.	Akingbola Titi Stella	07951
+355	CONSULTANT	Dr.	Akinmoladun Victor Ifeolu	10003
+356	CONSULTANT	Dr.	Akinyemi O.A	06414
+357	CONSULTANT	Dr.	Asinobi A.O	05529
+358	CONSULTANT	Dr.	Atalabi M. Omolola	05952
+359	CONSULTANT	Dr.	Awolude Olutosin Alaba	16043
+360	CONSULTANT	Dr.	Balogun Oluwayemisi Mary	15617
+361	CONSULTANT	Dr.	Bekibele Charlse Obu	08066
+362	CONSULTANT	Dr.	Bello Folasade Adenike	11059
+363	CONSULTANT	Dr.	Dada-Adegbola H. Odunola	06314
+364	CONSULTANT	Dr.	Esan Babafemi Oluyomi	16054
+365	CONSULTANT	Dr.	Fasina Oluyemi	11050
+366	CONSULTANT	Dr.	Fasunla Ayotunde James	16054
+367	CONSULTANT	Dr.	Fayemiwo Samuel Adetona	11051
+368	CONSULTANT	Dr.	Folasire A.M	08401
+369	CONSULTANT	Dr.	Folasire Oluyemisi Folake	16008
+370	CONSULTANT	Dr.	Gbolahan Omoysola Olalere	16045
+371	CONSULTANT	Dr.	Ibiyemi Olushola	08317
+372	CONSULTANT	Dr.	Ilesanmi Abiodun Olatunbosun	05602
+373	CONSULTANT	Dr.	Irabor David Omoregham	05041
+374	CONSULTANT	Dr.	Lasebikan Victor Olufolahan	16039
+375	CONSULTANT	Dr.	Lawal A.O	08837
+376	CONSULTANT	Dr.	Ntekim Atara I	08077
+377	CONSULTANT	Dr.	Obajimi Millicent Obab	06045
+378	CONSULTANT	Dr.	Ogunbode Olayinka Oladunjoye	16041
+379	CONSULTANT	Dr.	Ogundoyin Olaolu Olakayode	11062
+380	CONSULTANT	Dr.	Ogunlade Samuel Olusegun	06319
+381	CONSULTANT	Dr.	Ogunrinde Tunde Joshua	16047
+382	CONSULTANT	Dr.	Ola Samuel Olawale	06262
+383	CONSULTANT	Dr.	Olaniyi John Ayodele	08563
+384	CONSULTANT	Dr.	Olawoye Olusola	16046
+385	CONSULTANT	Dr.	Olawoye Olayinka A	13007
+386	CONSULTANT	Dr.	Olulana Dare Isaac D.I	08370
+387	CONSULTANT	Dr.	Oluleye T.S	09978
+388	CONSULTANT	Dr.	Olusanya Adeola Adenike	16049
+389	CONSULTANT	Dr.	Olusanya B.A	07120
+390	CONSULTANT	Dr.	Oluwasola Abideen Olayiwola	05882
+391	CONSULTANT	Dr.	Opeodu Olanrewaju Ige	16048
+392	CONSULTANT	Dr.	Orimadegun Adebola	08315
+393	CONSULTANT	Dr.	Osinaike Babatunde	06988
+394	CONSULTANT	Dr.	Popoola Bamidele	08504
+395	CONSULTANT	Dr.	Sanusi Arionla Adeyoola	06325
+396	CONSULTANT	Dr.	Sogaolu Olumide M	10578
+397	CONSULTANT	Dr.	Uchendu Obioma Chukwudi	16038
+398	ORTHOPAEDIC & TRAUMA	Dr.	Ademua Gbolahan Gboyega	12714
+399	ORTHOPAEDIC & TRAUMA	Dr.	Allen-tayloo Adeoye	10266
+400	ORTHOPAEDIC & TRAUMA	Dr.	Anejukwo Abraham Ajimzo	12737
+401	ORTHOPAEDIC & TRAUMA	Dr.	Balogun Mosimabele Joe	12947
+402	ORTHOPAEDIC & TRAUMA	Dr.	Ifesanya Adeleke Olusegun	06966
+403	ORTHOPAEDIC & TRAUMA	Dr.	Iken Chuka Tunde	07069
+404	ORTHOPAEDIC & TRAUMA	Dr.	Lawani Olukemi Oluyemisi	11861
+405	ORTHOPAEDIC & TRAUMA	Dr.	Ogundele Femi Anthony	16259
+406	ORTHOPAEDIC & TRAUMA	Dr.	Ogundele Olumuyiwa Joshua	13628
+407	ORTHOPAEDIC & TRAUMA	Dr.	Okunola Michael Oluyinka	14044
+408	ORTHOPAEDIC & TRAUMA	Dr. 	Aremu Oluwaseun Adedeji	17945
+409	ORTHOPAEDIC & TRAUMA	Dr.	Obamuyide Henry Adebayo	10208
+411	ACCIDENT & EMEGENCY	Dr.	Adebayo Adetayo Jolade	13841
+412	ACCIDENT & EMEGENCY	Dr.	Adegoke Abolanle Oluwakemi	11934
+413	ACCIDENT & EMEGENCY	Dr.	Adekanbi Isaac Taiye	12869
+414	ACCIDENT & EMEGENCY	Dr.	Adepoju Samson Oladunjoye	11590
+415	ACCIDENT & EMEGENCY	Dr.	Aderinto Oyindamola Olabisi	11647
+416	ACCIDENT & EMEGENCY	Dr.	Adewunmi Feyisola Iretioluwa	09666
+417	ACCIDENT & EMEGENCY	Dr.	Adeyanju Sylvester Ayodeji	12046
+418	ACCIDENT & EMEGENCY	Dr.	Aina Ifeoluwasemilojo	15822
+419	ACCIDENT & EMEGENCY	Dr.	Aje Omolola Ajibola	08007
+420	ACCIDENT & EMEGENCY	Dr.	Aje Akinyemi	07002
+421	ACCIDENT & EMEGENCY	Dr.	Akande Abayomi Akeem	10316
+422	ACCIDENT & EMEGENCY	Dr.	Akinola Olurotimi Olaolu	12896
+423	ACCIDENT & EMEGENCY	Dr.	Akinsete Omobola Omosalewa	12939
+424	ACCIDENT & EMEGENCY	Dr.	Alakiu Abayomi Saheed	10543
+425	ACCIDENT & EMEGENCY	Dr.	Ayeni Ayokunle Olumuyiwa	13839
+426	ACCIDENT & EMEGENCY	Dr.	Ayodele Abidemi Moses	11072
+427	ACCIDENT & EMEGENCY	Dr.	Kehinde Olutayo Ayodele	12950
+428	ACCIDENT & EMEGENCY	Dr.	Malomo Toluyemi Adefolarin	12230
+429	ACCIDENT & EMEGENCY	Dr.	Ojifinni Kehinde Abraham	10116
+430	ACCIDENT & EMEGENCY	Dr.	Oyewale Olugboyega Abimbola	11573
+431	ACCIDENT & EMEGENCY	Dr.	Oyewole Olugboyega Abimbola	10631
+432	ACCIDENT & EMEGENCY	Dr.	Sulaiman Mufutua Abiodun	10263
+433	ACCIDENT & EMEGENCY	Dr.	Tobi Bright Eseoghene	12835
+434	NUCLEAR MEDICINE	Dr.	Ayeni Olusegun Akinwale	11594
+435	NUCLEAR MEDICINE	Dr.	Fadiji Isaac Olusola	10290
+436	NUCLEAR MEDICINE	Dr.	Orunmuyi Akintunde Taiwo	12157
+437	RESTORATIVE DENTISTRY	Dr.	Adesakin Adelegan Michael	10411
+438	ORAL MAXILLOFACIAL SURGERY	Dr.	Olanloye Omobola Morenike	10502
+439	ORAL MAXILLOFACIAL SURGERY	Dr. 	Olaopa Olusegun Isreal	15920
+440	GERIATRICS	Dr. 	Bademosi Adedotun Adeniyi	15916
+441	GERIATRICS	Dr. 	Femi Adeoye Mobolanle	16768
+442	HOUSE OFFICER	Dr. 	Adefemi  Adewale Samuel	16597
+443	HOUSE OFFICER	Dr	Adekanmi Eyitayo John	16593
+444	HOUSE OFFICER	 Dr. 	Adesusi Funmilola Racheal	16658
+447	HOUSE OFFICER	Dr. 	Otoikhila O.C	16705
+448	HOUSE OFFICER	Dr. 	Oyekunle O.S	16597
+449	HOUSE OFFICER	Dr. 	Ojeniyi S.O	16592
+450	HOUSE OFFICER	Dr. 	Ikem U Rosemary	16778
+451	HOUSE OFFICER	Dr. 	AdekanyeJoel A	17862
+452	HOUSE OFFICER	Dr. 	Ajiboye Oyintayo	17860
+453	HOUSE OFFICER	Dr. 	Andrew Sunday Tayo	17845
+454	HOUSE OFFICER	Dr. 	Aroso Samuel A	17821
+455	HOUSE OFFICER	Dr. 	Babalola O Oluseyi	17843
+456	HOUSE OFFICER	Dr. 	Borokini O Busayo	17875
+457	HOUSE OFFICER	Dr. 	Famubode O Rinmola	17846
+458	HOUSE OFFICER	Dr. 	Kolapo O Mariam	17834
+459	HOUSE OFFICER	Dr.	Ladipo Edward S	17852
+460	HOUSE OFFICER	Dr.	Nkemjika Joy U	17823
+461	HOUSE OFFICER	Dr. 	Odebode Josephe O	17876
+462	HOUSE OFFICER	Dr. 	Oni Esther Iseoluwa	17854
+463	HOUSE OFFICER	Dr. 	Popoola O Olusola	17865
+464	HOUSE OFFICER	Dr. 	Shittu O Sherifat	17864
+465	HOUSE OFFICER	Dr. 	Aderemi Ademola S	17833
+466	HOUSE OFFICER	Dr. 	Adegoke M.I	17863
+467	HOUSE OFFICER	Dr. 	Alabi Omolabake O	17904
+468	HOUSE OFFICER	Dr. 	Bello Atiyyah O	17867
+469	HOUSE OFFICER	Dr. 	Fadodun O.M	17828
+470	HOUSE OFFICER	Dr. 	Fasogbon O.T	17809
+471	HOUSE OFFICER	Dr. 	Ibeh Emeka Nnanna	17848
+472	HOUSE OFFICER	Dr. 	Ijeh Jennifer C	17874
+473	HOUSE OFFICER	Dr. 	Jegede Abisola J	17827
+474	HOUSE OFFICER	Dr. 	Nwanwene K Cyndi	17866
+475	HOUSE OFFICER	Dr. 	Ogunsanya O.O	17830
+476	HOUSE OFFICER	Dr. 	Oloruntoba Oluyomi	17908
+477	HOUSE OFFICER	Dr. 	Shittu Atinuke A	17878
+478	HOUSE OFFICER	Dr. 	Falana Precious	17859
+479	HOUSE OFFICER	Dr. 	Adepoju O John	17876
+480	HOUSE OFFICER	Dr. 	Okoye O Francis	17903

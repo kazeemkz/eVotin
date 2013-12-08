@@ -157,10 +157,13 @@ namespace eVoting.Controllers
                 theVoter.FirstName = theBrokenData[3].TrimEnd().TrimStart(); ;
                 // theVoter.LastName = theBrokenData[5].TrimEnd().TrimStart(); ;
                 theVoter.Voted = false;
-                work.VoterRepository.Insert(theVoter);
-                work.Save();
+                if (Membership.GetUser(theVoter.IdentityNumber) == null)
+                {
+                    work.VoterRepository.Insert(theVoter);
+                    work.Save();
 
-                Membership.CreateUser(theVoter.IdentityNumber, randomPassword);
+                    Membership.CreateUser(theVoter.IdentityNumber, randomPassword);
+                }
                 //  theLast  =theMatric;
             }
             sr.Close();
