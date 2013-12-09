@@ -893,52 +893,99 @@ namespace eVoting.Controllers
             // Open the PDF document
             document.Open();
 
-            PdfPTable table1 = new PdfPTable(2);
+            PdfPTable table1 = new PdfPTable(1);
 
             // oStringWriter.Write("This is the content");
             //  Response.ContentType = "text/plain";
-          //  Response.ContentType = "application/pdf";
-          
-           
+            //  Response.ContentType = "application/pdf";
 
-          //  MemoryStream ms = new MemoryStream();
-          //  Document document = new Document(PageSize.A4.Rotate());
+
+
+            //  MemoryStream ms = new MemoryStream();
+            //  Document document = new Document(PageSize.A4.Rotate());
 
             // Open the PDF document
-           // document.Open();
-         
+            // document.Open();
 
-           // PdfWriter writer = PdfWriter.GetInstance(document, ms);
+
+            // PdfWriter writer = PdfWriter.GetInstance(document, ms);
 
 
 
             // Set up fonts used in the document
             Font font_heading_1 = FontFactory.GetFont(FontFactory.TIMES_ROMAN, 21, Font.BOLD);
-            Font font_body = FontFactory.GetFont(FontFactory.TIMES_ROMAN, 15);
-            Font font_body2 = FontFactory.GetFont(FontFactory.TIMES_ROMAN, 16);
+            Font font_body = FontFactory.GetFont(FontFactory.TIMES_ROMAN, 12);
+            Font font_body2 = FontFactory.GetFont(FontFactory.TIMES_ROMAN, 13);
 
 
-            List<Voter> theVoters = work.VoterRepository.Get(a => a.IdentityNumber != "chair" && a.IdentityNumber != "kazeem" && a.IdentityNumber != "password").OrderBy(a => a.IdentityNumber).ToList();
 
-            foreach (Voter v in theVoters)
+
+            List<string> theDepartments = new List<string>();
+            theDepartments.Add("ANAESTHESIA");
+            theDepartments.Add("CHEMICAL PATHOLOGY");
+            theDepartments.Add("CLINICAL PHARMACOLOGY");
+            theDepartments.Add("PREVENTIVE DENTISTRY");
+            theDepartments.Add("GENERAL OUTPATIENT");
+            theDepartments.Add("HAEMATOLOGY");
+            theDepartments.Add("PRIVATE SUITE");
+            theDepartments.Add("NEURO SURGERY");
+            theDepartments.Add("MEDICAL MICROBIOLOGY");
+            theDepartments.Add("MEDICINE");
+            theDepartments.Add("OBSTETRICS & GYNAECOLOGY");
+            theDepartments.Add("OPHTHALMOLOGY");
+            theDepartments.Add("ENT");
+            theDepartments.Add("PAEDIATRICS");
+            theDepartments.Add("PATHOLOGY");
+            theDepartments.Add("COMMUNITY MEDICINE");
+            theDepartments.Add("PSYCHIATRY");
+            theDepartments.Add("RADIOLOGY");
+            theDepartments.Add("RADIOTHERAPY");
+            theDepartments.Add("COLLEGE OF MEDICINE STAFF");
+            theDepartments.Add("STAFF CLINIC");
+            theDepartments.Add("SURGERY");
+            theDepartments.Add("OFFICE OF CMD");
+            theDepartments.Add("CONSULTANT");
+
+            theDepartments.Add("ORTHOPAEDIC & TRAUMA");
+            theDepartments.Add("ACCIDENT & EMEGENCY");
+            theDepartments.Add("NUCLEAR MEDICINE");
+            theDepartments.Add("RESTORATIVE DENTISTRY");
+            theDepartments.Add("ORAL MAXILLOFACIAL SURGERY");
+            theDepartments.Add("GERIATRICS");
+            theDepartments.Add("HOUSE OFFICER");
+
+
+            //string theDepartment =   
+            foreach (string d in theDepartments)
             {
-                PdfPTable table2 = new PdfPTable(1);
-                string staffID =      v.FirstName;
-                string staffPassword = "STAFF-ID:- " + v.IdentityNumber  + " PASSWORD: " + v.Password;
-                Paragraph paragraph = new Paragraph(staffID, font_body);
-                Paragraph paragraph1 = new Paragraph(staffPassword, font_body2);
-                table2.AddCell(paragraph);
-                table2.AddCell(paragraph1);
+                List<Voter> theVoters = work.VoterRepository.Get(a => a.IdentityNumber != "chair" && a.IdentityNumber != "kazeem" && a.IdentityNumber != "password" && a.Department == d && a.IdentityNumber != "").OrderBy(a => a.IdentityNumber).ToList();
+                Font font_body4 = FontFactory.GetFont(FontFactory.TIMES_ROMAN, 21);
+                PdfPTable table3 = new PdfPTable(1);
+                Paragraph paragraph3 = new Paragraph(d, font_body4);
+                table3.AddCell(paragraph3);
+                table1.AddCell(table3);
+               // table1.AddCell(paragraph3);
+                foreach (Voter v in theVoters)
+                {
+                    PdfPTable table2 = new PdfPTable(1);
+                    string staffID = v.FirstName;
+                    string staffPassword = "STAFF-ID:- " + v.IdentityNumber + " PASSWORD: " + v.Password;
+                    Paragraph paragraph = new Paragraph(staffID, font_body);
+                    Paragraph paragraph1 = new Paragraph(staffPassword, font_body2);
+                    table2.AddCell(paragraph);
+                    table2.AddCell(paragraph1);
 
-                table1.AddCell(table2);
-               // table1.AddCell("");
+                    table1.AddCell(table2);
+                }
+              
+                // table1.AddCell("");
             }
             document.Add(table1);
             // Create the heading paragraph with the headig font
             // Paragraph paragraph;
             // paragraph = new Paragraph("Hello world!", font_heading_1);
-          //  itextDoc.Add(table1);
-           // Document thedoc = itextDoc;// print.PrinttheResultPrimary(studentName, Term, studentLevel, ref oStringWriter1, ref document);
+            //  itextDoc.Add(table1);
+            // Document thedoc = itextDoc;// print.PrinttheResultPrimary(studentName, Term, studentLevel, ref oStringWriter1, ref document);
             // Add a horizontal line below the headig text and add it to the paragraph
             iTextSharp.text.pdf.draw.VerticalPositionMark seperator = new iTextSharp.text.pdf.draw.LineSeparator();
             seperator.Offset = -6f;
@@ -963,7 +1010,7 @@ namespace eVoting.Controllers
 
 
             // Close the PDF document
-           // document.Close();
+            // document.Close();
 
 
 
