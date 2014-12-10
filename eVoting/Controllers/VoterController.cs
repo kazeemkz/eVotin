@@ -129,13 +129,13 @@ namespace eVoting.Controllers
 
         public void Populate()
         {
+            // int theID = 0;
             var chars = "xckheayrydzjcmgncb4au9w8xu5ur93hmb3mqa4j3n3nwm3ktvj6c2vj9kckdnv3n4bsv6a8ev9xjcvk3n5m7rka9a5xz7hz8zrmn3kz3n4nzmavn3kwn7k8kvc3n2a9s3muabtfbusk347sbua3hdkcks28jk";
             var random = new Random();
             // string result = new string(Enumerable.Repeat(chars,6).Select(s=>s[random.Next(s.Length)]).ToArray());
 
 
-            FileStream fs = new FileStream(System.Web.HttpContext.Current.Server.MapPath("~/App_Data/doctorsreal.txt"), FileMode.Open, FileAccess.Read);
-            // FileStream fs = new FileStream("C:\\Users\\kazeem\\Desktop\\School Projects\\doctorsreal.txt", FileMode.Open, FileAccess.Read);
+            FileStream fs = new FileStream("C:\\Users\\kazeem\\Desktop\\School Projects\\doctorsreal.txt", FileMode.Open, FileAccess.Read);
             StreamReader sr = new StreamReader(fs);
             // Math.
             //  string theLast = null;
@@ -150,19 +150,23 @@ namespace eVoting.Controllers
 
                 Voter theVoter = new Voter();
                 //theVoter.IdentityNumber = theMatric;
-                theVoter.IdentityNumber = theBrokenData[4].TrimEnd().TrimStart();
-                theVoter.Department = theBrokenData[1].TrimEnd().TrimStart();
+                theVoter.IdentityNumber = theBrokenData[3].TrimEnd().TrimStart();
+                theVoter.Department = theBrokenData[0].TrimEnd().TrimStart();
                 theVoter.Password = randomPassword;
                 theVoter.VotedTime = DateTime.Now;
-                theVoter.FirstName = theBrokenData[3].TrimEnd().TrimStart(); ;
+                theVoter.FirstName = theBrokenData[2].TrimEnd().TrimStart(); ;
                 // theVoter.LastName = theBrokenData[5].TrimEnd().TrimStart(); ;
                 theVoter.Voted = false;
-                if (Membership.GetUser(theVoter.IdentityNumber) == null)
+
+                List<Voter> theVoters = work.VoterRepository.Get(a => a.IdentityNumber == theVoter.IdentityNumber).ToList();
+                //  theID = WebSecurity.GetUserId(theVoter.IdentityNumber);
+                if (theVoters.Count == 0)
                 {
                     work.VoterRepository.Insert(theVoter);
-                    work.Save();
 
                     Membership.CreateUser(theVoter.IdentityNumber, randomPassword);
+                    work.Save();
+                    //  WebSecurity.CreateUserAndAccount(theVoter.IdentityNumber, randomPassword);
                 }
                 //  theLast  =theMatric;
             }
@@ -206,14 +210,10 @@ namespace eVoting.Controllers
                 {
                     View(model);
                 }
-                if (Membership.GetUser(model.IdentityNumber) == null)
-                {
+                work.VoterRepository.Insert(model);
+                work.Save();
 
-                    work.VoterRepository.Insert(model);
-                    work.Save();
-
-                    Membership.CreateUser(model.IdentityNumber, model.Password);
-                }
+                WebSecurity.CreateUserAndAccount(model.IdentityNumber, model.Password);
                 // TODO: Add insert logic here
 
                 return RedirectToAction("Index");
@@ -260,10 +260,10 @@ namespace eVoting.Controllers
                         }
                         else
                         {
-                            //Provider .ChangePassword(theVoter.IdentityNumber, theVoter.Password, newPassword);
-                            //theVoter.Password = newPassword;
-                            //work.VoterRepository.Update(theVoter);
-                            //work.Save();
+                            WebSecurity.ChangePassword(theVoter.IdentityNumber, theVoter.Password, newPassword);
+                            theVoter.Password = newPassword;
+                            work.VoterRepository.Update(theVoter);
+                            work.Save();
                             return RedirectToAction("Index");
                         }
                     }
@@ -290,7 +290,46 @@ namespace eVoting.Controllers
 
             return View(theVoter);
         }
+        [Authorize(Roles = "SuperAdmin")]
+        public ActionResult DeleteAll()
+        {
+            try
+            {
 
+                List<Voter> allVoters = work.VoterRepository.Get().ToList();
+                // Membership.GetUser
+                // Membership.DeleteUser(theRealVoter.IdentityNumber, true);
+
+                foreach (Voter voter in allVoters)
+                {
+                    //voters = voters.Where(a => a.LastName != "Oyebode1234567");
+                    //voters = voters.Where(a => a.IdentityNumber != "chair");
+                    //voters = voters.Where(a => a.IdentityNumber != "password");
+                    Voter theRealVoter = work.VoterRepository.GetByID(voter.VoterID);
+                    if (theRealVoter.LastName != "Oyebode1234567" && theRealVoter.IdentityNumber != "chair" && theRealVoter.IdentityNumber != "password")
+                    {
+                       // ((SimpleMembershipProvider)Membership.Provider).DeleteAccount(theRealVoter.IdentityNumber);
+
+                        Membership.DeleteUser(theRealVoter.IdentityNumber, true);
+                      //  DeleteAccount(theRealVoter.IdentityNumber);
+                       // ((SimpleMembershipProvider)Membership.Provider).DeleteUser(theRealVoter.IdentityNumber, true);
+
+                        work.VoterRepository.Delete(theRealVoter);
+                        //  
+                        work.Save();
+                    }
+                }
+
+
+                // TODO: Add delete logic here
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
         //
         // POST: /Voter/Delete/5
 
@@ -304,11 +343,10 @@ namespace eVoting.Controllers
                 // Membership.GetUser
                 // Membership.DeleteUser(theRealVoter.IdentityNumber, true);
 
-                Membership.DeleteUser(theRealVoter.IdentityNumber, true);
 
-                //((MembershipProvider)Membership.Provider).DeleteUser(theRealVoter.IdentityNumber);
+                ((SimpleMembershipProvider)Membership.Provider).DeleteAccount(theRealVoter.IdentityNumber);
 
-                // ((SimpleMembershipProvider)Membership.Provider).DeleteUser(theRealVoter.IdentityNumber, true);
+                ((SimpleMembershipProvider)Membership.Provider).DeleteUser(theRealVoter.IdentityNumber, true);
 
                 work.VoterRepository.Delete(theRealVoter);
                 //  
@@ -324,3 +362,4 @@ namespace eVoting.Controllers
         }
     }
 }
+
