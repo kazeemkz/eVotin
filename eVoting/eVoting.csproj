@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Excel, Version=2.1.2.3, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Excel.dll</HintPath>
+    </Reference>
     <Reference Include="itextsharp, Version=5.4.4.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\iTextSharp.5.4.4\lib\itextsharp.dll</HintPath>
@@ -352,6 +356,7 @@
     <Content Include="Views\Voter\Delete.cshtml" />
     <Content Include="Views\Voter\Index2.cshtml" />
     <Content Include="Scripts\timeTo.jquery.json" />
+    <Content Include="Views\Voter\Populate.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

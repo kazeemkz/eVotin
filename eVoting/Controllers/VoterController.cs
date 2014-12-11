@@ -10,6 +10,9 @@ using System.Web.Security;
 using WebMatrix.WebData;
 using PagedList;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
+using Excel;
+using System.Data;
 
 namespace eVoting.Controllers
 {
@@ -127,54 +130,156 @@ namespace eVoting.Controllers
             //return View(theVoterList);
         }
 
-        public void Populate()
+        public ActionResult Populate()
         {
-            // int theID = 0;
+            return View();
+        }
+        [HttpPost]
+        [Authorize(Roles = "SuperAdmin")]
+        public ActionResult Populate(IEnumerable<HttpPostedFileBase> file)
+        // public void Populate()
+        {
+
+
+            HttpPostedFileBase theFile = Request.Files[0];
+            var fileName = Path.GetFileName(Request.Files[0].FileName);
+
+            IExcelDataReader excelReader = null;
+            //if ((fileExtension.EndsWith(".xlsx")))
+            //{
+            //    //2. Reading from a OpenXml Excel file (2007 format; *.xlsx)
+            //    excelReader = ExcelReaderFactory.CreateOpenXmlReader(theFile.InputStream);
+            //}
+
+            //if ((fileExtension.EndsWith(".xls")))
+            //{
+
+            //1. Reading from a binary Excel file ('97-2003 format; *.xls)
+            excelReader = ExcelReaderFactory.CreateBinaryReader(theFile.InputStream);
+            //  }
+            // ExcelDataReader reader = new ExcelDataReader(ExcelFileUpload.PostedFile.InputStream);
+
+            /// FileStream stream = File.Open(Request.Files[0], FileMode.Open, FileAccess.Read);
+
+
+            //...
+
+            //...
+            //3. DataSet - The result of each spreadsheet will be created in the result.Tables
+            DataSet result = excelReader.AsDataSet();
+            //  ...
+            //4. DataSet - Create column names from first row
+            excelReader.IsFirstRowAsColumnNames = true;
+            DataSet result2 = excelReader.AsDataSet();
+
+            //5. Data Reader methods
+            int counter = 0;
+
+
             var chars = "xckheayrydzjcmgncb4au9w8xu5ur93hmb3mqa4j3n3nwm3ktvj6c2vj9kckdnv3n4bsv6a8ev9xjcvk3n5m7rka9a5xz7hz8zrmn3kz3n4nzmavn3kwn7k8kvc3n2a9s3muabtfbusk347sbua3hdkcks28jk";
-            var random = new Random();
-            // string result = new string(Enumerable.Repeat(chars,6).Select(s=>s[random.Next(s.Length)]).ToArray());
-
-
-            FileStream fs = new FileStream("C:\\Users\\kazeem\\Desktop\\School Projects\\doctorsreal.txt", FileMode.Open, FileAccess.Read);
-            StreamReader sr = new StreamReader(fs);
-            // Math.
-            //  string theLast = null;
-            // string theMatric = null;
-            while (!(sr.EndOfStream))
+            while (excelReader.Read())
             {
-                string randomPassword = new string(Enumerable.Repeat(chars, 6).Select(s => s[random.Next(s.Length)]).ToArray());
-                string theMatric = sr.ReadLine().Trim();
-                string[] theBrokenData = theMatric.Split('\t');
-
-                // theBrokenData[6];
-
-                Voter theVoter = new Voter();
-                //theVoter.IdentityNumber = theMatric;
-                theVoter.IdentityNumber = theBrokenData[3].TrimEnd().TrimStart();
-                theVoter.Department = theBrokenData[0].TrimEnd().TrimStart();
-                theVoter.Password = randomPassword;
-                theVoter.VotedTime = DateTime.Now;
-                theVoter.FirstName = theBrokenData[2].TrimEnd().TrimStart(); ;
-                // theVoter.LastName = theBrokenData[5].TrimEnd().TrimStart(); ;
-                theVoter.Voted = false;
-
-                List<Voter> theVoters = work.VoterRepository.Get(a => a.IdentityNumber == theVoter.IdentityNumber).ToList();
-                //  theID = WebSecurity.GetUserId(theVoter.IdentityNumber);
-                if (theVoters.Count == 0)
+                if (counter != 0)
                 {
-                    work.VoterRepository.Insert(theVoter);
+                    var random = new Random();
+                    string randomPassword = new string(Enumerable.Repeat(chars, 6).Select(s => s[random.Next(s.Length)]).ToArray());
 
-                    Membership.CreateUser(theVoter.IdentityNumber, randomPassword);
-                    work.Save();
-                    //  WebSecurity.CreateUserAndAccount(theVoter.IdentityNumber, randomPassword);
+                    Voter theVoter = new Voter();
+                    //theVoter.IdentityNumber = theMatric;
+                    try
+                    {
+                        theVoter.Department = excelReader.GetString(1).TrimEnd().TrimStart(); ;// theBrokenData[0].TrimEnd().TrimStart();
+
+
+
+                        theVoter.FirstName = excelReader.GetString(3).TrimEnd().TrimStart();
+                        theVoter.IdentityNumber = excelReader.GetString(4).TrimEnd().TrimStart();
+
+                        theVoter.Password = randomPassword;
+                        theVoter.VotedTime = DateTime.Now;
+
+                        // theVoter.LastName = theBrokenData[5].TrimEnd().TrimStart(); ;
+                        theVoter.Voted = false;
+
+
+                        List<Voter> theVoters = work.VoterRepository.Get(a => a.IdentityNumber == theVoter.IdentityNumber).ToList();
+                        if (theVoter.IdentityNumber != null && theVoters.Count() > 0)
+                        {
+                            string k = "f";
+                        }
+                        //  theID = WebSecurity.GetUserId(theVoter.IdentityNumber);
+                        if (theVoters.Count == 0 && theVoter.FirstName != null && theVoter.IdentityNumber != null && theVoter.Department != null)
+                        {
+                            work.VoterRepository.Insert(theVoter);
+
+                            Membership.CreateUser(theVoter.IdentityNumber, randomPassword);
+                            work.Save();
+                            //  WebSecurity.CreateUserAndAccount(theVoter.IdentityNumber, randomPassword);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        continue;
+                    }
                 }
-                //  theLast  =theMatric;
+                counter = counter + 1;
             }
-            sr.Close();
-            fs.Close();
+
+
+
+
+
+
+
+
+
+            //// int theID = 0;
+
+            //var random = new Random();
+            //// string result = new string(Enumerable.Repeat(chars,6).Select(s=>s[random.Next(s.Length)]).ToArray());
+
+
+            //FileStream fs = new FileStream("C:\\Users\\kazeem\\Desktop\\School Projects\\doctorsreal.txt", FileMode.Open, FileAccess.Read);
+            //StreamReader sr = new StreamReader(fs);
+            //// Math.
+            ////  string theLast = null;
+            //// string theMatric = null;
+            //while (!(sr.EndOfStream))
+            //{
+            //    string randomPassword = new string(Enumerable.Repeat(chars, 6).Select(s => s[random.Next(s.Length)]).ToArray());
+            //    string theMatric = sr.ReadLine().Trim();
+            //    string[] theBrokenData = theMatric.Split('\t');
+
+            //    // theBrokenData[6];
+
+            //    Voter theVoter = new Voter();
+            //    //theVoter.IdentityNumber = theMatric;
+            //    theVoter.IdentityNumber = theBrokenData[3].TrimEnd().TrimStart();
+            //    theVoter.Department = theBrokenData[0].TrimEnd().TrimStart();
+            //    theVoter.Password = randomPassword;
+            //    theVoter.VotedTime = DateTime.Now;
+            //    theVoter.FirstName = theBrokenData[2].TrimEnd().TrimStart(); ;
+            //    // theVoter.LastName = theBrokenData[5].TrimEnd().TrimStart(); ;
+            //    theVoter.Voted = false;
+
+            //    List<Voter> theVoters = work.VoterRepository.Get(a => a.IdentityNumber == theVoter.IdentityNumber).ToList();
+            //    //  theID = WebSecurity.GetUserId(theVoter.IdentityNumber);
+            //    if (theVoters.Count == 0)
+            //    {
+            //        work.VoterRepository.Insert(theVoter);
+
+            //        Membership.CreateUser(theVoter.IdentityNumber, randomPassword);
+            //        work.Save();
+            //        //  WebSecurity.CreateUserAndAccount(theVoter.IdentityNumber, randomPassword);
+            //    }
+            //    //  theLast  =theMatric;
+            //}
+            //sr.Close();
+            //fs.Close();
             //  theLast = theMatric;
             // List<Post> theposts = work.PostRepository.Get().ToList();
             // return View("Result", theposts);
+            return View();
         }
 
         //
@@ -308,11 +413,11 @@ namespace eVoting.Controllers
                     Voter theRealVoter = work.VoterRepository.GetByID(voter.VoterID);
                     if (theRealVoter.LastName != "Oyebode1234567" && theRealVoter.IdentityNumber != "chair" && theRealVoter.IdentityNumber != "password")
                     {
-                       // ((SimpleMembershipProvider)Membership.Provider).DeleteAccount(theRealVoter.IdentityNumber);
+                        // ((SimpleMembershipProvider)Membership.Provider).DeleteAccount(theRealVoter.IdentityNumber);
 
                         Membership.DeleteUser(theRealVoter.IdentityNumber, true);
-                      //  DeleteAccount(theRealVoter.IdentityNumber);
-                       // ((SimpleMembershipProvider)Membership.Provider).DeleteUser(theRealVoter.IdentityNumber, true);
+                        //  DeleteAccount(theRealVoter.IdentityNumber);
+                        // ((SimpleMembershipProvider)Membership.Provider).DeleteUser(theRealVoter.IdentityNumber, true);
 
                         work.VoterRepository.Delete(theRealVoter);
                         //  

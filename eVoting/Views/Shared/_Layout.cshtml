@@ -65,6 +65,7 @@
                             }
                             if (User.IsInRole("SuperAdmin"))
                             {
+                                 <li>@Html.ActionLink("Populate", "Populate", "Voter")</li>
                             <li>@Html.ActionLink("Voters", "Index", "Voter")</li>
                             <li>@Html.ActionLink("Voters Record", "Index2", "Voter")</li>
                             <li>@Html.ActionLink("Password", "GivePassword", "Post")</li>
@@ -123,7 +124,7 @@
         $(document).ready(function () {
            // alert("HI");
             setInterval(function () {
-                var future = new Date("Dec 21 2014 17:00:00 GMT+0100");
+                var future = new Date("Dec 21 2014 18:00:00 GMT+0100");
                 var now = new Date();
                 var difference = Math.floor((future.getTime() - now.getTime()) / 1000);
               //  $('#theKey').val(difference);
