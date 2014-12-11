@@ -360,6 +360,7 @@
     <Content Include="Views\Voter\Index2.cshtml" />
     <Content Include="Scripts\timeTo.jquery.json" />
     <Content Include="Views\Voter\Populate.cshtml" />
+    <Content Include="Views\Account\View1.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -125,8 +125,11 @@
            // alert("HI");
             setInterval(function () {
                 var future = new Date("Dec 18 2014 16:00:00 GMT+0100");
+                var votingStartTime = new Date("Dec 11 2014 22:30:00 GMT+0100");
                 var now = new Date();
                 var difference = Math.floor((future.getTime() - now.getTime()) / 1000);
+
+                var differenceVotingTime = Math.floor((votingStartTime.getTime() - now.getTime()) / 1000);
               //  $('#theKey').val(difference);
                // alert($('#theKey').val());
                 if (difference <= 0) {
@@ -136,6 +139,17 @@
                      // alert('You clicked the link.');
                         return false;
                         
+                    });
+
+                }
+
+                if (differenceVotingTime >= 0) {
+                    //  $('#theKey').val(difference);
+                    // alert($('#theKey').val());
+                    $('#vote').click(function () {
+                        // alert('You clicked the link.');
+                        return false;
+
                     });
 
                 }
