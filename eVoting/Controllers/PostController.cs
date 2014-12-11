@@ -104,8 +104,8 @@ namespace eVoting.Controllers
             return View("Vote", thePosts);
         }
         [Authorize]
-        public ActionResult Voted(string PRESIDENT, string VICE_PRESIDENT, string GENERAL_SECRETARY,
-            string ASSISTANT_GENERAL_SECRETARY, string FINANCIAL_SECRETARY, string TREASURER, string PUBLIC_RELATIONS_OFFICER, string theKey)
+        public ActionResult Voted(string PRESIDENT, string VICE_PRESIDENT, string SECRETARY,
+            string ASSISTANT_SECRETARY, string FINANCIAL_SECRETARY, string TREASURER, string PUBLIC_RELATIONS_OFFICER, string theKey)
         {
 
             long theCounter = Convert.ToInt64(theKey);
@@ -192,12 +192,12 @@ namespace eVoting.Controllers
 
                 //gs
                 int gn = 0;
-                if (!(string.IsNullOrEmpty(GENERAL_SECRETARY)))
+                if (!(string.IsNullOrEmpty(SECRETARY)))
                 {
-                    string[] c = GENERAL_SECRETARY.Split(':');
+                    string[] c = SECRETARY.Split(':');
                     if (c.Count() == 1)
                     {
-                        gn = Convert.ToInt32(GENERAL_SECRETARY);
+                        gn = Convert.ToInt32(SECRETARY);
                         Participant vpPar = context.Participants.Find(gn);
                         vpPar.Vote = vpPar.Vote + 1;
                     }
@@ -222,12 +222,12 @@ namespace eVoting.Controllers
 
                 //ags
                 int ags = 0;
-                if (!(string.IsNullOrEmpty(ASSISTANT_GENERAL_SECRETARY)))
+                if (!(string.IsNullOrEmpty(ASSISTANT_SECRETARY)))
                 {
-                    string[] c = ASSISTANT_GENERAL_SECRETARY.Split(':');
+                    string[] c = ASSISTANT_SECRETARY.Split(':');
                     if (c.Count() == 1)
                     {
-                        ags = Convert.ToInt32(ASSISTANT_GENERAL_SECRETARY);
+                        ags = Convert.ToInt32(ASSISTANT_SECRETARY);
                         Participant Par = context.Participants.Find(ags);
                         Par.Vote = Par.Vote + 1;
                     }
@@ -507,12 +507,12 @@ namespace eVoting.Controllers
 
                         //gs
                         gn = 0;
-                        if (!(string.IsNullOrEmpty(GENERAL_SECRETARY)))
+                        if (!(string.IsNullOrEmpty(SECRETARY)))
                         {
-                            string[] c = GENERAL_SECRETARY.Split(':');
+                            string[] c = SECRETARY.Split(':');
                             if (c.Count() == 1)
                             {
-                                gn = Convert.ToInt32(GENERAL_SECRETARY);
+                                gn = Convert.ToInt32(SECRETARY);
                                 Participant vpPar = context.Participants.Find(gn);
                                 vpPar.Vote = vpPar.Vote + 1;
                             }
@@ -540,12 +540,12 @@ namespace eVoting.Controllers
 
                         //ags
                         ags = 0;
-                        if (!(string.IsNullOrEmpty(ASSISTANT_GENERAL_SECRETARY)))
+                        if (!(string.IsNullOrEmpty(ASSISTANT_SECRETARY)))
                         {
-                            string[] c = ASSISTANT_GENERAL_SECRETARY.Split(':');
+                            string[] c = ASSISTANT_SECRETARY.Split(':');
                             if (c.Count() == 1)
                             {
-                                ags = Convert.ToInt32(ASSISTANT_GENERAL_SECRETARY);
+                                ags = Convert.ToInt32(ASSISTANT_SECRETARY);
                                 Participant Par = context.Participants.Find(ags);
                                 Par.Vote = Par.Vote + 1;
                             }
