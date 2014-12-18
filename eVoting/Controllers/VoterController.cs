@@ -316,9 +316,10 @@ namespace eVoting.Controllers
                     View(model);
                 }
                 work.VoterRepository.Insert(model);
+                Membership.CreateUser(model.IdentityNumber, model.Password);
                 work.Save();
 
-                WebSecurity.CreateUserAndAccount(model.IdentityNumber, model.Password);
+              //  WebSecurity.CreateUserAndAccount(model.IdentityNumber, model.Password);
                 // TODO: Add insert logic here
 
                 return RedirectToAction("Index");
@@ -448,10 +449,18 @@ namespace eVoting.Controllers
                 // Membership.GetUser
                 // Membership.DeleteUser(theRealVoter.IdentityNumber, true);
 
+                try
+                {
+                    ((SimpleMembershipProvider)Membership.Provider).DeleteAccount(theRealVoter.IdentityNumber);
 
-                ((SimpleMembershipProvider)Membership.Provider).DeleteAccount(theRealVoter.IdentityNumber);
-
-                ((SimpleMembershipProvider)Membership.Provider).DeleteUser(theRealVoter.IdentityNumber, true);
+                    ((SimpleMembershipProvider)Membership.Provider).DeleteUser(theRealVoter.IdentityNumber, true);
+                }
+                catch(Exception e)
+                {
+                    work.VoterRepository.Delete(theRealVoter);
+                   
+                    work.Save();
+                }
 
                 work.VoterRepository.Delete(theRealVoter);
                 //  
