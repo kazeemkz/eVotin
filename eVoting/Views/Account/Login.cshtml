@@ -28,7 +28,7 @@
     </div>
 }
 <section id="loginForm">
-    <h4>Enter your Staff Identity and Password to Log-in </h4>
+    <h4>Enter your User Name and Password to Log-in </h4>
     @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
     {
 @*  @Html.AntiForgeryToken() *@
@@ -39,7 +39,7 @@
             <ol>
                 <li>
                     @* @Html.LabelFor(m => m.UserName)*@
-                  <b>  @Html.Label("Staff Identity")</b>
+                  <b>  @Html.Label("User Name")</b>
                     @Html.TextBoxFor(m => m.UserName)
                     @Html.ValidationMessageFor(m => m.UserName)
                 </li>
@@ -71,7 +71,7 @@
     <ol class="round">
         <li class="one">
             <h5>Getting Started</h5>
-            Log-in with your Staff Identity and Password.
+            Log-in with your User Name and Password.
         </li>
 
        @* <li class="two">

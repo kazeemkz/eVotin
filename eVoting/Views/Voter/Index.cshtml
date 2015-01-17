@@ -25,7 +25,7 @@
 
             </tr>
             <tr>
-                <td>Identification:</td>
+                <td>Matric:</td>
                 <td>@Html.TextBox("ID")</td>
 
 
@@ -63,6 +63,9 @@
             <th>
                 <b>L. Name</b>
             </th>
+            <th>
+                <b>Matric</b>
+            </th>
              <th></th>
              <th></th>
             
@@ -87,6 +90,9 @@
                   <td></td>
                 <td>
                     @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Matric)
                 </td>
                   <td></td>
                   <td></td>

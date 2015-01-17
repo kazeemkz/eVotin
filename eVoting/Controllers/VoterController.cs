@@ -51,7 +51,7 @@ namespace eVoting.Controllers
 
             if (!(string.IsNullOrEmpty(ID)))
             {
-                voters = voters.Where(a => a.IdentityNumber == ID);
+                voters = voters.Where(a => a.Matric == ID);
             }
 
             if (!(string.IsNullOrEmpty(Voted)))
@@ -175,7 +175,7 @@ namespace eVoting.Controllers
             //5. Data Reader methods
             int counter = 0;
 
-
+            int usernameCouner = 2000;
             var chars = "xckheayrydzjcmgncb4au9w8xu5ur93hmb3mqa4j3n3nwm3ktvj6c2vj9kckdnv3n4bsv6a8ev9xjcvk3n5m7rka9a5xz7hz8zrmn3kz3n4nzmavn3kwn7k8kvc3n2a9s3muabtfbusk347sbua3hdkcks28jk";
             while (excelReader.Read())
             {
@@ -191,9 +191,10 @@ namespace eVoting.Controllers
                         theVoter.Department = excelReader.GetString(1).TrimEnd().TrimStart(); ;// theBrokenData[0].TrimEnd().TrimStart();
 
 
-
+                        usernameCouner = usernameCouner + 1;
                         theVoter.FirstName = excelReader.GetString(3).TrimEnd().TrimStart();
-                        theVoter.IdentityNumber = excelReader.GetString(4).TrimEnd().TrimStart();
+                        theVoter.Matric = excelReader.GetString(4).TrimEnd().TrimStart();
+                        theVoter.IdentityNumber = Convert.ToString(usernameCouner);//usernameCouner + 1; //excelReader.GetValue(5).ToString().TrimEnd().TrimStart();
 
                         theVoter.Password = randomPassword;
                         theVoter.VotedTime = DateTime.Now;
@@ -319,7 +320,7 @@ namespace eVoting.Controllers
                 Membership.CreateUser(model.IdentityNumber, model.Password);
                 work.Save();
 
-              //  WebSecurity.CreateUserAndAccount(model.IdentityNumber, model.Password);
+                //  WebSecurity.CreateUserAndAccount(model.IdentityNumber, model.Password);
                 // TODO: Add insert logic here
 
                 return RedirectToAction("Index");
@@ -455,10 +456,10 @@ namespace eVoting.Controllers
 
                     ((SimpleMembershipProvider)Membership.Provider).DeleteUser(theRealVoter.IdentityNumber, true);
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     work.VoterRepository.Delete(theRealVoter);
-                   
+
                     work.Save();
                 }
 

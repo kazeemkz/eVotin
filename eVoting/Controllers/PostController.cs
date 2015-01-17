@@ -104,8 +104,10 @@ namespace eVoting.Controllers
             return View("Vote", thePosts);
         }
         [Authorize]
-        public ActionResult Voted(string PRESIDENT, string VICE_PRESIDENT, string SECRETARY,
-            string ASSISTANT_SECRETARY, string FINANCIAL_SECRETARY, string TREASURER, string PUBLIC_RELATIONS_OFFICER, string theKey)
+        public ActionResult Voted(string PRESIDENT, string VICE_PRESIDENT, string GENERAL_SECRETARY,
+            string ASST_GENERAL_SECRETARY_AND_LIBRARIAN, string FINANCIAL_SECRETARY, string TREASURER, string PUBLIC_RELATIONS_OFFICER,
+            string SOCIAL_DIRECTOR, string WELFARE_OFFICER, string SPORT_DIRECTOR, string ASST_SPORT_DIRECTOR,
+            string theKey)
         {
 
             long theCounter = Convert.ToInt64(theKey);
@@ -192,12 +194,12 @@ namespace eVoting.Controllers
 
                 //gs
                 int gn = 0;
-                if (!(string.IsNullOrEmpty(SECRETARY)))
+                if (!(string.IsNullOrEmpty(GENERAL_SECRETARY)))
                 {
-                    string[] c = SECRETARY.Split(':');
+                    string[] c = GENERAL_SECRETARY.Split(':');
                     if (c.Count() == 1)
                     {
-                        gn = Convert.ToInt32(SECRETARY);
+                        gn = Convert.ToInt32(GENERAL_SECRETARY);
                         Participant vpPar = context.Participants.Find(gn);
                         vpPar.Vote = vpPar.Vote + 1;
                     }
@@ -222,12 +224,12 @@ namespace eVoting.Controllers
 
                 //ags
                 int ags = 0;
-                if (!(string.IsNullOrEmpty(ASSISTANT_SECRETARY)))
+                if (!(string.IsNullOrEmpty(ASST_GENERAL_SECRETARY_AND_LIBRARIAN)))
                 {
-                    string[] c = ASSISTANT_SECRETARY.Split(':');
+                    string[] c = ASST_GENERAL_SECRETARY_AND_LIBRARIAN.Split(':');
                     if (c.Count() == 1)
                     {
-                        ags = Convert.ToInt32(ASSISTANT_SECRETARY);
+                        ags = Convert.ToInt32(ASST_GENERAL_SECRETARY_AND_LIBRARIAN);
                         Participant Par = context.Participants.Find(ags);
                         Par.Vote = Par.Vote + 1;
                     }
@@ -324,6 +326,127 @@ namespace eVoting.Controllers
                     {
                         tr = Convert.ToInt32(c[0]);
                         Participant Par = context.Participants.Find(tr);
+                        if (c[1] == "YES")
+                        {
+                            Par.Yes = Par.Yes + 1;
+                        }
+                        if (c[1] == "NO")
+                        {
+                            Par.No = Par.No + 1;
+                        }
+                    }
+                    //  work.ParticipantRepository.Update(Par);
+                    //  work.Save();
+
+                }
+
+
+
+                //sd
+                int sd = 0;
+                if (!(string.IsNullOrEmpty(SOCIAL_DIRECTOR)))
+                {
+                    string[] c = SOCIAL_DIRECTOR.Split(':');
+                    if (c.Count() == 1)
+                    {
+                        sd = Convert.ToInt32(SOCIAL_DIRECTOR);
+                        Participant Par = context.Participants.Find(sd);
+                        Par.Vote = Par.Vote + 1;
+                    }
+                    if (c.Count() == 2)
+                    {
+                        sd = Convert.ToInt32(c[0]);
+                        Participant Par = context.Participants.Find(sd);
+                        if (c[1] == "YES")
+                        {
+                            Par.Yes = Par.Yes + 1;
+                        }
+                        if (c[1] == "NO")
+                        {
+                            Par.No = Par.No + 1;
+                        }
+                    }
+                    //  work.ParticipantRepository.Update(Par);
+                    //  work.Save();
+
+                }
+
+
+
+                //wo
+                int wo = 0;
+                if (!(string.IsNullOrEmpty(WELFARE_OFFICER)))
+                {
+                    string[] c = WELFARE_OFFICER.Split(':');
+                    if (c.Count() == 1)
+                    {
+                        wo = Convert.ToInt32(WELFARE_OFFICER);
+                        Participant Par = context.Participants.Find(wo);
+                        Par.Vote = Par.Vote + 1;
+                    }
+                    if (c.Count() == 2)
+                    {
+                        wo = Convert.ToInt32(c[0]);
+                        Participant Par = context.Participants.Find(wo);
+                        if (c[1] == "YES")
+                        {
+                            Par.Yes = Par.Yes + 1;
+                        }
+                        if (c[1] == "NO")
+                        {
+                            Par.No = Par.No + 1;
+                        }
+                    }
+                    //  work.ParticipantRepository.Update(Par);
+                    //  work.Save();
+
+                }
+
+
+                //sdr
+                int sdr = 0;
+                if (!(string.IsNullOrEmpty(SPORT_DIRECTOR)))
+                {
+                    string[] c = SPORT_DIRECTOR.Split(':');
+                    if (c.Count() == 1)
+                    {
+                        sdr = Convert.ToInt32(SPORT_DIRECTOR);
+                        Participant Par = context.Participants.Find(sdr);
+                        Par.Vote = Par.Vote + 1;
+                    }
+                    if (c.Count() == 2)
+                    {
+                        sdr = Convert.ToInt32(c[0]);
+                        Participant Par = context.Participants.Find(sdr);
+                        if (c[1] == "YES")
+                        {
+                            Par.Yes = Par.Yes + 1;
+                        }
+                        if (c[1] == "NO")
+                        {
+                            Par.No = Par.No + 1;
+                        }
+                    }
+                    //  work.ParticipantRepository.Update(Par);
+                    //  work.Save();
+
+                }
+
+                //wo
+                int asd = 0;
+                if (!(string.IsNullOrEmpty(ASST_SPORT_DIRECTOR)))
+                {
+                    string[] c = ASST_SPORT_DIRECTOR.Split(':');
+                    if (c.Count() == 1)
+                    {
+                        asd = Convert.ToInt32(ASST_SPORT_DIRECTOR);
+                        Participant Par = context.Participants.Find(asd);
+                        Par.Vote = Par.Vote + 1;
+                    }
+                    if (c.Count() == 2)
+                    {
+                        asd = Convert.ToInt32(c[0]);
+                        Participant Par = context.Participants.Find(asd);
                         if (c[1] == "YES")
                         {
                             Par.Yes = Par.Yes + 1;
@@ -507,12 +630,12 @@ namespace eVoting.Controllers
 
                         //gs
                         gn = 0;
-                        if (!(string.IsNullOrEmpty(SECRETARY)))
+                        if (!(string.IsNullOrEmpty(GENERAL_SECRETARY)))
                         {
-                            string[] c = SECRETARY.Split(':');
+                            string[] c = GENERAL_SECRETARY.Split(':');
                             if (c.Count() == 1)
                             {
-                                gn = Convert.ToInt32(SECRETARY);
+                                gn = Convert.ToInt32(GENERAL_SECRETARY);
                                 Participant vpPar = context.Participants.Find(gn);
                                 vpPar.Vote = vpPar.Vote + 1;
                             }
@@ -540,12 +663,12 @@ namespace eVoting.Controllers
 
                         //ags
                         ags = 0;
-                        if (!(string.IsNullOrEmpty(ASSISTANT_SECRETARY)))
+                        if (!(string.IsNullOrEmpty(ASST_GENERAL_SECRETARY_AND_LIBRARIAN)))
                         {
-                            string[] c = ASSISTANT_SECRETARY.Split(':');
+                            string[] c = ASST_GENERAL_SECRETARY_AND_LIBRARIAN.Split(':');
                             if (c.Count() == 1)
                             {
-                                ags = Convert.ToInt32(ASSISTANT_SECRETARY);
+                                ags = Convert.ToInt32(ASST_GENERAL_SECRETARY_AND_LIBRARIAN);
                                 Participant Par = context.Participants.Find(ags);
                                 Par.Vote = Par.Vote + 1;
                             }
@@ -668,6 +791,125 @@ namespace eVoting.Controllers
 
                         }
 
+
+                         sd = 0;
+                        if (!(string.IsNullOrEmpty(SOCIAL_DIRECTOR)))
+                        {
+                            string[] c = SOCIAL_DIRECTOR.Split(':');
+                            if (c.Count() == 1)
+                            {
+                                sd = Convert.ToInt32(SOCIAL_DIRECTOR);
+                                Participant Par = context.Participants.Find(sd);
+                                Par.Vote = Par.Vote + 1;
+                            }
+                            if (c.Count() == 2)
+                            {
+                                sd = Convert.ToInt32(c[0]);
+                                Participant Par = context.Participants.Find(sd);
+                                if (c[1] == "YES")
+                                {
+                                    Par.Yes = Par.Yes + 1;
+                                }
+                                if (c[1] == "NO")
+                                {
+                                    Par.No = Par.No + 1;
+                                }
+                            }
+                            //  work.ParticipantRepository.Update(Par);
+                            //  work.Save();
+
+                        }
+
+
+
+                        //wo
+                         wo = 0;
+                        if (!(string.IsNullOrEmpty(WELFARE_OFFICER)))
+                        {
+                            string[] c = WELFARE_OFFICER.Split(':');
+                            if (c.Count() == 1)
+                            {
+                                wo = Convert.ToInt32(WELFARE_OFFICER);
+                                Participant Par = context.Participants.Find(wo);
+                                Par.Vote = Par.Vote + 1;
+                            }
+                            if (c.Count() == 2)
+                            {
+                                wo = Convert.ToInt32(c[0]);
+                                Participant Par = context.Participants.Find(wo);
+                                if (c[1] == "YES")
+                                {
+                                    Par.Yes = Par.Yes + 1;
+                                }
+                                if (c[1] == "NO")
+                                {
+                                    Par.No = Par.No + 1;
+                                }
+                            }
+                            //  work.ParticipantRepository.Update(Par);
+                            //  work.Save();
+
+                        }
+
+
+                        //sdr
+                         sdr = 0;
+                        if (!(string.IsNullOrEmpty(SPORT_DIRECTOR)))
+                        {
+                            string[] c = SPORT_DIRECTOR.Split(':');
+                            if (c.Count() == 1)
+                            {
+                                sdr = Convert.ToInt32(SPORT_DIRECTOR);
+                                Participant Par = context.Participants.Find(sdr);
+                                Par.Vote = Par.Vote + 1;
+                            }
+                            if (c.Count() == 2)
+                            {
+                                sdr = Convert.ToInt32(c[0]);
+                                Participant Par = context.Participants.Find(sdr);
+                                if (c[1] == "YES")
+                                {
+                                    Par.Yes = Par.Yes + 1;
+                                }
+                                if (c[1] == "NO")
+                                {
+                                    Par.No = Par.No + 1;
+                                }
+                            }
+                            //  work.ParticipantRepository.Update(Par);
+                            //  work.Save();
+
+                        }
+
+                        //wo
+                        asd = 0;
+                        if (!(string.IsNullOrEmpty(ASST_SPORT_DIRECTOR)))
+                        {
+                            string[] c = ASST_SPORT_DIRECTOR.Split(':');
+                            if (c.Count() == 1)
+                            {
+                                asd = Convert.ToInt32(ASST_SPORT_DIRECTOR);
+                                Participant Par = context.Participants.Find(asd);
+                                Par.Vote = Par.Vote + 1;
+                            }
+                            if (c.Count() == 2)
+                            {
+                                asd = Convert.ToInt32(c[0]);
+                                Participant Par = context.Participants.Find(asd);
+                                if (c[1] == "YES")
+                                {
+                                    Par.Yes = Par.Yes + 1;
+                                }
+                                if (c[1] == "NO")
+                                {
+                                    Par.No = Par.No + 1;
+                                }
+                            }
+                            //  work.ParticipantRepository.Update(Par);
+                            //  work.Save();
+
+                        }
+
                         //ds
                         //pro = 0;
                         //if (!(string.IsNullOrEmpty(PUBLIC_RELATIONS_OFFICER)))
@@ -782,8 +1024,8 @@ namespace eVoting.Controllers
             List<Voter> voter = new List<Voter>();
             if (!(string.IsNullOrEmpty(MatNumber)))
             {
-                theMat = MatNumber;
-                List<Voter> theVote = work.VoterRepository.Get(a => a.IdentityNumber == theMat).ToList();
+                theMat = MatNumber.ToUpper();
+                List<Voter> theVote = work.VoterRepository.Get(a => a.Matric == theMat).ToList();
                 if (theVote.Count() > 0)
                 {
 
@@ -921,38 +1163,71 @@ namespace eVoting.Controllers
 
 
             List<string> theDepartments = new List<string>();
-            theDepartments.Add("ANAESTHESIA");
-            theDepartments.Add("CHEMICAL PATHOLOGY");
-            theDepartments.Add("CLINICAL PHARMACOLOGY");
-            theDepartments.Add("PREVENTIVE DENTISTRY");
-            theDepartments.Add("GENERAL OUTPATIENT");
-            theDepartments.Add("HAEMATOLOGY");
-            theDepartments.Add("PRIVATE SUITE");
-            theDepartments.Add("NEURO SURGERY");
-            theDepartments.Add("MEDICAL MICROBIOLOGY");
-            theDepartments.Add("MEDICINE");
-            theDepartments.Add("OBSTETRICS & GYNAECOLOGY");
-            theDepartments.Add("OPHTHALMOLOGY");
-            theDepartments.Add("ENT");
-            theDepartments.Add("PAEDIATRICS");
-            theDepartments.Add("PATHOLOGY");
-            theDepartments.Add("COMMUNITY MEDICINE");
-            theDepartments.Add("PSYCHIATRY");
-            theDepartments.Add("RADIOLOGY");
-            theDepartments.Add("RADIOTHERAPY");
-            theDepartments.Add("COLLEGE OF MEDICINE STAFF");
-            theDepartments.Add("STAFF CLINIC");
-            theDepartments.Add("SURGERY");
-            theDepartments.Add("OFFICE OF CMD");
-            theDepartments.Add("CONSULTANT");
 
-            theDepartments.Add("ORTHOPAEDIC & TRAUMA");
-            theDepartments.Add("ACCIDENT & EMEGENCY");
-            theDepartments.Add("NUCLEAR MEDICINE");
-            theDepartments.Add("RESTORATIVE DENTISTRY");
-            theDepartments.Add("ORAL MAXILLOFACIAL SURGERY");
-            theDepartments.Add("GERIATRICS");
-            theDepartments.Add("HOUSE OFFICER");
+            theDepartments.Add("200level Chemical Engineering");
+            theDepartments.Add("200level Civil Engineering");
+            theDepartments.Add("200level Computer Engineering");
+            theDepartments.Add("200level Electrical Electronics");
+            theDepartments.Add("200level Mechatronics Engineering");
+            theDepartments.Add("200level Mechanical Engineering");
+            theDepartments.Add("200level Petroleum Engineering");
+            theDepartments.Add("400level Chemical Engineering");
+            theDepartments.Add("400level Computer Engineering");
+            theDepartments.Add("400level Civil Engineering");
+            theDepartments.Add("400level Electrical Electronic");
+            theDepartments.Add("400level Mechatronics Engineering");
+            theDepartments.Add("400level Mechanical Engineering");
+            theDepartments.Add("400level Petroleum Engineering");
+            theDepartments.Add("500level Chemical Engineering");
+            theDepartments.Add("500level Computer Engineering");
+            theDepartments.Add("500level Civil Engineering");
+            theDepartments.Add("500level Electrical Electronics");
+            theDepartments.Add("500level Mechatronics Engineering");
+            theDepartments.Add("500level Mechanical Engineering");
+            theDepartments.Add("500level Petroleum Engineering");
+            theDepartments.Add("300level Chemical Engineering");
+            theDepartments.Add("300level Computer Engineering");
+            theDepartments.Add("300level Civil Engineering");
+
+            theDepartments.Add("300level Electrical Electronics");
+            theDepartments.Add("300level Mechatronics Engineering");
+            theDepartments.Add("300level Mechanical Engineering");
+            theDepartments.Add("300level Petroleum Engineering");
+            //theDepartments.Add("ORAL MAXILLOFACIAL SURGERY");
+            //theDepartments.Add("GERIATRICS");
+            //theDepartments.Add("HOUSE OFFICER");
+            //theDepartments.Add("ANAESTHESIA");
+            //theDepartments.Add("CHEMICAL PATHOLOGY");
+            //theDepartments.Add("CLINICAL PHARMACOLOGY");
+            //theDepartments.Add("PREVENTIVE DENTISTRY");
+            //theDepartments.Add("GENERAL OUTPATIENT");
+            //theDepartments.Add("HAEMATOLOGY");
+            //theDepartments.Add("PRIVATE SUITE");
+            //theDepartments.Add("NEURO SURGERY");
+            //theDepartments.Add("MEDICAL MICROBIOLOGY");
+            //theDepartments.Add("MEDICINE");
+            //theDepartments.Add("OBSTETRICS & GYNAECOLOGY");
+            //theDepartments.Add("OPHTHALMOLOGY");
+            //theDepartments.Add("ENT");
+            //theDepartments.Add("PAEDIATRICS");
+            //theDepartments.Add("PATHOLOGY");
+            //theDepartments.Add("COMMUNITY MEDICINE");
+            //theDepartments.Add("PSYCHIATRY");
+            //theDepartments.Add("RADIOLOGY");
+            //theDepartments.Add("RADIOTHERAPY");
+            //theDepartments.Add("COLLEGE OF MEDICINE STAFF");
+            //theDepartments.Add("STAFF CLINIC");
+            //theDepartments.Add("SURGERY");
+            //theDepartments.Add("OFFICE OF CMD");
+            //theDepartments.Add("CONSULTANT");
+
+            //theDepartments.Add("ORTHOPAEDIC & TRAUMA");
+            //theDepartments.Add("ACCIDENT & EMEGENCY");
+            //theDepartments.Add("NUCLEAR MEDICINE");
+            //theDepartments.Add("RESTORATIVE DENTISTRY");
+            //theDepartments.Add("ORAL MAXILLOFACIAL SURGERY");
+            //theDepartments.Add("GERIATRICS");
+            //theDepartments.Add("HOUSE OFFICER");
 
 
             //string theDepartment =   
@@ -968,8 +1243,8 @@ namespace eVoting.Controllers
                 foreach (Voter v in theVoters)
                 {
                     PdfPTable table2 = new PdfPTable(1);
-                    string staffID = v.FirstName;
-                    string staffPassword = "STAFF-ID:- " + v.IdentityNumber + " PASSWORD: " + v.Password;
+                    string staffID = v.FirstName + " Matric Number- "+ v.Matric;
+                    string staffPassword = "USER NAME:- " + v.IdentityNumber + " PASSWORD: " + v.Password;
                     Paragraph paragraph = new Paragraph(staffID, font_body);
                     Paragraph paragraph1 = new Paragraph(staffPassword, font_body2);
                     table2.AddCell(paragraph);

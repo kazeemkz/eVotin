@@ -24,6 +24,8 @@ namespace Model
     //   public string VoterPassword { get; set; }
        public bool Voted { get; set; }
 
+       public string Matric { get; set; }
+
        [Display(Name = "Logged In Attempts After Voting")]
        public int LoggedInAttemptsAfterVoting { get; set; }
 
