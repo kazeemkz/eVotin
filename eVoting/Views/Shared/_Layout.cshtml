@@ -56,11 +56,17 @@
                         @if (User.Identity.IsAuthenticated && !(User.IsInRole("Admin")))
                         {
                                
-                            <li>@Html.ActionLink("Instructions", "Index", "Home")</li>
+                            @*<li>@Html.ActionLink("Instructions", "Index", "Home")</li>*@
                             
                             if (!(User.IsInRole("InterAdmin")))
                             {
-                            <li>@Html.ActionLink("Vote!", "Vote", "Post",null, new{id="vote"})</li>
+                                <li>
+                                    @using (Html.BeginForm("Vote", "Post", new { id = "vote" }, FormMethod.Get))
+                                    {
+                                        <input type="submit" value="Vote!" class="btn-danger" />
+                                     }
+                                </li>
+                            @*<li>@Html.ActionLink("Vote!", "Vote", "Post",null, new{id="vote"})</li>*@
                            
                             }
                             if (User.IsInRole("SuperAdmin"))
@@ -124,7 +130,7 @@
         $(document).ready(function () {
            // alert("HI");
             setInterval(function () {
-                var future = new Date("Jan 20 2015 15:00:00 GMT+0100");
+                var future = new Date("Jan 21 2015 15:00:00 GMT+0100");
                 var votingStartTime = new Date("Dec 15 2014 08:00:00 GMT+0100");
                 var now = new Date();
                 var difference = Math.floor((future.getTime() - now.getTime()) / 1000);
