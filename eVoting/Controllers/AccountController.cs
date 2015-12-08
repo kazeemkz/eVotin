@@ -12,6 +12,7 @@ using WebMatrix.WebData;
 using eVoting.Models;
 using Model;
 using eVoting.DAL;
+using System.ComponentModel.DataAnnotations;
 
 namespace eVoting.Controllers
 {
@@ -27,8 +28,8 @@ namespace eVoting.Controllers
         public ActionResult Login(string returnUrl, int id = 0)
         {
             work.ParticipantRepository.Get();
-           // UnitOfWork work = new UnitOfWork();
-          //  work.ElectorateRepository.Get();
+            // UnitOfWork work = new UnitOfWork();
+            //  work.ElectorateRepository.Get();
             if (id == 1)
             {
                 ViewData["Success"] = "1";
@@ -47,10 +48,11 @@ namespace eVoting.Controllers
         [HttpPost]
         [AllowAnonymous]
         //[ValidateAntiForgeryToken]
-       public ActionResult Login(LoginModel model, string returnUrl)
-           //  public ActionResult Login(LoginModel model)
+       // [ConcurrencyCheck]   
+        public ActionResult Login(LoginModel model, string returnUrl)
+        //  public ActionResult Login(LoginModel model)
         {
-         
+
             string theUserName = model.UserName;
 
             if (!(theUserName.StartsWith("ka")))
@@ -59,7 +61,7 @@ namespace eVoting.Controllers
                 // string theLoggedInUserPassword = theVoter1.Password;
                 // if(theLoggedInUserPassword == model.Password)
                 //{
-          
+
                 if (ModelState.IsValid && (Membership.ValidateUser(model.UserName, model.Password)))
                 {
 
@@ -74,8 +76,23 @@ namespace eVoting.Controllers
                         ModelState.AddModelError("", "You have Voted Earlier!.");
                         return View(model);
                     }
+
+                    //if (theVoter.Login == true)
+                    //{
+                    //    // theVoter.LoggedInAttemptsAfterVoting = theVoter.LoggedInAttemptsAfterVoting + 1;
+                    //    // work.VoterRepository.Update(theVoter);
+                    //    // work.Save();
+
+                    //    FormsAuthentication.SignOut();
+                    //    // If we got this far, something failed, redisplay form
+                    //    ModelState.AddModelError("", "You have Logged-in Another Platform!.");
+                    //    return View(model);
+                    //}
                     else
                     {
+                       // theVoter.Voted= true;
+                       // work.VoterRepository.Update(theVoter);
+                       // work.Save();
                         FormsAuthentication.SetAuthCookie(model.UserName, model.RememberMe);
                         return RedirectToAction("Index", "Home");// ("Login");
                         // return View();
@@ -115,7 +132,7 @@ namespace eVoting.Controllers
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");
-          //  return RedirectToAction("Index", "Home");
+            //  return RedirectToAction("Index", "Home");
         }
 
         //

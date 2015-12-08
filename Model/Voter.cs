@@ -26,6 +26,8 @@ namespace Model
 
        public string Matric { get; set; }
 
+       //public bool Login { get; set; }
+
        [Display(Name = "Logged In Attempts After Voting")]
        public int LoggedInAttemptsAfterVoting { get; set; }
 

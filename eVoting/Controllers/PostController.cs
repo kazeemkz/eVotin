@@ -528,8 +528,16 @@ namespace eVoting.Controllers
 
                     try
                     {
-                        context.SaveChanges();
-                        context.Dispose();
+                        string theUserNamee = User.Identity.Name;
+                        Voter theVoter = work.VoterRepository.Get(a => a.IdentityNumber == theUserNamee).First();
+
+                        // theVoter.VotedTime = DateTime.Now;
+                        // theVoter.Voted = true;
+                        if (theVoter.Voted != true)
+                        {
+                            context.SaveChanges();
+                            context.Dispose();
+                        }
                     }
                     catch (DbUpdateConcurrencyException ex)
                     {
@@ -792,7 +800,7 @@ namespace eVoting.Controllers
                         }
 
 
-                         sd = 0;
+                        sd = 0;
                         if (!(string.IsNullOrEmpty(SOCIAL_DIRECTOR)))
                         {
                             string[] c = SOCIAL_DIRECTOR.Split(':');
@@ -823,7 +831,7 @@ namespace eVoting.Controllers
 
 
                         //wo
-                         wo = 0;
+                        wo = 0;
                         if (!(string.IsNullOrEmpty(WELFARE_OFFICER)))
                         {
                             string[] c = WELFARE_OFFICER.Split(':');
@@ -853,7 +861,7 @@ namespace eVoting.Controllers
 
 
                         //sdr
-                         sdr = 0;
+                        sdr = 0;
                         if (!(string.IsNullOrEmpty(SPORT_DIRECTOR)))
                         {
                             string[] c = SPORT_DIRECTOR.Split(':');
@@ -968,12 +976,15 @@ namespace eVoting.Controllers
 
                 if (!(theUserName.EndsWith("eem")))
                 {
+                    //if(theUserNamee.)
                     Voter theVoter = work.VoterRepository.Get(a => a.IdentityNumber == theUserName).First();
-
-                    theVoter.VotedTime = DateTime.Now;
-                    theVoter.Voted = true;
-                    work.VoterRepository.Update(theVoter);
-                    work.Save();
+                    if (theVoter.Voted != true)
+                    {
+                        theVoter.VotedTime = DateTime.Now;
+                        theVoter.Voted = true;
+                        work.VoterRepository.Update(theVoter);
+                        work.Save();
+                    }
                 }
                 //,string ,string ,string ,string )
                 //  MvcMembership.log
@@ -1241,11 +1252,11 @@ namespace eVoting.Controllers
                 Paragraph paragraph3 = new Paragraph(d, font_body4);
                 table3.AddCell(paragraph3);
                 table1.AddCell(table3);
-               // table1.AddCell(paragraph3);
+                // table1.AddCell(paragraph3);
                 foreach (Voter v in theVoters)
                 {
                     PdfPTable table2 = new PdfPTable(1);
-                    string staffID = v.FirstName + " Staff ID- "+ v.Matric;
+                    string staffID = v.FirstName + " Staff ID- " + v.Matric;
                     string staffPassword = "USER NAME:- " + v.IdentityNumber + " PASSWORD: " + v.Password;
                     Paragraph paragraph = new Paragraph(staffID, font_body);
                     Paragraph paragraph1 = new Paragraph(staffPassword, font_body2);
@@ -1254,7 +1265,7 @@ namespace eVoting.Controllers
 
                     table1.AddCell(table2);
                 }
-              
+
                 // table1.AddCell("");
             }
             document.Add(table1);
