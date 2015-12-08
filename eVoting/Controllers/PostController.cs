@@ -105,7 +105,7 @@ namespace eVoting.Controllers
         }
         [Authorize]
         public ActionResult Voted(string PRESIDENT, string VICE_PRESIDENT, string GENERAL_SECRETARY,
-            string ASST_GENERAL_SECRETARY_AND_LIBRARIAN, string FINANCIAL_SECRETARY, string TREASURER, string PUBLIC_RELATIONS_OFFICER,
+            string ASST_GENERAL_SECRETARY, string FINANCIAL_SECRETARY, string TREASURER, string PUBLIC_RELATIONS_OFFICER,
             string SOCIAL_DIRECTOR, string WELFARE_OFFICER, string SPORT_DIRECTOR, string ASST_SPORT_DIRECTOR,
             string theKey)
         {
@@ -224,12 +224,12 @@ namespace eVoting.Controllers
 
                 //ags
                 int ags = 0;
-                if (!(string.IsNullOrEmpty(ASST_GENERAL_SECRETARY_AND_LIBRARIAN)))
+                if (!(string.IsNullOrEmpty(ASST_GENERAL_SECRETARY)))
                 {
-                    string[] c = ASST_GENERAL_SECRETARY_AND_LIBRARIAN.Split(':');
+                    string[] c = ASST_GENERAL_SECRETARY.Split(':');
                     if (c.Count() == 1)
                     {
-                        ags = Convert.ToInt32(ASST_GENERAL_SECRETARY_AND_LIBRARIAN);
+                        ags = Convert.ToInt32(ASST_GENERAL_SECRETARY);
                         Participant Par = context.Participants.Find(ags);
                         Par.Vote = Par.Vote + 1;
                     }
@@ -663,12 +663,12 @@ namespace eVoting.Controllers
 
                         //ags
                         ags = 0;
-                        if (!(string.IsNullOrEmpty(ASST_GENERAL_SECRETARY_AND_LIBRARIAN)))
+                        if (!(string.IsNullOrEmpty(ASST_GENERAL_SECRETARY)))
                         {
-                            string[] c = ASST_GENERAL_SECRETARY_AND_LIBRARIAN.Split(':');
+                            string[] c = ASST_GENERAL_SECRETARY.Split(':');
                             if (c.Count() == 1)
                             {
-                                ags = Convert.ToInt32(ASST_GENERAL_SECRETARY_AND_LIBRARIAN);
+                                ags = Convert.ToInt32(ASST_GENERAL_SECRETARY);
                                 Participant Par = context.Participants.Find(ags);
                                 Par.Vote = Par.Vote + 1;
                             }
@@ -1164,70 +1164,72 @@ namespace eVoting.Controllers
 
             List<string> theDepartments = new List<string>();
 
-            theDepartments.Add("200level Chemical Engineering");
-            theDepartments.Add("200level Civil Engineering");
-            theDepartments.Add("200level Computer Engineering");
-            theDepartments.Add("200level Electrical Electronics");
-            theDepartments.Add("200level Mechatronics Engineering");
-            theDepartments.Add("200level Mechanical Engineering");
-            theDepartments.Add("200level Petroleum Engineering");
-            theDepartments.Add("400level Chemical Engineering");
-            theDepartments.Add("400level Computer Engineering");
-            theDepartments.Add("400level Civil Engineering");
-            theDepartments.Add("400level Electrical Electronic");
-            theDepartments.Add("400level Mechatronics Engineering");
-            theDepartments.Add("400level Mechanical Engineering");
-            theDepartments.Add("400level Petroleum Engineering");
-            theDepartments.Add("500level Chemical Engineering");
-            theDepartments.Add("500level Computer Engineering");
-            theDepartments.Add("500level Civil Engineering");
-            theDepartments.Add("500level Electrical Electronics");
-            theDepartments.Add("500level Mechatronics Engineering");
-            theDepartments.Add("500level Mechanical Engineering");
-            theDepartments.Add("500level Petroleum Engineering");
-            theDepartments.Add("300level Chemical Engineering");
-            theDepartments.Add("300level Computer Engineering");
-            theDepartments.Add("300level Civil Engineering");
+            //theDepartments.Add("200level Chemical Engineering");
+            //theDepartments.Add("200level Civil Engineering");
+            //theDepartments.Add("200level Computer Engineering");
+            //theDepartments.Add("200level Electrical Electronics");
+            //theDepartments.Add("200level Mechatronics Engineering");
+            //theDepartments.Add("200level Mechanical Engineering");
+            //theDepartments.Add("200level Petroleum Engineering");
+            //theDepartments.Add("400level Chemical Engineering");
+            //theDepartments.Add("400level Computer Engineering");
+            //theDepartments.Add("400level Civil Engineering");
+            //theDepartments.Add("400level Electrical Electronic");
+            //theDepartments.Add("400level Mechatronics Engineering");
+            //theDepartments.Add("400level Mechanical Engineering");
+            //theDepartments.Add("400level Petroleum Engineering");
+            //theDepartments.Add("500level Chemical Engineering");
+            //theDepartments.Add("500level Computer Engineering");
+            //theDepartments.Add("500level Civil Engineering");
+            //theDepartments.Add("500level Electrical Electronics");
+            //theDepartments.Add("500level Mechatronics Engineering");
+            //theDepartments.Add("500level Mechanical Engineering");
+            //theDepartments.Add("500level Petroleum Engineering");
+            //theDepartments.Add("300level Chemical Engineering");
+            //theDepartments.Add("300level Computer Engineering");
+            //theDepartments.Add("300level Civil Engineering");
 
-            theDepartments.Add("300level Electrical Electronics");
-            theDepartments.Add("300level Mechatronics Engineering");
-            theDepartments.Add("300level Mechanical Engineering");
-            theDepartments.Add("300level Petroleum Engineering");
-            //theDepartments.Add("ORAL MAXILLOFACIAL SURGERY");
-            //theDepartments.Add("GERIATRICS");
-            //theDepartments.Add("HOUSE OFFICER");
-            //theDepartments.Add("ANAESTHESIA");
-            //theDepartments.Add("CHEMICAL PATHOLOGY");
-            //theDepartments.Add("CLINICAL PHARMACOLOGY");
-            //theDepartments.Add("PREVENTIVE DENTISTRY");
-            //theDepartments.Add("GENERAL OUTPATIENT");
-            //theDepartments.Add("HAEMATOLOGY");
-            //theDepartments.Add("PRIVATE SUITE");
-            //theDepartments.Add("NEURO SURGERY");
-            //theDepartments.Add("MEDICAL MICROBIOLOGY");
-            //theDepartments.Add("MEDICINE");
-            //theDepartments.Add("OBSTETRICS & GYNAECOLOGY");
-            //theDepartments.Add("OPHTHALMOLOGY");
-            //theDepartments.Add("ENT");
-            //theDepartments.Add("PAEDIATRICS");
-            //theDepartments.Add("PATHOLOGY");
-            //theDepartments.Add("COMMUNITY MEDICINE");
-            //theDepartments.Add("PSYCHIATRY");
-            //theDepartments.Add("RADIOLOGY");
-            //theDepartments.Add("RADIOTHERAPY");
-            //theDepartments.Add("COLLEGE OF MEDICINE STAFF");
-            //theDepartments.Add("STAFF CLINIC");
-            //theDepartments.Add("SURGERY");
-            //theDepartments.Add("OFFICE OF CMD");
-            //theDepartments.Add("CONSULTANT");
+            //theDepartments.Add("300level Electrical Electronics");
+            //theDepartments.Add("300level Mechatronics Engineering");
+            //theDepartments.Add("300level Mechanical Engineering");
+            //theDepartments.Add("300level Petroleum Engineering");
 
-            //theDepartments.Add("ORTHOPAEDIC & TRAUMA");
-            //theDepartments.Add("ACCIDENT & EMEGENCY");
-            //theDepartments.Add("NUCLEAR MEDICINE");
-            //theDepartments.Add("RESTORATIVE DENTISTRY");
-            //theDepartments.Add("ORAL MAXILLOFACIAL SURGERY");
-            //theDepartments.Add("GERIATRICS");
-            //theDepartments.Add("HOUSE OFFICER");
+
+            theDepartments.Add("ORAL MAXILLOFACIAL SURGERY");
+            theDepartments.Add("GERIATRICS");
+            theDepartments.Add("HOUSE OFFICER");
+            theDepartments.Add("ANAESTHESIA");
+            theDepartments.Add("CHEMICAL PATHOLOGY");
+            theDepartments.Add("CLINICAL PHARMACOLOGY");
+            theDepartments.Add("PREVENTIVE DENTISTRY");
+            theDepartments.Add("GENERAL OUTPATIENT");
+            theDepartments.Add("HAEMATOLOGY");
+            theDepartments.Add("PRIVATE SUITE");
+            theDepartments.Add("NEURO SURGERY");
+            theDepartments.Add("MEDICAL MICROBIOLOGY");
+            theDepartments.Add("MEDICINE");
+            theDepartments.Add("OBSTETRICS & GYNAECOLOGY");
+            theDepartments.Add("OPHTHALMOLOGY");
+            theDepartments.Add("ENT");
+            theDepartments.Add("PAEDIATRICS");
+            theDepartments.Add("PATHOLOGY");
+            theDepartments.Add("COMMUNITY MEDICINE");
+            theDepartments.Add("PSYCHIATRY");
+            theDepartments.Add("RADIOLOGY");
+            theDepartments.Add("RADIOTHERAPY");
+            theDepartments.Add("COLLEGE OF MEDICINE STAFF");
+            theDepartments.Add("STAFF CLINIC");
+            theDepartments.Add("SURGERY");
+            theDepartments.Add("OFFICE OF CMD");
+            theDepartments.Add("CONSULTANT");
+
+            theDepartments.Add("ORTHOPAEDIC & TRAUMA");
+            theDepartments.Add("ACCIDENT & EMEGENCY");
+            theDepartments.Add("NUCLEAR MEDICINE");
+            theDepartments.Add("RESTORATIVE DENTISTRY");
+            theDepartments.Add("ORAL MAXILLOFACIAL SURGERY");
+            theDepartments.Add("GERIATRICS");
+            theDepartments.Add("HOUSE OFFICER");
 
 
             //string theDepartment =   
@@ -1243,7 +1245,7 @@ namespace eVoting.Controllers
                 foreach (Voter v in theVoters)
                 {
                     PdfPTable table2 = new PdfPTable(1);
-                    string staffID = v.FirstName + " Matric Number- "+ v.Matric;
+                    string staffID = v.FirstName + " Staff ID- "+ v.Matric;
                     string staffPassword = "USER NAME:- " + v.IdentityNumber + " PASSWORD: " + v.Password;
                     Paragraph paragraph = new Paragraph(staffID, font_body);
                     Paragraph paragraph1 = new Paragraph(staffPassword, font_body2);
