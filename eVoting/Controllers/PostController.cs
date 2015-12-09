@@ -1237,7 +1237,7 @@ namespace eVoting.Controllers
             theDepartments.Add("ORTHOPAEDIC & TRAUMA");
             theDepartments.Add("ACCIDENT & EMEGENCY");
             theDepartments.Add("NUCLEAR MEDICINE");
-            theDepartments.Add("RESTORATIVE DENTISTRY");
+           // theDepartments.Add("RESTORATIVE DENTISTRY");
             theDepartments.Add("ORAL MAXILLOFACIAL SURGERY");
            // theDepartments.Add("GERIATRICS");
            // theDepartments.Add("HOUSE OFFICER");
