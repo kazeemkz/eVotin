@@ -133,9 +133,10 @@
                 //var future = new Date("Dec 15 2015 15:00:00 GMT+0100");
                 //var votingStartTime = new Date("Dec 7 2015 08:00:00 GMT+0100");
 
-                var future = new Date("Dec 15 2015 15:00:00 GMT");
+                var future = new Date("Dec 15 2015 15:00:00 GMT+0100");
                 var votingStartTime = new Date("Dec 7 2015 08:00:00 GMT");
                 var now = new Date();
+               // var now = now.toUTCString();
                 var difference = Math.floor((future.getTime() - now.getTime()) / 1000);
 
                 var differenceVotingTime = Math.floor((votingStartTime.getTime() - now.getTime()) / 1000);
@@ -152,16 +153,19 @@
 
                 }
 
-                if (differenceVotingTime >= 0) {
-                    //  $('#theKey').val(difference);
-                    // alert($('#theKey').val());
-                    $('#vote').click(function () {
-                        // alert('You clicked the link.');
-                        return false;
+                //if (differenceVotingTime >= 0) {
+                //    //  $('#theKey').val(difference);
+                //    // alert($('#theKey').val());
+                //    $('#vote').click(function () {
+                //        // alert('You clicked the link.');
+                //        return false;
 
-                    });
+                //    });
 
-                }
+                //}
+
+
+
               // alert(difference);
 
                 var seconds = fixIntegers(difference % 60);

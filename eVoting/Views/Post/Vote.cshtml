@@ -133,9 +133,10 @@
         //var future = new Date("Dec 15 2015 15:00:00 GMT+0100");
         ////var future = new Date("Dec 13 2013 17:00:00 GMT+0100");
 
-        var future = new Date("Dec 15 2015 15:00:00 GMT");
+        var future = new Date("Dec 15 2015 15:00:00 GMT+0100");
         //var future = new Date("Dec 13 2013 17:00:00 GMT+0100");
         var now = new Date();
+       // var now = now.toUTCString()
         var difference = Math.floor((future.getTime() - now.getTime()) / 1000);
         $('#theKey').val(difference);
 
