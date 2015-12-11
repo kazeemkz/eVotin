@@ -1209,7 +1209,7 @@ namespace eVoting.Controllers
            // theDepartments.Add("ORAL MAXILLOFACIAL SURGERY");
            // theDepartments.Add("GERIATRICS");
            // theDepartments.Add("HOUSE OFFICER");
-           // theDepartments.Add("ANAESTHESIA");
+            theDepartments.Add("ANAESTHESIA");
             theDepartments.Add("CHEMICAL PATHOLOGY");
             theDepartments.Add("CLINICAL PHARMACOLOGY");
             theDepartments.Add("PREVENTIVE DENTISTRY");

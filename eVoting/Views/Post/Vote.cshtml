@@ -20,7 +20,7 @@
 
     foreach (var post in Model)
     {
-        List<Model.Participant> theParticipants = work.ParticipantRepository.Get(a => a.PostID == post.PostID).ToList();
+        List<Model.Participant> theParticipants = work.ParticipantRepository.Get(a => a.PostID == post.PostID).OrderBy(a=>a.LastName).ToList();
     <fieldset>
         <legend>Position -<b>@post.PostName</b></legend>
         @if (theParticipants.Count > 1)
