@@ -1175,70 +1175,84 @@ namespace eVoting.Controllers
 
             List<string> theDepartments = new List<string>();
 
-            //theDepartments.Add("200level Chemical Engineering");
-            //theDepartments.Add("200level Civil Engineering");
-            //theDepartments.Add("200level Computer Engineering");
-            //theDepartments.Add("200level Electrical Electronics");
-            //theDepartments.Add("200level Mechatronics Engineering");
-            //theDepartments.Add("200level Mechanical Engineering");
-            //theDepartments.Add("200level Petroleum Engineering");
-            //theDepartments.Add("400level Chemical Engineering");
-            //theDepartments.Add("400level Computer Engineering");
-            //theDepartments.Add("400level Civil Engineering");
-            //theDepartments.Add("400level Electrical Electronic");
-            //theDepartments.Add("400level Mechatronics Engineering");
-            //theDepartments.Add("400level Mechanical Engineering");
-            //theDepartments.Add("400level Petroleum Engineering");
-            //theDepartments.Add("500level Chemical Engineering");
-            //theDepartments.Add("500level Computer Engineering");
-            //theDepartments.Add("500level Civil Engineering");
-            //theDepartments.Add("500level Electrical Electronics");
-            //theDepartments.Add("500level Mechatronics Engineering");
-            //theDepartments.Add("500level Mechanical Engineering");
-            //theDepartments.Add("500level Petroleum Engineering");
-            //theDepartments.Add("300level Chemical Engineering");
-            //theDepartments.Add("300level Computer Engineering");
-            //theDepartments.Add("300level Civil Engineering");
 
-            //theDepartments.Add("300level Electrical Electronics");
-            //theDepartments.Add("300level Mechatronics Engineering");
-            //theDepartments.Add("300level Mechanical Engineering");
-            //theDepartments.Add("300level Petroleum Engineering");
+            theDepartments.Add("100level Chemical Engineering");
+            theDepartments.Add("100level Computer Engineering");
+            theDepartments.Add("100level Civil Engineering");
+            theDepartments.Add("100level Electrical Electronics");
+            theDepartments.Add("100level Mechatronics Engineering");
+            theDepartments.Add("100level Mechanical Engineering");
+            theDepartments.Add("100level Petroleum Engineering");
+
+            theDepartments.Add("200level Chemical Engineering");
+            theDepartments.Add("200level Computer Engineering");
+            theDepartments.Add("200level Civil Engineering");
+            theDepartments.Add("200level Electrical Electronics");
+            theDepartments.Add("200level Mechatronics Engineering");
+            theDepartments.Add("200level Mechanical Engineering");
+            theDepartments.Add("200level Petroleum Engineering");
+
+            theDepartments.Add("400level Chemical Engineering");
+            theDepartments.Add("400level Computer Engineering");
+            theDepartments.Add("400level Civil Engineering");
+            theDepartments.Add("400level Electrical Electronic");
+            theDepartments.Add("400level Mechatronics Engineering");
+            theDepartments.Add("400level Mechanical Engineering");
+            theDepartments.Add("400level Petroleum Engineering");
+
+            theDepartments.Add("500level Chemical Engineering");
+            theDepartments.Add("500level Computer Engineering");
+            theDepartments.Add("500level Civil Engineering");
+            theDepartments.Add("500level Electrical Electronics");
+            theDepartments.Add("500level Mechatronics Engineering");
+            theDepartments.Add("500level Mechanical Engineering");
+            theDepartments.Add("500level Petroleum Engineering");
+
+            theDepartments.Add("300level Chemical Engineering");
+            theDepartments.Add("300level Computer Engineering");
+            theDepartments.Add("300level Civil Engineering");
+            theDepartments.Add("300level Electrical Electronics");
+            theDepartments.Add("300level Mechatronics Engineering");
+            theDepartments.Add("300level Mechanical Engineering");
+            theDepartments.Add("300level Petroleum Engineering");
 
 
            // theDepartments.Add("ORAL MAXILLOFACIAL SURGERY");
            // theDepartments.Add("GERIATRICS");
            // theDepartments.Add("HOUSE OFFICER");
-            theDepartments.Add("ANAESTHESIA");
-            theDepartments.Add("CHEMICAL PATHOLOGY");
-            theDepartments.Add("CLINICAL PHARMACOLOGY");
-            theDepartments.Add("PREVENTIVE DENTISTRY");
-            theDepartments.Add("GENERAL OUTPATIENT");
-            theDepartments.Add("HAEMATOLOGY");
-            theDepartments.Add("PRIVATE SUITE");
-            theDepartments.Add("NEURO SURGERY");
-            theDepartments.Add("MEDICAL MICROBIOLOGY");
-            theDepartments.Add("MEDICINE");
-            theDepartments.Add("OBSTETRICS & GYNAECOLOGY");
-            theDepartments.Add("OPHTHALMOLOGY");
-            theDepartments.Add("ENT");
-            theDepartments.Add("PAEDIATRICS");
-            theDepartments.Add("PATHOLOGY");
-            theDepartments.Add("COMMUNITY MEDICINE");
-            theDepartments.Add("PSYCHIATRY");
-            theDepartments.Add("RADIOLOGY");
-            theDepartments.Add("RADIOTHERAPY");
-            theDepartments.Add("COLLEGE OF MEDICINE STAFF");
-            theDepartments.Add("STAFF CLINIC");
-            theDepartments.Add("SURGERY");
-            theDepartments.Add("OFFICE OF CMD");
-            theDepartments.Add("CONSULTANT");
 
-            theDepartments.Add("ORTHOPAEDIC & TRAUMA");
-            theDepartments.Add("ACCIDENT & EMEGENCY");
-            theDepartments.Add("NUCLEAR MEDICINE");
-           // theDepartments.Add("RESTORATIVE DENTISTRY");
-            theDepartments.Add("ORAL MAXILLOFACIAL SURGERY");
+           // theDepartments.Add("ANAESTHESIA");
+           // theDepartments.Add("CHEMICAL PATHOLOGY");
+           // theDepartments.Add("CLINICAL PHARMACOLOGY");
+           // theDepartments.Add("PREVENTIVE DENTISTRY");
+           // theDepartments.Add("GENERAL OUTPATIENT");
+           // theDepartments.Add("HAEMATOLOGY");
+           // theDepartments.Add("PRIVATE SUITE");
+           // theDepartments.Add("NEURO SURGERY");
+           // theDepartments.Add("MEDICAL MICROBIOLOGY");
+           // theDepartments.Add("MEDICINE");
+           // theDepartments.Add("OBSTETRICS & GYNAECOLOGY");
+           // theDepartments.Add("OPHTHALMOLOGY");
+           // theDepartments.Add("ENT");
+           // theDepartments.Add("PAEDIATRICS");
+           // theDepartments.Add("PATHOLOGY");
+           // theDepartments.Add("COMMUNITY MEDICINE");
+           // theDepartments.Add("PSYCHIATRY");
+           // theDepartments.Add("RADIOLOGY");
+           // theDepartments.Add("RADIOTHERAPY");
+           // theDepartments.Add("COLLEGE OF MEDICINE STAFF");
+           // theDepartments.Add("STAFF CLINIC");
+           // theDepartments.Add("SURGERY");
+           // theDepartments.Add("OFFICE OF CMD");
+           // theDepartments.Add("CONSULTANT");
+
+           // theDepartments.Add("ORTHOPAEDIC & TRAUMA");
+           // theDepartments.Add("ACCIDENT & EMEGENCY");
+           // theDepartments.Add("NUCLEAR MEDICINE");
+           //// theDepartments.Add("RESTORATIVE DENTISTRY");
+           // theDepartments.Add("ORAL MAXILLOFACIAL SURGERY");
+
+
            // theDepartments.Add("GERIATRICS");
            // theDepartments.Add("HOUSE OFFICER");
 

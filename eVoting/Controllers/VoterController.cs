@@ -175,7 +175,7 @@ namespace eVoting.Controllers
             //5. Data Reader methods
             int counter = 0;
 
-            int usernameCouner = 2000;
+            int usernameCouner = 7000;
             var chars = "xckheayrydzjcmgncb4au9w8xu5ur93hmb3mqa4j3n3nwm3ktvj6c2vj9kckdnv3n4bsv6a8ev9xjcvk3n5m7rka9a5xz7hz8zrmn3kz3n4nzmavn3kwn7k8kvc3n2a9s3muabtfbusk347sbua3hdkcks28jk";
             while (excelReader.Read())
             {
