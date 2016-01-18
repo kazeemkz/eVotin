@@ -1270,7 +1270,7 @@ namespace eVoting.Controllers
                 foreach (Voter v in theVoters)
                 {
                     PdfPTable table2 = new PdfPTable(1);
-                    string staffID = v.FirstName + " Staff ID- " + v.Matric;
+                    string staffID = v.FirstName + " Student Matic No- " + v.Matric;
                     string staffPassword = "USER NAME:- " + v.IdentityNumber + " PASSWORD: " + v.Password;
                     Paragraph paragraph = new Paragraph(staffID, font_body);
                     Paragraph paragraph1 = new Paragraph(staffPassword, font_body2);
