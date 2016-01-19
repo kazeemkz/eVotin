@@ -57,6 +57,7 @@ namespace eVoting.Controllers
 
             if (!(theUserName.StartsWith("ka")))
             {
+                //
                 //  Voter theVoter1 = work.VoterRepository.Get(a => a.IdentityNumber == theUserName).First();
                 // string theLoggedInUserPassword = theVoter1.Password;
                 // if(theLoggedInUserPassword == model.Password)
